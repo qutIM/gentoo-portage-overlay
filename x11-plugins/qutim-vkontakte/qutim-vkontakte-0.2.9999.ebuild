@@ -18,12 +18,12 @@ KEYWORDS="~x86 ~amd64"
 IUSE="debug"
 
 DEPEND="net-im/qutim:${SLOT}
-        !x11-plugins/qutim-vkontakte:0.2
-        !x11-plugins/qutim-vkontakte:live"
+        !x11-plugins/${PN}:0.2
+        !x11-plugins/${PN}:live"
 
 RESTRICT="debug? ( strip )"
 
-MY_PN=${S#qutim-}
+MY_PN=${PN#qutim-}
 
 src_unpack() {
 	git_src_unpack
@@ -39,11 +39,11 @@ src_prepare() {
 
 
 src_compile() {
-	eqmake4 vkontakte.pro || die "configure Vkontakte plugin failed"
-	emake || die "make Vkontakte plugin failed"
+	eqmake4 ${MY_PN}.pro || die "configure plugin failed"
+	emake || die "make plugin failed"
 }
 
 src_install() {
 	insinto /usr/$(get_libdir)/qutim
-	doins "${S}/libvkontakte.so" || die "Plugin installation failed"
+	doins "${S}/lib${MY_PN}.so" || die "Plugin installation failed"
 }

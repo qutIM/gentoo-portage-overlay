@@ -21,8 +21,8 @@ RDEPEND="net-im/qutim:0.2-live"
 
 DEPEND="${RDEPEND}
         >=dev-util/cmake-2.6
-        !x11-plugins/qutim-mrim:live
-        !x11-plugins/qutim-mrim:0.2"
+        !x11-plugins/${PN}:live
+        !x11-plugins/${PN}:0.2"
 
 RESTRICT="debug? ( strip )"
 

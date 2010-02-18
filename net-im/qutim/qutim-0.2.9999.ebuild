@@ -16,7 +16,7 @@ LICENSE="GPL-2"
 SLOT="0.2-live"
 KEYWORDS="~x86 ~amd64"
 IUSE="debug histman +icq +jabber mrim vkontakte
-      kde +yandexnarod +imagepub +massmessaging plugman +urlpreview
+      kde +yandexnarod +imagepub +massmessaging plugman +urlpreview otr
       sqlhistory webhistory
       linguas_bg linguas_cs linguas_de linguas_ru linguas_ua"
 
@@ -26,7 +26,7 @@ DEPEND=">=dev-util/cmake-2.6.0
         !net-im/qutim:0.2
         !net-im/qutim:live"
 RDEPEND="${DEPEND}"
-if (use linguas_bg) || (use ilinguas_cs) || (use linguas_de) || (use linguas_ru) || (use linguas_ua) ; then
+if (use linguas_bg) || (use linguas_cs) || (use linguas_de) || (use linguas_ru) || (use linguas_ua) ; then
 	PDEPEND="net-im/qutim-l10n:${SLOT}"
 fi
 PDEPEND="${PDEPEND}
@@ -41,7 +41,8 @@ PDEPEND="${PDEPEND}
          plugman? ( x11-plugins/qutim-plugman:${SLOT} )
          urlpreview? ( x11-plugins/qutim-urlpreview:${SLOT} )
          sqlhistory? ( x11-plugins/qutim-sqlhistory:${SLOT} )
-         webhistory? ( x11-plugins/qutim-webhistory:${SLOT} )"
+         webhistory? ( x11-plugins/qutim-webhistory:${SLOT} )
+         otr? ( app-crypt/qutim-otr:${SLOT} )"
 
 RESTRICT="debug? ( strip )"
 

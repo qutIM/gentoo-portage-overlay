@@ -26,8 +26,8 @@ RDEPEND="net-im/qutim:${SLOT}
 
 DEPEND="${RDEPEND}
         >=dev-util/cmake-2.6
-        !x11-plugins/qutim-jabber:0.2
-        !x11-plugins/qutim-jabber:live"
+        !x11-plugins/${PN}:0.2
+        !x11-plugins/${PN}:live"
 
 PDEPEND="juick? ( x11-plugins/qutim-juick:${SLOT} )"
 
