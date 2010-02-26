@@ -17,8 +17,8 @@ IUSE="debug"
 
 DEPEND="net-im/qutim:${SLOT}
         net-libs/libotr
-        !x11-plugins/qutim-vkontakte:0.2
-        !x11-plugins/qutim-vkontakte:live"
+        !x11-plugins/${PN}:0.2
+        !x11-plugins/${PN}:live"
 
 RESTRICT="debug? ( strip )"
 

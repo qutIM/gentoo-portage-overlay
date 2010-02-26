@@ -44,7 +44,6 @@ src_prepare() {
 	fi
 	mycmakeargs="${mycmakeargs} -DCMAKE_INSTALL_PREFIX=/usr -DAPPLE=0 -DUNIX=1"
 	CMAKE_IN_SOURCE_BUILD=1
-	sed -i "/DESTINATION/s/lib/$(get_libdir)/g" ${S}/CMakeLists.txt
 }
 
 src_install() {

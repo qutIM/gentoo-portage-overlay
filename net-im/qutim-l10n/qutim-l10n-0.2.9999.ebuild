@@ -16,7 +16,7 @@ HOMEPAGE="http://qutim.org"
 LICENSE="GPL-2"
 SLOT="0.2-live"
 KEYWORDS="~x86 ~amd64"
-IUSE="linguas_ru linguas_bg linguas_cs linguas_de linguas_ua"
+IUSE="linguas_ru linguas_bg linguas_cs linguas_de linguas_uk"
 LANGUAGES=""
 
 DEPEND=""
@@ -40,19 +40,23 @@ src_compile() {
 	if use linguas_de ; then
 		LANGUAGES="${LANGUAGES} de_DE"
 	fi
-	if use linguas_ua ; then
+	if use linguas_uk ; then
 		LANGUAGES="${LANGUAGES} uk_UA"
 	fi
 	einfo "Compiling translates for ${LANGUAGES}"
-	./make.sh compile ${LANGUAGES}
+	if [ "x${LANGUAGES}" != "x" ]; then
+		./make.sh compile ${LANGUAGES}
+	fi
 }
 
 src_install() {
-	LANG_DIR="${D}/usr/share/${PN%-l10n}/languages"
-	mkdir -p ${LANG_DIR}
-	for LANG in ${LANGUAGES}; do
-		mkdir -p ${LANG_DIR}/${LANG}
-		cp ${LANG}/binaries/*.qm ${LANG_DIR}/${LANG};
-	done
+	if [ "x${LANGUAGES}" != "x" ]; then
+		LANG_DIR="${D}/usr/share/qutim/languages"
+		mkdir -p ${LANG_DIR}
+		for LANG in ${LANGUAGES}; do
+			mkdir -p ${LANG_DIR}/${LANG}
+			cp ${LANG}/binaries/*.qm ${LANG_DIR}/${LANG};
+		done
+	fi
 }
 

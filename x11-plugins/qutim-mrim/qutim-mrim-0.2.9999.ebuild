@@ -41,6 +41,4 @@ src_prepare() {
 	fi
 	mycmakeargs="-DAPPLE=0 -DUNIX=1 -DWIN32=0 -DCMAKE_INSTALL_PREFIX=/usr"
 	CMAKE_IN_SOURCE_BUILD=1
-	sed -i '/if ( !WIN32 )/d' ${S}/CMakeLists.txt
-	sed -i "/DESTINATION/s/lib/$(get_libdir)/g" ${S}/CMakeLists.txt
 }

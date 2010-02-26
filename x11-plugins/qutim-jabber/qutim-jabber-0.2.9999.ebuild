@@ -53,20 +53,10 @@ src_prepare() {
 		append-flags -O1 -g -ggdb
 		CMAKE_BUILD_TYPE="debug"
 	fi
-	mycmakeargs="-DWinTLS=0 -DCMAKE_INSTALL_PREFIX=/usr -DUNIX=1 -WIN32=0 -DAPPLE=0"
-	if (use openssl) ; then
-		mycmakeargs="${mycmakeargs} -DOpenSSL=1 -DGNUTLS=0"
-	fi
-	if (use gnutls) ; then
-		mycmakeargs="${mycmakeargs} -DOpenSSL=0 -DGNUTLS=1"
-	fi
-	if (use gloox-static) ; then
-		mycmakeargs="${mycmakeargs} -DGLOOX_SHARED=0"
-	else
-		mycmakeargs="${mycmakeargs} -DGLOOX_SHARED=1"
-	fi
+	mycmakeargs="-DWinTLS=0 -DCMAKE_INSTALL_PREFIX=/usr -DUNIX=1 -WIN32=0 -DAPPLE=0 \
+		$(cmake-utils_use ssl OpenSSL) $(cmake-utils_use gnutls GNUTLS) \
+		$(cmake-utils_use gloox-static GLOOX_SHARED)"
 	CMAKE_IN_SOURCE_BUILD=1
-	sed -i "/DESTINATION/s/lib/$(get_libdir)/g" ${S}/CMakeLists.txt
 }
 
 

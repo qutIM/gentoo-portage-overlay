@@ -6,10 +6,8 @@ EAPI="2"
 
 inherit git eutils qt4
 
-EGIT_REPO_URI="http://git.gitorious.org/qutim/plugins.git"
-EGIT_BRANCH="sdk02"                                
-EGIT_COMMIT="${EGIT_BRANCH}"
-DESCRIPTION="Web storage history plugin for net-im/qutim"
+EGIT_REPO_URI="http://git.gitorious.org/vsqlhistory/vsqlhistory.git"
+DESCRIPTION="V-SQL storage history plugin for net-im/qutim"
 HOMEPAGE="http://www.qutim.org"
 
 LICENSE="GPL-2"
@@ -20,8 +18,8 @@ IUSE="debug"
 RDEPEND="net-im/qutim:${SLOT}"
 
 DEPEND="${RDEPEND}
-        !x11-plugins/sqlhistory
-        !x11-plugins/vsqlhistory
+        !x11-plugins/qutim-sqlhistory
+        !x11-plugins/qutim-webhistory
         !x11-plugins/${PN}:live
         !x11-plugins/${PN}:0.2"
 

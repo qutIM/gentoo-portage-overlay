@@ -17,8 +17,9 @@ SLOT="0.2-live"
 KEYWORDS="~x86 ~amd64"
 IUSE="debug histman +icq +jabber mrim vkontakte
       kde +yandexnarod +imagepub +massmessaging plugman +urlpreview otr
-      sqlhistory webhistory
-      linguas_bg linguas_cs linguas_de linguas_ru linguas_ua"
+      sqlhistory vsqlhistory webhistory
+	  tex weather
+      linguas_bg linguas_cs linguas_de linguas_ru linguas_uk"
 
 DEPEND=">=dev-util/cmake-2.6.0
         >=x11-libs/qt-gui-4.4.0
@@ -26,7 +27,7 @@ DEPEND=">=dev-util/cmake-2.6.0
         !net-im/qutim:0.2
         !net-im/qutim:live"
 RDEPEND="${DEPEND}"
-if (use linguas_bg) || (use linguas_cs) || (use linguas_de) || (use linguas_ru) || (use linguas_ua) ; then
+if (use linguas_bg) || (use linguas_cs) || (use linguas_de) || (use linguas_ru) || (use linguas_uk) ; then
 	PDEPEND="net-im/qutim-l10n:${SLOT}"
 fi
 PDEPEND="${PDEPEND}
@@ -39,15 +40,19 @@ PDEPEND="${PDEPEND}
          imagepub? ( x11-plugins/qutim-imagepub:${SLOT} )
          massmessaging? ( x11-plugins/qutim-massmessaging:${SLOT} )
          plugman? ( x11-plugins/qutim-plugman:${SLOT} )
+         histman? ( x11-plugins/qutim-histman:${SLOT} )
          urlpreview? ( x11-plugins/qutim-urlpreview:${SLOT} )
          sqlhistory? ( x11-plugins/qutim-sqlhistory:${SLOT} )
+         vsqlhistory? ( x11-plugins/qutim-vsqlhistory:${SLOT} )
          webhistory? ( x11-plugins/qutim-webhistory:${SLOT} )
-         otr? ( app-crypt/qutim-otr:${SLOT} )"
+         otr? ( app-crypt/qutim-otr:${SLOT} )
+		 tex? ( qutim-tex:${SLOT} )
+		 weather? ( qutim-weather:${SLOT} )"
 
 RESTRICT="debug? ( strip )"
 
 pkg_setup() {
-	confutils_use_conflict sqlhistory webhistory
+	confutils_use_conflict sqlhistory webhistory vsqlhistory
 }
 
 src_unpack() {
@@ -62,7 +67,6 @@ src_prepare() {
 		CMAKE_BUILD_TYPE="Debug"
 	fi
 	mycmakeargs="-DUNIX=1 -DBSD=0 -DAPPLE=0 -DMINGW=0 -DWIN32=0	-DCMAKE_INSTALL_PREFIX=/usr"
-	sed -i "/plugin_path +=/s/lib/$(get_libdir)/" ${S}/src/pluginsystem.cpp
 }
 
 src_install() {

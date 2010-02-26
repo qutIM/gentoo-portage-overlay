@@ -22,8 +22,8 @@ RDEPEND="net-im/qutim:${SLOT}"
 DEPEND="${RDEPEND}
         >=dev-util/cmake-2.6
         notification? ( !x11-plugins/qutim-libnotify )
-        !x11-plugins/qutim-kdeintegration:0.2
-        !x11-plugins/qutim-kdeintegration:live"
+        !x11-plugins/${PN}:0.2
+        !x11-plugins/${PN}:live"
 
 RESTRICT="mirror
 	debug? ( strip )"
@@ -45,11 +45,6 @@ src_prepare() {
 	mycmakeargs="-DUNIX=1 -DAPPLE=0 -DCMAKE_INSTALL_PREFIX=/usr"
 	CMAKE_IN_SOURCE_BUILD=1
 	# Исправление пути установки
-	sed -i "/DESTINATION/s/lib/$(get_libdir)/g" ${S}/crash/CMakeLists.txt
-	sed -i "/DESTINATION/s/lib/$(get_libdir)/g" ${S}/emoticons/CMakeLists.txt
-	sed -i "/DESTINATION/s/lib/$(get_libdir)/g" ${S}/notification/CMakeLists.txt
-	sed -i "/DESTINATION/s/lib/$(get_libdir)/g" ${S}/phonon/CMakeLists.txt
-	sed -i "/DESTINATION/s/lib/$(get_libdir)/g" ${S}/speller/CMakeLists.txt
 
 	if ( ! use emoticons ) ; then
 		sed -i "/add_subdirectory( emoticons )/d" ${S}/CMakeLists.txt

@@ -20,6 +20,8 @@ IUSE="debug"
 RDEPEND="net-im/qutim:${SLOT}"
 
 DEPEND="${RDEPEND}
+        !x11-plugins/qutim-vsqlhistory
+        !x11-plugins/qutim-webhistory
         !x11-plugins/${PN}:live
         !x11-plugins/${PN}:0.2"
 
