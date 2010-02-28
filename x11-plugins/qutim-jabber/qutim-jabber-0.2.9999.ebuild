@@ -55,7 +55,7 @@ src_prepare() {
 	fi
 	mycmakeargs="-DWinTLS=0 -DCMAKE_INSTALL_PREFIX=/usr -DUNIX=1 -WIN32=0 -DAPPLE=0 \
 		$(cmake-utils_use ssl OpenSSL) $(cmake-utils_use gnutls GNUTLS) \
-		$(cmake-utils_use gloox-static GLOOX_SHARED)"
+		$(cmake-utils_use !gloox-static GLOOX_SHARED)"
 	CMAKE_IN_SOURCE_BUILD=1
 }
 
