@@ -27,10 +27,11 @@ DEPEND=">=dev-util/cmake-2.6.0
         !net-im/qutim:0.2
         !net-im/qutim:live"
 RDEPEND="${DEPEND}"
-if (use linguas_bg) || (use linguas_cs) || (use linguas_de) || (use linguas_ru) || (use linguas_uk) ; then
-	PDEPEND="net-im/qutim-l10n:${SLOT}"
-fi
-PDEPEND="${PDEPEND}
+PDEPEND="linguas_bg? ( net-im/qutim-l10n:${SLOT}[linguas_bg?] )
+         linguas_cs? ( net-im/qutim-l10n:${SLOT}[linguas_cs?] )
+		 linguas_de? ( net-im/qutim-l10n:${SLOT}[linguas_de?] )
+		 linguas_ru? ( net-im/qutim-l10n:${SLOT}[linguas_ru?] )
+		 linguas_uk? ( net-im/qutim-l10n:${SLOT}[linguas_uk?] )
          icq? ( x11-plugins/qutim-icq:${SLOT} )
          jabber? ( x11-plugins/qutim-jabber:${SLOT} )
          mrim? ( x11-plugins/qutim-mrim:${SLOT} )
