@@ -46,8 +46,8 @@ PDEPEND="${PDEPEND}
          vsqlhistory? ( x11-plugins/qutim-vsqlhistory:${SLOT} )
          webhistory? ( x11-plugins/qutim-webhistory:${SLOT} )
          otr? ( app-crypt/qutim-otr:${SLOT} )
-		 tex? ( qutim-tex:${SLOT} )
-		 weather? ( qutim-weather:${SLOT} )"
+		 tex? ( x11-plugins/qutim-tex:${SLOT} )
+		 weather? ( x11-plugins/qutim-weather:${SLOT} )"
 
 RESTRICT="debug? ( strip )"
 
