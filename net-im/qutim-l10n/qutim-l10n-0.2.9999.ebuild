@@ -15,13 +15,13 @@ HOMEPAGE="http://qutim.org"
 
 LICENSE="GPL-2"
 SLOT="0.2-live"
-KEYWORDS="~x86 ~amd64"
+KEYWORDS=""
 IUSE="linguas_ru linguas_bg linguas_cs linguas_de linguas_uk"
 LANGUAGES=""
 
 DEPEND=""
 RDEPEND="${DEPEND}
-         net-im/qutim:${SLOT}"
+	net-im/qutim:${SLOT}"
 
 src_unpack() {
 	git_src_unpack
@@ -59,4 +59,3 @@ src_install() {
 		done
 	fi
 }
-

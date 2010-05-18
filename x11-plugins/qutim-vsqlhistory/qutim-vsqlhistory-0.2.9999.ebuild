@@ -1,4 +1,4 @@
-# Copyright 1999-2008 Gentoo Foundation
+# Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
@@ -18,10 +18,10 @@ IUSE="debug"
 RDEPEND="net-im/qutim:${SLOT}"
 
 DEPEND="${RDEPEND}
-        !x11-plugins/qutim-sqlhistory
-        !x11-plugins/qutim-webhistory
-        !x11-plugins/${PN}:live
-        !x11-plugins/${PN}:0.2"
+	!x11-plugins/qutim-sqlhistory
+	!x11-plugins/qutim-webhistory
+	!x11-plugins/${PN}:live
+	!x11-plugins/${PN}:0.2"
 
 RESTRICT="debug? ( strip )"
 

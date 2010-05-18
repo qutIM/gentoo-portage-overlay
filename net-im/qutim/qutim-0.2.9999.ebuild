@@ -14,41 +14,43 @@ HOMEPAGE="http://qutim.org"
 
 LICENSE="GPL-2"
 SLOT="0.2-live"
-KEYWORDS="~x86 ~amd64"
+KEYWORDS=""
 IUSE="debug histman +icq +jabber mrim vkontakte
-      kde +yandexnarod +imagepub +massmessaging plugman +urlpreview otr
-      sqlhistory vsqlhistory webhistory
-	  tex weather
-      linguas_bg linguas_cs linguas_de linguas_ru linguas_uk"
+	kde +yandexnarod +imagepub +massmessaging plugman +urlpreview otr
+	sqlhistory vsqlhistory webhistory
+	tex weather
+	linguas_bg linguas_cs linguas_de linguas_ru linguas_uk"
 
-DEPEND=">=dev-util/cmake-2.6.0
-        >=x11-libs/qt-gui-4.4.0
-        >=x11-libs/qt-webkit-4.4.0
-        !net-im/qutim:0.2
-        !net-im/qutim:live"
-RDEPEND="${DEPEND}"
+RDEPEND=">=x11-libs/qt-gui-4.4.0
+	>=x11-libs/qt-webkit-4.4.0
+	!net-im/qutim:0.2
+	!net-im/qutim:live"
+
+DEPEND="${RDEPEND}
+	>=dev-util/cmake-2.6.0"
+
 PDEPEND="linguas_bg? ( net-im/qutim-l10n:${SLOT}[linguas_bg?] )
-         linguas_cs? ( net-im/qutim-l10n:${SLOT}[linguas_cs?] )
-		 linguas_de? ( net-im/qutim-l10n:${SLOT}[linguas_de?] )
-		 linguas_ru? ( net-im/qutim-l10n:${SLOT}[linguas_ru?] )
-		 linguas_uk? ( net-im/qutim-l10n:${SLOT}[linguas_uk?] )
-         icq? ( x11-plugins/qutim-icq:${SLOT} )
-         jabber? ( x11-plugins/qutim-jabber:${SLOT} )
-         mrim? ( x11-plugins/qutim-mrim:${SLOT} )
-         vkontakte? ( x11-plugins/qutim-vkontakte:${SLOT} )
-         kde? ( kde-misc/qutim-kdeintegration:${SLOT} )
-         yandexnarod? ( x11-plugins/qutim-yandexnarod:${SLOT} )
-         imagepub? ( x11-plugins/qutim-imagepub:${SLOT} )
-         massmessaging? ( x11-plugins/qutim-massmessaging:${SLOT} )
-         plugman? ( x11-plugins/qutim-plugman:${SLOT} )
-         histman? ( x11-plugins/qutim-histman:${SLOT} )
-         urlpreview? ( x11-plugins/qutim-urlpreview:${SLOT} )
-         sqlhistory? ( x11-plugins/qutim-sqlhistory:${SLOT} )
-         vsqlhistory? ( x11-plugins/qutim-vsqlhistory:${SLOT} )
-         webhistory? ( x11-plugins/qutim-webhistory:${SLOT} )
-         otr? ( app-crypt/qutim-otr:${SLOT} )
-		 tex? ( x11-plugins/qutim-tex:${SLOT} )
-		 weather? ( x11-plugins/qutim-weather:${SLOT} )"
+	linguas_cs? ( net-im/qutim-l10n:${SLOT}[linguas_cs?] )
+	linguas_de? ( net-im/qutim-l10n:${SLOT}[linguas_de?] )
+	linguas_ru? ( net-im/qutim-l10n:${SLOT}[linguas_ru?] )
+	linguas_uk? ( net-im/qutim-l10n:${SLOT}[linguas_uk?] )
+	icq? ( x11-plugins/qutim-icq:${SLOT} )
+	jabber? ( x11-plugins/qutim-jabber:${SLOT} )
+	mrim? ( x11-plugins/qutim-mrim:${SLOT} )
+	vkontakte? ( x11-plugins/qutim-vkontakte:${SLOT} )
+	kde? ( kde-misc/qutim-kdeintegration:${SLOT} )
+	yandexnarod? ( x11-plugins/qutim-yandexnarod:${SLOT} )
+	imagepub? ( x11-plugins/qutim-imagepub:${SLOT} )
+	massmessaging? ( x11-plugins/qutim-massmessaging:${SLOT} )
+	plugman? ( x11-plugins/qutim-plugman:${SLOT} )
+	histman? ( x11-plugins/qutim-histman:${SLOT} )
+	urlpreview? ( x11-plugins/qutim-urlpreview:${SLOT} )
+	sqlhistory? ( x11-plugins/qutim-sqlhistory:${SLOT} )
+	vsqlhistory? ( x11-plugins/qutim-vsqlhistory:${SLOT} )
+	webhistory? ( x11-plugins/qutim-webhistory:${SLOT} )
+	otr? ( app-crypt/qutim-otr:${SLOT} )
+	tex? ( x11-plugins/qutim-tex:${SLOT} )
+	weather? ( x11-plugins/qutim-weather:${SLOT} )"
 
 RESTRICT="debug? ( strip )"
 
@@ -75,7 +77,6 @@ src_install() {
 	dodir /usr/share/${PN}
 	doicon icons/${PN}_64.png || die "Failed to install icon"
 }
-
 
 pkg_postinst() {
 	einfo

@@ -1,4 +1,4 @@
-# Copyright 1999-2008 Gentoo Foundation
+# Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
@@ -7,7 +7,7 @@ EAPI="2"
 inherit git eutils qt4
 
 EGIT_REPO_URI="http://git.gitorious.org/qutim/plugins.git"
-EGIT_BRANCH="sdk02"                                
+EGIT_BRANCH="sdk02"
 EGIT_COMMIT="${EGIT_BRANCH}"
 DESCRIPTION="Web storage history plugin for net-im/qutim"
 HOMEPAGE="http://www.qutim.org"
@@ -20,10 +20,10 @@ IUSE="debug"
 RDEPEND="net-im/qutim:${SLOT}"
 
 DEPEND="${RDEPEND}
-        !x11-plugins/sqlhistory
-        !x11-plugins/vsqlhistory
-        !x11-plugins/${PN}:live
-        !x11-plugins/${PN}:0.2"
+	!x11-plugins/sqlhistory
+	!x11-plugins/vsqlhistory
+	!x11-plugins/${PN}:live
+	!x11-plugins/${PN}:0.2"
 
 RESTRICT="debug? ( strip )"
 

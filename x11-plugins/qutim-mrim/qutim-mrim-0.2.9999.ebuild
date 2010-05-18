@@ -1,6 +1,6 @@
-# Copyright 1999-2008 Gentoo Foundation             
+# Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $                                                      
+# $Header: $
 
 EAPI="2"
 
@@ -14,15 +14,15 @@ HOMEPAGE="http://www.qutim.org"
 
 LICENSE="GPL-2"
 SLOT="0.2-live"
-KEYWORDS="~x86 ~amd64"
+KEYWORDS=""
 IUSE="debug"
 
 RDEPEND="net-im/qutim:0.2-live"
 
 DEPEND="${RDEPEND}
-        >=dev-util/cmake-2.6
-        !x11-plugins/${PN}:live
-        !x11-plugins/${PN}:0.2"
+	>=dev-util/cmake-2.6
+	!x11-plugins/${PN}:live
+	!x11-plugins/${PN}:0.2"
 
 RESTRICT="debug? ( strip )"
 
