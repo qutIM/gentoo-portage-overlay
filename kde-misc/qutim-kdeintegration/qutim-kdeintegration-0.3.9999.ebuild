@@ -7,23 +7,23 @@ EAPI="2"
 inherit git eutils kde4-base
 
 EGIT_REPO_URI="http://git.gitorious.org/qutim/kde-integration.git"
-EGIT_BRANCH="sdk02"
+EGIT_BRANCH="master"
 EGIT_COMMIT="${EGIT_BRANCH}"
 DESCRIPTION="KDEIntegration plugin for net-im/qutim"
 HOMEPAGE="http://www.qutim.org/"
 
 LICENSE="GPL-2"
-SLOT="0.2-live"
+SLOT="0.3-live"
 KEYWORDS=""
 IUSE="emoticons +notification phonon spell debug"
 
-RDEPEND="net-im/qutim:${SLOT}"
+RDEPEND="net-im/qutim:${SLOT}
+	notification? ( !x11-plugins/qutim-libnotify )"
 
 DEPEND="${RDEPEND}
 	>=dev-util/cmake-2.6
-	notification? ( !x11-plugins/qutim-libnotify )
 	!x11-plugins/${PN}:0.2
-	!x11-plugins/${PN}:0.3-live
+	!x11-plugins/${PN}:0.2-live
 	!x11-plugins/${PN}:live"
 
 RESTRICT="mirror
@@ -43,7 +43,8 @@ src_prepare() {
 		append-flags -O1 -g -ggdb
 		CMAKE_BUILD_TYPE="debug"
 	fi
-	mycmakeargs="-DUNIX=1 -DAPPLE=0 -DCMAKE_INSTALL_PREFIX=/usr"
+	mycmakeargs="-DUNIX=1 -DAPPLE=0 -DCMAKE_INSTALL_PREFIX=/usr \
+		-DQUTIM_PATH=${EGIT_STORE_DIR}/qutim"
 	CMAKE_IN_SOURCE_BUILD=1
 	# Исправление пути установки
 
