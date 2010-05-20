@@ -4,16 +4,16 @@
 
 EAPI="2"
 
-inherit git eutils qt4
+inherit git eutils qt4 cmake-utils
 
 EGIT_REPO_URI="http://git.gitorious.org/qutim/plugins.git"
-EGIT_BRANCH="sdk02"
+EGIT_BRANCH="master"
 EGIT_COMMIT="${EGIT_BRANCH}"
 DESCRIPTION="History migration plugin for net-im/qutim"
 HOMEPAGE="http://www.qutim.org"
 
 LICENSE="GPL-2"
-SLOT="0.2-live"
+SLOT="0.3-live"
 KEYWORDS=""
 IUSE="debug"
 
@@ -21,7 +21,7 @@ RDEPEND="net-im/qutim:${SLOT}"
 
 DEPEND="${RDEPEND}
 	!x11-plugins/${PN}:0.2
-	!x11-plugins/${PN}:0.3-live
+	!x11-plugins/${PN}:0.2-live
 	!x11-plugins/${PN}:live"
 
 RESTRICT="debug? ( strip )"
@@ -37,15 +37,15 @@ src_prepare() {
 	if (use debug) ; then
 		unset CFLAGS CXXFLAGS
 		append-flags -O1 -g -ggdb
+		CMAKE_BUILD_TYPE="debug"
 	fi
-}
-
-src_compile() {
-	eqmake4 ${MY_PN}.pro || die "Failed plugin configure"
-	emake || die "Failed plugin build"
+	mycmakeargs="-DWinTLS=0 -DCMAKE_INSTALL_PREFIX=/usr -DUNIX=1 -WIN32=0 -DAPPLE=0 \
+		-DQUTIM_PATH=${EGIT_STORE_DIR}/qutim"
+	CMAKE_IN_SOURCE_BUILD=1
 }
 
 src_install() {
+	cmake-utils_src_install
 	insinto /usr/$(get_libdir)/qutim
 	doins "${S}/lib${MY_PN}.so" || die "Plugin installation failed"
 }
