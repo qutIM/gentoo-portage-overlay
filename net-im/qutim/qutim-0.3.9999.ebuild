@@ -4,27 +4,29 @@
 
 EAPI="2"
 
+EGIT_HAS_SUBMODULES="true"
+
 inherit git eutils cmake-utils confutils
 
 EGIT_REPO_URI="http://git.gitorious.org/qutim/qutim.git"
-EGIT_BRANCH="sdk02"
+EGIT_BRANCH="master"
 EGIT_COMMIT="${EGIT_BRANCH}"
 DESCRIPTION="Multiprotocol instant messenger"
 HOMEPAGE="http://qutim.org"
 
 LICENSE="GPL-2"
-SLOT="0.2-live"
+SLOT="0.3-live"
 KEYWORDS=""
 IUSE="debug histman +icq +jabber mrim vkontakte
 	kde +yandexnarod +imagepub +massmessaging plugman +urlpreview otr
 	sqlhistory vsqlhistory webhistory
-	tex weather
-	linguas_bg linguas_cs linguas_de linguas_ru linguas_uk"
+	tex weather"
+	#linguas_bg linguas_cs linguas_de linguas_ru linguas_uk"
 
 RDEPEND=">=x11-libs/qt-gui-4.4.0
 	>=x11-libs/qt-webkit-4.4.0
 	!net-im/qutim:0.2
-	!net-im/qutim:0.3-live
+	!net-im/qutim:0.2-live
 	!net-im/qutim:live"
 
 DEPEND="${RDEPEND}

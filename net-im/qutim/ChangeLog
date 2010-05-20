@@ -2,6 +2,12 @@
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*qutim-0.3.9999 (20 May 2010)
+
+  20 May 2010; Viktor Lazarev <taurus101v@gmail.com> qutim-0.2.9999.ebuild,
+  +qutim-0.3.9999.ebuild:
+  version bump
+
   18 May 2010; Viktor Lazarev <taurus101v@gmail.com> qutim-0.2.9999.ebuild,
   +metadata.xml:
   repoman payment, added ChangeLog and metadata.xml
