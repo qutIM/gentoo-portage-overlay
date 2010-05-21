@@ -17,10 +17,7 @@ HOMEPAGE="http://qutim.org"
 LICENSE="GPL-2"
 SLOT="0.3-live"
 KEYWORDS=""
-IUSE="debug histman +icq +jabber mrim vkontakte
-	kde +yandexnarod +imagepub +massmessaging plugman +urlpreview otr
-	sqlhistory vsqlhistory webhistory
-	tex weather"
+IUSE="debug histman +icq +jabber kde mrim yandexnarod +massmessaging"
 	#linguas_bg linguas_cs linguas_de linguas_ru linguas_uk"
 
 RDEPEND=">=x11-libs/qt-gui-4.4.0
@@ -72,7 +69,7 @@ src_prepare() {
 		append-flags -O1 -g -ggdb
 		CMAKE_BUILD_TYPE="Debug"
 	fi
-	mycmakeargs="-DUNIX=1 -DBSD=0 -DAPPLE=0 -DMINGW=0 -DWIN32=0	-DCMAKE_INSTALL_PREFIX=/usr"
+	mycmakeargs="-DCMAKE_INSTALL_PREFIX=/usr"
 }
 
 src_install() {
