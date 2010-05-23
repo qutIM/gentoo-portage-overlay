@@ -17,7 +17,8 @@ SLOT="0.3-live"
 KEYWORDS=""
 IUSE="debug"
 
-RDEPEND="net-im/qutim:${SLOT}"
+RDEPEND="net-im/qutim:${SLOT}
+	net-im/pidgin"
 
 DEPEND="${RDEPEND}
 	>=dev-util/cmake-2.6"

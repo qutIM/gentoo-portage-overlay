@@ -17,7 +17,7 @@ HOMEPAGE="http://www.qutim.org"
 LICENSE="GPL-2"
 SLOT="0.3-live"
 KEYWORDS=""
-IUSE="openssl +gnutls gloox-static debug juick"
+IUSE="+gnutls +gloox-static debug juick openssl"
 
 RDEPEND="net-im/qutim:${SLOT}
 	!gloox-static? ( >=net-libs/gloox-0.9.9.5[gnutls?,idn] )
@@ -27,6 +27,7 @@ RDEPEND="net-im/qutim:${SLOT}
 	gnutls? ( net-libs/gnutls )"
 
 DEPEND="${RDEPEND}
+	gloox-static? ( !net-libs/gloox )
 	>=dev-util/cmake-2.6
 	!x11-plugins/${PN}:0.2
 	!x11-plugins/${PN}:0.2-live
@@ -50,8 +51,17 @@ src_prepare() {
 		append-flags -O1 -g -ggdb
 		CMAKE_BUILD_TYPE="debug"
 	fi
-	mycmakeargs="$(cmake-utils_use ssl OpenSSL) $(cmake-utils_use gnutls GNUTLS) \
+	mycmakeargs="$(cmake-utils_use openssl OpenSSL) $(cmake-utils_use gnutls GNUTLS) \
 		$(cmake-utils_use !gloox-static GLOOX_EXTERNAL) -DCMAKE_INSTALL_PREFIX=/usr \
 		-DMRIM=off -DOSCAR=off -DQUETZAL=off -DVKONTAKTE=off -DQUTIM_PATH=${EGIT_STORE_DIR}/qutim"
 	CMAKE_IN_SOURCE_BUILD=1
+}
+
+src_install() {
+	cmake-utils_src_install
+	 if (use gloox-static); then
+		insinto /usr/$(get_libdir)
+		doins "${S}/jabber/3rdparty/gloox/src/libgloox.so.9" || die "Plugin installation failed"
+		dosym libgloox.so.9 /usr/$(get_libdir)/libgloox.so || die "Plugin installation failed"
+	fi
 }
