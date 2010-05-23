@@ -2,6 +2,7 @@ app-crypt/qutim-otr:0.3-live **
 kde-misc/qutim-kdeintegration:0.3-live **
 net-im/qutim:0.3-live **
 net-im/qutim-l10n:0.3-live **
+net-libs/qutim-gloox:0.3-live **
 x11-plugins/qutim-histman:0.3-live **
 x11-plugins/qutim-icq:0.3-live **
 x11-plugins/qutim-imagepub:0.3-live **
