@@ -10,6 +10,7 @@ x11-plugins/qutim-juick:0.3-live **
 x11-plugins/qutim-massmessaging:0.3-live **
 x11-plugins/qutim-mrim:0.3-live **
 x11-plugins/qutim-plugman:0.3-live **
+x11-plugins/qutim-protocols:0.3-live **
 x11-plugins/qutim-quetzal:0.3-live **
 x11-plugins/qutim-sqlhistory:0.3-live **
 x11-plugins/qutim-tex:0.3-live **

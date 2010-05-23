@@ -17,7 +17,7 @@ HOMEPAGE="http://qutim.org"
 LICENSE="GPL-2"
 SLOT="0.3-live"
 KEYWORDS=""
-IUSE="debug histman +icq +jabber kde mrim yandexnarod +massmessaging"
+IUSE="debug histman icq jabber kde mrim yandexnarod +massmessaging +meta-protocols"
 	#linguas_bg linguas_cs linguas_de linguas_ru linguas_uk"
 
 RDEPEND=">=x11-libs/qt-gui-4.4.0
@@ -42,6 +42,12 @@ PDEPEND="linguas_bg? ( net-im/qutim-l10n:${SLOT}[linguas_bg?] )
 	yandexnarod? ( x11-plugins/qutim-yandexnarod:${SLOT} )
 	imagepub? ( x11-plugins/qutim-imagepub:${SLOT} )
 	massmessaging? ( x11-plugins/qutim-massmessaging:${SLOT} )
+	meta-protocols? ( x11-plugins/qutim-protocols
+		!x11-plugins/qutim-icq
+		!x11-plugins/qutim-jabber
+		!x11-plugins/qutim-mrim
+		!x11-plugins/qutim-quetzal
+		!x11-plugins/qutim-vkontakte )
 	plugman? ( x11-plugins/qutim-plugman:${SLOT} )
 	histman? ( x11-plugins/qutim-histman:${SLOT} )
 	urlpreview? ( x11-plugins/qutim-urlpreview:${SLOT} )

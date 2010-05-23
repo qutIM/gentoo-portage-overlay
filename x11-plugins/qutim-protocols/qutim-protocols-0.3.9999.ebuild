@@ -17,7 +17,7 @@ HOMEPAGE="http://www.qutim.org"
 LICENSE="GPL-2"
 SLOT="0.3-live"
 KEYWORDS=""
-IUSE="debug gloox-static +gnutls +icq +jabber juick mrim openssl quetzal vkontakte"
+IUSE="debug +gloox-static +gnutls +icq +jabber juick mrim openssl quetzal vkontakte"
 
 RDEPEND="net-im/qutim:${SLOT}
 	jabber? ( net-dns/libidn
@@ -62,8 +62,8 @@ src_prepare() {
 	CMAKE_IN_SOURCE_BUILD=1
 }
 
-src_install() {
-	cmake-utils_src_install
-	insinto /usr/$(get_libdir)/qutim
-	doins "${S}/lib${MY_PN}.so" || die "Plugin installation failed"
-}
+# src_install() {
+# 	cmake-utils_src_install
+# 	insinto /usr/$(get_libdir)/qutim
+# 	doins "${S}/lib${MY_PN}.so" || die "Plugin installation failed"
+# }
