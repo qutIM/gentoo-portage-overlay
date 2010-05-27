@@ -22,6 +22,7 @@ IUSE="debug histman icq jabber kde mrim yandexnarod +massmessaging +meta-protoco
 
 RDEPEND=">=x11-libs/qt-gui-4.4.0
 	>=x11-libs/qt-webkit-4.4.0
+	>=x11-libs/qt-multimedia-4.4.0
 	!net-im/qutim:0.2
 	!net-im/qutim:0.2-live
 	!net-im/qutim:live"
@@ -75,13 +76,11 @@ src_prepare() {
 		append-flags -O1 -g -ggdb
 		CMAKE_BUILD_TYPE="Debug"
 	fi
-	mycmakeargs="-DCMAKE_INSTALL_PREFIX=/usr"
 }
 
 src_install() {
 	cmake-utils_src_install
-	dodir /usr/share/${PN}
-	doicon icons/${PN}_64.png || die "Failed to install icon"
+	doicon "icons/${PN}_64.png" || die "Failed to install icon"
 }
 
 pkg_postinst() {
