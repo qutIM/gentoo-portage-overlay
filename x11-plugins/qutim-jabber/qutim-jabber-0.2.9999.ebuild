@@ -64,5 +64,5 @@ src_install() {
 	cmake-utils_src_install
 	into /usr
 	dodir /usr/include/qutim
-	cp "${S}/include/qutim/*.h" "${D}/usr/include/qutim/" || die "Failed to install headers"
+	cp ${S}/include/qutim/*.h "${D}/usr/include/qutim/" || die "Failed to install headers"
 }
