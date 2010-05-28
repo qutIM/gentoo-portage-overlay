@@ -33,8 +33,6 @@ KDE_MINIMAL="4.2"
 
 src_unpack() {
 	git_src_unpack
-	# Fix
-	rm -f "${S}/notification/pics/hi64-app-qutim.png"
 }
 
 src_prepare() {
@@ -43,21 +41,9 @@ src_prepare() {
 		append-flags -O1 -g -ggdb
 		CMAKE_BUILD_TYPE="debug"
 	fi
-	mycmakeargs="-DUNIX=1 -DAPPLE=0 -DCMAKE_INSTALL_PREFIX=/usr \
-		-DQUTIM_PATH=${EGIT_STORE_DIR}/qutim"
+	mycmakeargs="-DQUTIM_PATH=/usr/$(get_libdir)/qutim"
 	CMAKE_IN_SOURCE_BUILD=1
-	# Исправление пути установки
-
-	if ( ! use emoticons ) ; then
-		sed -i "/add_subdirectory( emoticons )/d" "${S}/CMakeLists.txt"
-	fi
-	if ( ! use notification ) ; then
-		sed -i "/add_subdirectory( notification )/d" "${S}/CMakeLists.txt"
-	fi
-	if ( ! use phonon ) ; then
-		sed -i "/add_subdirectory( phonon )/d" "${S}/CMakeLists.txt"
-	fi
-	if ( ! use spell ) ; then
-		sed -i "/add_subdirectory( speller )/d" "${S}/CMakeLists.txt"
-	fi
+	
+	sed -e "/set(QUTIM_CMAKE/s/\${QUTIM_PATH}\/cmake/\${CMAKE_ROOT}\/Modules/" \
+		-i CMakeLists.txt
 }
