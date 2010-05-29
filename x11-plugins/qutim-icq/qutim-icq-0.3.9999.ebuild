@@ -27,6 +27,8 @@ DEPEND="${RDEPEND}
 
 RESTRICT="debug? ( strip )"
 
+MY_PN="oscar"
+
 src_unpack() {
 	git_src_unpack
 }
@@ -37,13 +39,17 @@ src_prepare() {
 		append-flags -O1 -g -ggdb
 		CMAKE_BUILD_TYPE="debug"
 	fi
-	mycmakeargs="-DCMAKE_INSTALL_PREFIX=/usr -DQUTIM_PATH=${EGIT_STORE_DIR}/qutim \
-		-DJABBER=off -DMRIM=off -DQUETZAL=off -DVKONTAKTE=off"
-	CMAKE_IN_SOURCE_BUILD=1
+# 	mycmakeargs="-DQUTIM_PATH=/usr/$(get_libdir)/qutim \
+# 		-DJABBER=off -DMRIM=off -DQUETZAL=off -DVKONTAKTE=off"
+	mycmakeargs="-DJABBER=off -DMRIM=off -DQUETZAL=off -DVKONTAKTE=off"
+	CMAKE_IN_SOURCE_BUILD=1	
+
+# 	sed -e "/set(QUTIM_CMAKE/s/\${QUTIM_PATH}\/cmake/\${CMAKE_ROOT}\/Modules/" \
+# 		-i CMakeLists.txt
 }
 
 src_install() {
 	cmake-utils_src_install
-	insinto /usr/$(get_libdir)/qutim
-	doins "${S}/lib${MY_PN}.so" || die "Plugin installation failed"
+# 	insinto /usr/$(get_libdir)/qutim
+# 	doins "${S}/${MY_PN}/lib${MY_PN}.so" || die "Plugin installation failed"
 }
