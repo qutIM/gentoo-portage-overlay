@@ -61,8 +61,6 @@ PDEPEND="linguas_bg? ( net-im/qutim-l10n:${SLOT}[linguas_bg?] )
 
 RESTRICT="debug? ( strip )"
 
-HTML_DOCS=( "${D}/share/${PN}/doc" )
-
 pkg_setup() {
 	confutils_use_conflict sqlhistory webhistory vsqlhistory
 }
@@ -79,40 +77,41 @@ src_prepare() {
 		CMAKE_BUILD_TYPE="Debug"
 	fi
 	## slotting... ##
-#	sed -e "/PROJECT/s/${PN}/${P}/" \
-#		-e "/ADD_/s/${PN}/${P}/" -e "/set_target/s/${PN}/${P}/" \
-#		-e "/TARGET_LINK/s/${PN}/${P}/" -e "s/QutimPlugin/Qutim-${PV}-Plugin/" \
-#		-e "/INSTALL/s/${PN}/${P}/" -e "s/^[ \t]*lib${PN}/lib${P}/" -i CMakeLists.txt
-#	sed -e "s/${PN}/${P}/" -i libqutim/CMakeLists.txt
-#	sed -e "/exec/s/qutim/${P}/" -i share/applications/qutim.desktop
-	
-# 	for i in $(grep -ril qutim_64 "${S}" | grep -v "\.git"); do
-# 		einfo "qutim_64: ${i}"
-# 		sed -e "s/qutim_64/${P}_64/" -i ${i};
-# 	done
-# 	
-# 	for i in $(grep -ril qutim.png "${S}" | grep -v "\.git"); do
-# 		einfo "qutim.png: ${i}"
-# 		sed -e "s/qutim.png/${P}.png/" -i ${i};
-# 	done
-}
+	sed -e "/Exec/s/qutim/${P}/" -i share/applications/qutim.desktop
+	mv "${S}/cmake/QutimPlugin.cmake" "${S}/cmake/Qutim-${PV}-Plugin.cmake"
+	mv "${S}/icons/qutim_64.png" "${S}/icons/${P}_64.png"
+	mv "${S}/share/applications/qutim.desktop" "${S}/share/applications/${P}.desktop"
+	mv "${S}/share/icons/hicolor/64x64/apps/qutim.png" "${S}/share/icons/hicolor/64x64/apps/${P}.png"
+	mv "${S}/share/icons/hicolor/scalable/apps/qutim.svg" "${S}/share/icons/hicolor/scalable/apps/${P}.svg"
+	mv "${S}/share/pixmaps/qutim.xpm" "${S}/share/pixmaps/${P}.xpm"
+	mv "${S}/share/qutim" "${S}/share/${P}"
+	sed -e "/SET/s/PLUGINS_DEST \"lib\/qutim/PLUGINS_DEST \"lib\/${P}/" \
+		-e "/ADD_EXE/s/${PN}/${P}/" -e "/set_target/s/${PN}/${P}/" \
+		-e "/TARGET_LINK/s/${PN}/${P}/" -e "s/^[ \t]*lib${PN}/lib${P}/" \
+		-e "/INSTALL/s/${PN}/${P}/" -e "s/QutimPlugin/Qutim-${PV}-Plugin/" -i CMakeLists.txt
+	sed -e "/install/s/PREFIX}\/share/PREFIX}\/share\/doc/" -e "s/${PN}/${P}/" \
+		-e "/install/s/DIR}\/doc/DIR}\/doc\/html/" -i libqutim/CMakeLists.txt
+	sed -e "s/QutimPlugin/Qutim-${PV}-Plugin/" -i examples/autosettingsitem/CMakeLists.txt
+	sed -e "s/QutimPlugin/Qutim-${PV}-Plugin/" -i examples/simplesettingsdialog/CMakeLists.txt
 
-# src_preinst() {
-# 	mv cmake/QutimPlugin.cmake "cmake/Qutim-${PV}-Plugin.cmake"
-# 	mv icons/qutim_64.png "icons/${P}_64.png"
-# 	mv share/applications/qutim.desktop "share/applications/${P}.desktop"
-# 	mv share/icons/hicolor/64x64/apps/qutim.png "share/icons/hicolor/64x64/apps/${P}.png"
-# 	mv share/icons/hicolor/scalable/apps/qutim.svg "share/icons/hicolor/scalable/apps/${P}.svg"
-# 	mv share/pixmaps/qutim.xpm "share/pixmaps/${P}.xpm"
-# 	mv share/qutim "share/${P}"
-# 	## end of slotting  ##
-# }
+	for i in $(grep -ril qutim_64 "${S}" | grep -v "\.git"); do
+# 		einfo "qutim_64: ${i}"
+		sed -e "s/qutim_64/${P}_64/" -i ${i};
+	done
+	
+	for i in $(grep -ril qutim.png "${S}" | grep -v "\.git"); do
+# 		einfo "qutim.png: ${i}"
+		sed -e "s/qutim.png/${P}.png/" -i ${i};
+	done
+	## end of slotting... ##
+}
 
 src_install() {
 	cmake-utils_src_install
-	doicon "icons/${PN}_64.png" || die "Failed to install icon"
-	#doicon "icons/${P}_64.png" || die "Failed to install icon"
-	dosym "lib${P}.so" "/usr/$(get_libdir)/lib${PN}.so"
+	mv "${D}/usr/$(get_libdir)/lib${P}.so" "${D}/usr/$(get_libdir)/lib${PN}.so.${PV}"
+	doicon "icons/${P}_64.png" || die "Failed to install icon"
+	dosym "lib${PN}.so.${PV}" "/usr/$(get_libdir)/lib${PN}.so"
+	dosym "${P}" "/usr/bin/${PN}"
 }
 
 pkg_postinst() {
