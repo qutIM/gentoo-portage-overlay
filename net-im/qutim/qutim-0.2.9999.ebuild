@@ -74,17 +74,21 @@ src_prepare() {
 	fi
 	mycmakeargs="-DUNIX=1 -DBSD=0 -DAPPLE=0 -DMINGW=0 -DWIN32=0	-DCMAKE_INSTALL_PREFIX=/usr"
 
+	sed -e "/find/s/${PN}\/protocol/${P}\/protocol/" \
+		-e "s/CURRENT_SOURCE_DIR}\/cmake\/qutimuic/ROOT}\/Modules\/qutimuic-${PV}/" \
+		-i cmake/FindQutIM.cmake
+	sed -e "s/<${PN}\//<${P}\//" -i cmake/qutimuic.cmake
+	sed -e "/SET/s/lib\/${PN}/lib\/${P}/" \
+		-e "/TARGET/s/${PN}/${P}/" \
+		-e "s/FindQutIM/FindQutIM-${PV}/" \
+		-e "s/qutimuic/qutimuic-${PV}/" \
+		-e "/ADD_EXE/s/${PN}/${P}/" \
+		-e "/INSTALL/s/include\/${PN}/include\/${P}/" \
+		-e "/INSTALL/s/applications\"/applications\" RENAME \"${P}.desktop\"/" \
+		-e "/INSTALL/s/RENAME \"qutim.png\"/RENAME \"${P}.png\"/" \
+		-e "/INSTALL/s/pixmaps\"/pixmaps\" RENAME \"${P}.xpm\"/" -i CMakeLists.txt
 	mv cmake/FindQutIM.cmake cmake/FindQutIM-${PV}.cmake
 	mv cmake/qutimuic.cmake cmake/qutimuic-${PV}.cmake
-	sed -e "/SET/s/lib\/${PN}/lib\/${P}/" \
-	-e "/TARGET/s/${PN}/${P}/" \
-	-e "s/FindQutIM/FindQutIM-${PV}/" \
-	-e "s/qutimuic/qutimuic-${PV}/" \
-	-e "/ADD_EXE/s/${PN}/${P}/" \
-	-e "/INSTALL/s/include\/${PN}/include\/${P}/" \
-	-e "/INSTALL/s/applications\"/applications\" RENAME \"${P}.desktop\"/" \
-	-e "/INSTALL/s/RENAME \"qutim.png\"/RENAME \"${P}.png\"/" \
-	-e "/INSTALL/s/pixmaps\"/pixmaps\" RENAME \"${P}.xpm\"/" -i CMakeLists.txt
 }
 
 src_install() {
