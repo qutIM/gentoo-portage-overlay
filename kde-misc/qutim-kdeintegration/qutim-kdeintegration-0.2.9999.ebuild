@@ -21,10 +21,10 @@ RDEPEND="net-im/qutim:${SLOT}"
 
 DEPEND="${RDEPEND}
 	>=dev-util/cmake-2.6
-	notification? ( !x11-plugins/qutim-libnotify )
-	!x11-plugins/${PN}:0.2
-	!x11-plugins/${PN}:0.3-live
-	!x11-plugins/${PN}:live"
+	notification? ( !x11-plugins/qutim-libnotify )"
+# 	!x11-plugins/${PN}:0.2
+# 	!x11-plugins/${PN}:0.3-live
+# 	!x11-plugins/${PN}:live"
 
 RESTRICT="mirror
 	debug? ( strip )"
