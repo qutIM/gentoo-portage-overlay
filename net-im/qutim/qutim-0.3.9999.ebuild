@@ -22,10 +22,10 @@ IUSE="debug histman icq jabber kde mrim yandexnarod +massmessaging +meta-protoco
 
 RDEPEND=">=x11-libs/qt-gui-4.4.0
 	>=x11-libs/qt-webkit-4.4.0
-	>=x11-libs/qt-multimedia-4.4.0
-	!net-im/qutim:0.2
-	!net-im/qutim:0.2-live
-	!net-im/qutim:live"
+	>=x11-libs/qt-multimedia-4.4.0"
+# 	!net-im/qutim:0.2
+# 	!net-im/qutim:0.2-live
+# 	!net-im/qutim:live"
 
 DEPEND="${RDEPEND}
 	>=dev-util/cmake-2.6.0"
@@ -77,6 +77,7 @@ src_prepare() {
 		CMAKE_BUILD_TYPE="Debug"
 	fi
 	## slotting... ##
+	sed -e "s/${PN}/${P}/" -i cmake/QutimPlugin.cmake
 	sed -e "/Exec/s/qutim/${P}/" -i share/applications/qutim.desktop
 	mv "${S}/cmake/QutimPlugin.cmake" "${S}/cmake/Qutim-${PV}-Plugin.cmake"
 	mv "${S}/icons/qutim_64.png" "${S}/icons/${P}_64.png"
@@ -98,7 +99,7 @@ src_prepare() {
 # 		einfo "qutim_64: ${i}"
 		sed -e "s/qutim_64/${P}_64/" -i ${i};
 	done
-	
+
 	for i in $(grep -ril qutim.png "${S}" | grep -v "\.git"); do
 # 		einfo "qutim.png: ${i}"
 		sed -e "s/qutim.png/${P}.png/" -i ${i};

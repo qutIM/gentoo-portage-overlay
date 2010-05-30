@@ -4,6 +4,8 @@
 
 EAPI="2"
 
+EGIT_HAS_SUBMODULES="true"
+
 inherit git eutils cmake-utils confutils
 
 EGIT_REPO_URI="http://git.gitorious.org/qutim/qutim.git"
@@ -22,10 +24,10 @@ IUSE="debug histman +icq +jabber mrim vkontakte
 	linguas_bg linguas_cs linguas_de linguas_ru linguas_uk"
 
 RDEPEND=">=x11-libs/qt-gui-4.4.0
-	>=x11-libs/qt-webkit-4.4.0
-	!net-im/qutim:0.2
-	!net-im/qutim:0.3-live
-	!net-im/qutim:live"
+	>=x11-libs/qt-webkit-4.4.0"
+# 	!net-im/qutim:0.2
+# 	!net-im/qutim:0.3-live
+# 	!net-im/qutim:live"
 
 DEPEND="${RDEPEND}
 	>=dev-util/cmake-2.6.0"
@@ -71,12 +73,25 @@ src_prepare() {
 		CMAKE_BUILD_TYPE="Debug"
 	fi
 	mycmakeargs="-DUNIX=1 -DBSD=0 -DAPPLE=0 -DMINGW=0 -DWIN32=0	-DCMAKE_INSTALL_PREFIX=/usr"
+
+	mv cmake/FindQutIM.cmake cmake/FindQutIM-${PV}.cmake
+	mv cmake/qutimuic.cmake cmake/qutimuic-${PV}.cmake
+	sed -e "/SET/s/lib\/${PN}/lib\/${P}/" \
+	-e "/TARGET/s/${PN}/${P}/" \
+	-e "s/FindQutIM/FindQutIM-${PV}/" \
+	-e "s/qutimuic/qutimuic-${PV}/" \
+	-e "/ADD_EXE/s/${PN}/${P}/" \
+	-e "/INSTALL/s/include\/${PN}/include\/${P}/" \
+	-e "/INSTALL/s/applications\"/applications\" RENAME \"${P}.desktop\"/" \
+	-e "/INSTALL/s/RENAME \"qutim.png\"/RENAME \"${P}.png\"/" \
+	-e "/INSTALL/s/pixmaps\"/pixmaps\" RENAME \"${P}.xpm\"/" -i CMakeLists.txt
 }
 
 src_install() {
 	cmake-utils_src_install
-	dodir /usr/share/${PN}
-	doicon icons/${PN}_64.png || die "Failed to install icon"
+	#dodir /usr/share/${PN}
+	mv icons/${PN}_64.png icons/${P}_64.png
+	doicon icons/${P}_64.png || die "Failed to install icon"
 }
 
 pkg_postinst() {
