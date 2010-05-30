@@ -89,6 +89,10 @@ src_prepare() {
 		-e "/INSTALL/s/pixmaps\"/pixmaps\" RENAME \"${P}.xpm\"/" -i CMakeLists.txt
 	mv cmake/FindQutIM.cmake cmake/FindQutIM-${PV}.cmake
 	mv cmake/qutimuic.cmake cmake/qutimuic-${PV}.cmake
+	
+	for i in $(grep -ril "<qutim/" "${S}/include/qutim/" | grep -v "\.git"); do
+		sed -e "s/<qutim\//<qutim-${PV}\//" -i ${i};
+	done
 }
 
 src_install() {
