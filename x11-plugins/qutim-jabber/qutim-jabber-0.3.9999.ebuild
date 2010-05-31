@@ -52,8 +52,8 @@ src_prepare() {
 		CMAKE_BUILD_TYPE="debug"
 	fi
 	mycmakeargs="$(cmake-utils_use openssl OpenSSL) $(cmake-utils_use gnutls GNUTLS) \
-		$(cmake-utils_use !gloox-static GLOOX_EXTERNAL) -DCMAKE_INSTALL_PREFIX=/usr \
-		-DMRIM=off -DOSCAR=off -DQUETZAL=off -DVKONTAKTE=off -DQUTIM_PATH=${EGIT_STORE_DIR}/qutim"
+		$(cmake-utils_use !gloox-static GLOOX_EXTERNAL) \
+		-DMRIM=off -DOSCAR=off -DQUETZAL=off -DVKONTAKTE=off"
 	CMAKE_IN_SOURCE_BUILD=1
 }
 

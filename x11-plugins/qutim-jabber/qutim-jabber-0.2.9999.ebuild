@@ -4,6 +4,8 @@
 
 EAPI="2"
 
+EGIT_HAS_SUBMODULES="true"
+
 inherit git eutils cmake-utils confutils
 
 EGIT_REPO_URI="http://git.gitorious.org/qutim/protocols.git"
@@ -25,10 +27,10 @@ RDEPEND="net-im/qutim:${SLOT}
 	gnutls? ( net-libs/gnutls )"
 
 DEPEND="${RDEPEND}
-	>=dev-util/cmake-2.6
-	!x11-plugins/${PN}:0.2
-	!x11-plugins/${PN}:0.3-live
-	!x11-plugins/${PN}:live"
+	>=dev-util/cmake-2.6"
+# 	!x11-plugins/${PN}:0.2
+# 	!x11-plugins/${PN}:0.3-live
+# 	!x11-plugins/${PN}:live"
 
 PDEPEND="juick? ( x11-plugins/qutim-juick:${SLOT} )"
 
@@ -58,11 +60,16 @@ src_prepare() {
 		$(cmake-utils_use ssl OpenSSL) $(cmake-utils_use gnutls GNUTLS) \
 		$(cmake-utils_use !gloox-static GLOOX_SHARED)"
 	CMAKE_IN_SOURCE_BUILD=1
+	sed -e "s/qutim/qutim-${PV}/" -i "${S}/CMakeLists.txt"
+
+	for i in $(grep -ril "<qutim/" "${S}" | grep -v "\.git"); do
+		sed -e "s/<qutim\//<qutim-${PV}\//" -i ${i};
+	done
 }
 
 src_install() {
 	cmake-utils_src_install
-	into /usr
-	dodir /usr/include/qutim
-	cp ${S}/include/qutim/*.h "${D}/usr/include/qutim/" || die "Failed to install headers"
+# 	into /usr
+	dodir "/usr/include/qutim-${PV}"
+	cp ${S}/include/qutim/*.h "${D}/usr/include/qutim-${PV}/" || die "Failed to install headers"
 }
