@@ -87,6 +87,7 @@ src_prepare() {
 		-e "/INSTALL/s/applications\"/applications\" RENAME \"${P}.desktop\"/" \
 		-e "/INSTALL/s/RENAME \"qutim.png\"/RENAME \"${P}.png\"/" \
 		-e "/INSTALL/s/pixmaps\"/pixmaps\" RENAME \"${P}.xpm\"/" -i CMakeLists.txt
+	sed -e "s/path += \"qutim\";/path += \"${P}\";/" -i src/pluginsystem.cpp
 	mv cmake/FindQutIM.cmake cmake/FindQutIM-${PV}.cmake
 	mv cmake/qutimuic.cmake cmake/qutimuic-${PV}.cmake
 	
@@ -97,7 +98,7 @@ src_prepare() {
 
 src_install() {
 	cmake-utils_src_install
-	#dodir /usr/share/${PN}
+	dodir /usr/share/${P}
 	mv icons/${PN}_64.png icons/${P}_64.png
 	doicon icons/${P}_64.png || die "Failed to install icon"
 }
