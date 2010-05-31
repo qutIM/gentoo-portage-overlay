@@ -27,6 +27,8 @@ DEPEND="${RDEPEND}
 
 RESTRICT="debug? ( strip )"
 
+MY_PN="oscar"
+
 src_unpack() {
 	git_src_unpack
 }
