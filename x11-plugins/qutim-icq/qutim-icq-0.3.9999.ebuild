@@ -20,10 +20,7 @@ IUSE="debug"
 RDEPEND="net-im/qutim:${SLOT}"
 
 DEPEND="${RDEPEND}
-	>=dev-util/cmake-2.6
-	!x11-plugins/${PN}:0.2
-	!x11-plugins/${PN}:0.2-live
-	!x11-plugins/${PN}:live"
+	>=dev-util/cmake-2.6"
 
 RESTRICT="debug? ( strip )"
 
@@ -39,13 +36,11 @@ src_prepare() {
 		append-flags -O1 -g -ggdb
 		CMAKE_BUILD_TYPE="debug"
 	fi
-	mycmakeargs="-DCMAKE_INSTALL_PREFIX=/usr -DQUTIM_PATH=${EGIT_STORE_DIR}/qutim \
-		-DJABBER=off -DMRIM=off -DQUETZAL=off -DVKONTAKTE=off"
+	mycmakeargs="-DJABBER=off -DMRIM=off -DQUETZAL=off -DVKONTAKTE=off"
 	CMAKE_IN_SOURCE_BUILD=1
-}
+	sed -e "s/QutimPlugin/QutimPlugin-${PV}/" -i CMakeLists.txt
 
-src_install() {
-	cmake-utils_src_install
-	insinto /usr/$(get_libdir)/qutim
-	doins "${S}/lib${MY_PN}.so" || die "Plugin installation failed"
+	for i in $(grep -ril "qutim/" "${S}" | grep -v "\.git"); do
+		sed -e "/#include/s/qutim\//qutim-${PV}\//" -i ${i};
+	done
 }

@@ -18,9 +18,6 @@ KEYWORDS=""
 IUSE="debug"
 
 DEPEND="net-im/qutim:${SLOT}"
-# 	!x11-plugins/${PN}:0.2
-# 	!x11-plugins/${PN}:0.3-live
-# 	!x11-plugins/${PN}:live"
 
 RESTRICT="debug? ( strip )"
 
