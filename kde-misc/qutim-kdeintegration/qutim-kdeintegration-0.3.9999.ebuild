@@ -22,9 +22,6 @@ RDEPEND="net-im/qutim:${SLOT}
 
 DEPEND="${RDEPEND}
 	>=dev-util/cmake-2.6"
-# 	!x11-plugins/${PN}:0.2
-# 	!x11-plugins/${PN}:0.2-live
-# 	!x11-plugins/${PN}:live"
 
 RESTRICT="mirror
 	debug? ( strip )"
@@ -46,7 +43,7 @@ src_prepare() {
 # 		-e "/set(QUTIM_LIB/s/libqutim\//lib/" \
 # 		-e "/set(QUTIM_CMA/s/\${QUTIM_PATH}\/cmake/\${CMAKE_ROOT}\/Modules/" -i CMakeLists.txt
 # 	sed -e "/install/s/lib\/qutim/$(get_libdir)\/qutim-${PV}/" -i src/notification/CMakeLists.txt
-	sed -e "s/QutimPlugin/Qutim-${PV}-Plugin/" -i CMakeLists.txt
+	sed -e "s/QutimPlugin/QutimPlugin-${PV}/" -i CMakeLists.txt
 	for i in $(grep -ril "<qutim/" "${S}" | grep -v "\.git"); do
 		sed -e "s/<qutim\//<qutim-${PV}\//" -i ${i};
 	done
