@@ -90,7 +90,7 @@ src_prepare() {
 	sed -e "s/path += \"qutim\";/path += \"${P}\";/" -i src/pluginsystem.cpp
 	mv cmake/FindQutIM.cmake cmake/FindQutIM-${PV}.cmake
 	mv cmake/qutimuic.cmake cmake/qutimuic-${PV}.cmake
-	
+
 	for i in $(grep -ril "<qutim/" "${S}/include/qutim/" | grep -v "\.git"); do
 		sed -e "s/<qutim\//<qutim-${PV}\//" -i ${i};
 	done

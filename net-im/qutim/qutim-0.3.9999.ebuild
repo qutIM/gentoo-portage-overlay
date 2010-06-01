@@ -79,7 +79,7 @@ src_prepare() {
 	## slotting... ##
 	sed -e "s/${PN}/${P}/" -i cmake/QutimPlugin.cmake
 	sed -e "/Exec/s/qutim/${P}/" -i share/applications/qutim.desktop
-	mv "${S}/cmake/QutimPlugin.cmake" "${S}/cmake/Qutim-${PV}-Plugin.cmake"
+	mv "${S}/cmake/QutimPlugin.cmake" "${S}/cmake/QutimPlugin-${PV}.cmake"
 	mv "${S}/icons/qutim_64.png" "${S}/icons/${P}_64.png"
 	mv "${S}/share/applications/qutim.desktop" "${S}/share/applications/${P}.desktop"
 	mv "${S}/share/icons/hicolor/64x64/apps/qutim.png" "${S}/share/icons/hicolor/64x64/apps/${P}.png"
@@ -89,11 +89,11 @@ src_prepare() {
 	sed -e "/SET/s/PLUGINS_DEST \"lib\/qutim/PLUGINS_DEST \"lib\/${P}/" \
 		-e "/ADD_EXE/s/${PN}/${P}/" -e "/set_target/s/${PN}/${P}/" \
 		-e "/TARGET_LINK/s/${PN}/${P}/" -e "s/^[ \t]*lib${PN}/lib${P}/" \
-		-e "/INSTALL/s/${PN}/${P}/" -e "s/QutimPlugin/Qutim-${PV}-Plugin/" -i CMakeLists.txt
+		-e "/INSTALL/s/${PN}/${P}/" -e "s/QutimPlugin/QutimPlugin-${PV}/" -i CMakeLists.txt
 	sed -e "/install/s/PREFIX}\/share/PREFIX}\/share\/doc/" -e "s/${PN}/${P}/" \
 		-e "/install/s/DIR}\/doc/DIR}\/doc\/html/" -i libqutim/CMakeLists.txt
-	sed -e "s/QutimPlugin/Qutim-${PV}-Plugin/" -i examples/autosettingsitem/CMakeLists.txt
-	sed -e "s/QutimPlugin/Qutim-${PV}-Plugin/" -i examples/simplesettingsdialog/CMakeLists.txt
+	sed -e "s/QutimPlugin/QutimPlugin-${PV}/" -i examples/autosettingsitem/CMakeLists.txt
+	sed -e "s/QutimPlugin/QutimPlugin-${PV}/" -i examples/simplesettingsdialog/CMakeLists.txt
 
 	for i in $(grep -ril qutim_64 "${S}" | grep -v "\.git"); do
 # 		einfo "qutim_64: ${i}"
