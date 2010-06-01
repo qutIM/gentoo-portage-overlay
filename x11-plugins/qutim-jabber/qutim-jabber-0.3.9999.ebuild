@@ -29,9 +29,7 @@ RDEPEND="net-im/qutim:${SLOT}
 DEPEND="${RDEPEND}
 	gloox-static? ( !net-libs/gloox )
 	>=dev-util/cmake-2.6
-	!x11-plugins/${PN}:0.2
-	!x11-plugins/${PN}:0.2-live
-	!x11-plugins/${PN}:live"
+	!x11-plugins/qutim-protocols:${SLOT}"
 
 PDEPEND="juick? ( x11-plugins/qutim-juick:${SLOT} )"
 
@@ -55,6 +53,12 @@ src_prepare() {
 		$(cmake-utils_use !gloox-static GLOOX_EXTERNAL) \
 		-DMRIM=off -DOSCAR=off -DQUETZAL=off -DVKONTAKTE=off"
 	CMAKE_IN_SOURCE_BUILD=1
+	sed -e "s/QutimPlugin/QutimPlugin-${PV}/" -i CMakeLists.txt
+	sed -e "s/>qutim\//>qutim-${PV}\//" -i jabber/src/protocol/account/muc/jmucjoin.ui
+
+	for i in $(grep -ril "qutim/" "${S}" | grep -v "\.git"); do
+		sed -e "/#include/s/qutim\//qutim-${PV}\//" -i ${i};
+	done
 }
 
 src_install() {
