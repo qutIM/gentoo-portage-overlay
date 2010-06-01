@@ -94,14 +94,13 @@ src_prepare() {
 		-e "/install/s/DIR}\/doc/DIR}\/doc\/html/" -i libqutim/CMakeLists.txt
 	sed -e "s/QutimPlugin/QutimPlugin-${PV}/" -i examples/autosettingsitem/CMakeLists.txt
 	sed -e "s/QutimPlugin/QutimPlugin-${PV}/" -i examples/simplesettingsdialog/CMakeLists.txt
+	sed -e "/plugin_path/s/\"${PN}\"/\"${P}\"/" -i libqutim/modulemanager.cpp
 
 	for i in $(grep -ril qutim_64 "${S}" | grep -v "\.git"); do
-# 		einfo "qutim_64: ${i}"
 		sed -e "s/qutim_64/${P}_64/" -i ${i};
 	done
 
 	for i in $(grep -ril qutim.png "${S}" | grep -v "\.git"); do
-# 		einfo "qutim.png: ${i}"
 		sed -e "s/qutim.png/${P}.png/" -i ${i};
 	done
 	## end of slotting... ##
