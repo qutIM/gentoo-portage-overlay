@@ -17,9 +17,7 @@ SLOT="0.2-live"
 KEYWORDS=""
 IUSE="debug"
 
-DEPEND="net-im/qutim:${SLOT}
-	!x11-plugins/${PN}:0.2
-	!x11-plugins/${PN}:live"
+DEPEND="net-im/qutim:${SLOT}"
 
 RESTRICT="debug? ( strip )"
 
@@ -35,6 +33,9 @@ src_prepare() {
 		unset CFLAGS CXXFLAGS
 		append-flags -O1 -g -ggdb
 	fi
+	for i in $(grep -ril "<qutim/" "${S}" | grep -v "\.git"); do
+		sed -e "s/<qutim\//<qutim-${PV}\//" -i ${i};
+	done
 }
 
 src_compile() {
@@ -43,6 +44,7 @@ src_compile() {
 }
 
 src_install() {
-	insinto /usr/$(get_libdir)/qutim
+	insinto "/usr/$(get_libdir)/qutim-${PV}"
 	doins "${S}/lib${MY_PN}.so" || die "Plugin installation failed"
+	dodoc "${S}/AUTHORS" || die
 }
