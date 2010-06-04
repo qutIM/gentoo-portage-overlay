@@ -11,6 +11,7 @@ inherit git eutils cmake-utils confutils
 EGIT_REPO_URI="http://git.gitorious.org/qutim/protocols.git"
 EGIT_BRANCH="sdk02"
 EGIT_COMMIT="${EGIT_BRANCH}"
+EGIT_PROJECT="qutim-protocols"
 DESCRIPTION="Jabber protocol plugin for net-im/qutim"
 HOMEPAGE="http://www.qutim.org"
 
@@ -28,9 +29,6 @@ RDEPEND="net-im/qutim:${SLOT}
 
 DEPEND="${RDEPEND}
 	>=dev-util/cmake-2.6"
-# 	!x11-plugins/${PN}:0.2
-# 	!x11-plugins/${PN}:0.3-live
-# 	!x11-plugins/${PN}:live"
 
 PDEPEND="juick? ( x11-plugins/qutim-juick:${SLOT} )"
 
@@ -56,8 +54,9 @@ src_prepare() {
 		append-flags -O1 -g -ggdb
 		CMAKE_BUILD_TYPE="debug"
 	fi
-	mycmakeargs="-DWinTLS=0 -DCMAKE_INSTALL_PREFIX=/usr -DUNIX=1 -WIN32=0 -DAPPLE=0 \
-		$(cmake-utils_use ssl OpenSSL) $(cmake-utils_use gnutls GNUTLS) \
+	mycmakeargs="\
+		$(cmake-utils_use ssl OpenSSL) \
+		$(cmake-utils_use gnutls GNUTLS) \
 		$(cmake-utils_use !gloox-static GLOOX_SHARED)"
 	CMAKE_IN_SOURCE_BUILD=1
 	sed -e "s/qutim/qutim-${PV}/" -i "${S}/CMakeLists.txt"
@@ -69,7 +68,6 @@ src_prepare() {
 
 src_install() {
 	cmake-utils_src_install
-# 	into /usr
 	dodir "/usr/include/qutim-${PV}"
-	cp ${S}/include/qutim/*.h "${D}/usr/include/qutim-${PV}/" || die "Failed to install headers"
+	cp "${S}"/include/qutim/*.h "${D}/usr/include/qutim-${PV}/" || die "Failed to install headers"
 }
