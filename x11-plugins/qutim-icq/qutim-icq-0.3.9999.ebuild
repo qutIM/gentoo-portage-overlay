@@ -4,11 +4,14 @@
 
 EAPI="2"
 
+EGIT_HAS_SUBMODULES="true"
+
 inherit git eutils qt4 cmake-utils
 
 EGIT_REPO_URI="http://git.gitorious.org/qutim/protocols.git"
 EGIT_BRANCH="master"
 EGIT_COMMIT="${EGIT_BRANCH}"
+EGIT_PROJECT="qutim-protocols"
 DESCRIPTION="ICQ protocol plugin for net-im/qutim"
 HOMEPAGE="http://www.qutim.org"
 
