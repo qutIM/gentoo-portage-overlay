@@ -9,6 +9,7 @@ inherit git eutils qt4
 EGIT_REPO_URI="http://git.gitorious.org/qutim/plugins.git"
 EGIT_BRANCH="sdk02"
 EGIT_COMMIT="${EGIT_BRANCH}"
+EGIT_PROJECT="qutim-plugins"
 DESCRIPTION="MassMessaging plugin for net-im/qutim"
 HOMEPAGE="http://www.qutim.org"
 
@@ -38,6 +39,10 @@ src_prepare() {
 		unset CFLAGS CXXFLAGS
 		append-flags -O1 -g -ggdb
 	fi
+	for i in $(grep -ril "<qutim/" "${S}" | grep -v "\.git"); do
+		sed -e "s/<qutim\//<qutim-${PV}\//" -i ${i};
+	done
+	sed -e "/unix/s/qutim/qutim-${PV}/" -i "${S}/${MY_PN}.pro"
 }
 
 src_compile() {
@@ -46,6 +51,6 @@ src_compile() {
 }
 
 src_install() {
-	insinto /usr/$(get_libdir)/qutim
+	insinto "/usr/$(get_libdir)/qutim-${PV}"
 	doins "${S}/lib${MY_PN}.so" || die "Plugin installation failed"
 }
