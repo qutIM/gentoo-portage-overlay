@@ -9,6 +9,7 @@ inherit git eutils qt4
 EGIT_REPO_URI="http://git.gitorious.org/qutim/plugins.git"
 EGIT_BRANCH="sdk02"
 EGIT_COMMIT="${EGIT_BRANCH}"
+EGIT_PROJECT="qutim-plugins"
 DESCRIPTION="SQL storage history plugin for net-im/qutim"
 HOMEPAGE="http://www.qutim.org"
 
