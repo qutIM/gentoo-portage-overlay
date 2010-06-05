@@ -20,10 +20,7 @@ IUSE="debug"
 
 RDEPEND="net-im/qutim:${SLOT}"
 
-DEPEND="${RDEPEND}
-	!x11-plugins/${PN}:0.2
-	!x11-plugins/${PN}:0.3-live
-	!x11-plugins/${PN}:live"
+DEPEND="${RDEPEND}"
 
 RESTRICT="debug? ( strip )"
 
