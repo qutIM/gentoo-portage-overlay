@@ -9,6 +9,7 @@ inherit git eutils qt4
 EGIT_REPO_URI="http://git.gitorious.org/qutim/plugins.git"
 EGIT_BRANCH="sdk02"
 EGIT_COMMIT="${EGIT_BRANCH}"
+EGIT_PROJECT="qutim-plugins"
 DESCRIPTION="Urlpreview plugin for net-im/qutim"
 HOMEPAGE="http://www.qutim.org"
 
@@ -19,9 +20,7 @@ IUSE="debug"
 
 RDEPEND="net-im/qutim:${SLOT}"
 
-DEPEND="${RDEPEND}
-	!x11-plugins/${PN}:live
-	!x11-plugins/${PN}:0.2"
+DEPEND="${RDEPEND}"
 
 RESTRICT="debug? ( strip )"
 
@@ -37,6 +36,7 @@ src_prepare() {
 		unset CFLAGS CXXFLAGS
 		append-flags -O1 -g -ggdb
 	fi
+	sed -e "/include/s/qutim\//qutim-${PV}\//" -i "${S}/${MY_PN}.h"
 }
 
 src_compile() {
@@ -45,6 +45,6 @@ src_compile() {
 }
 
 src_install() {
-	insinto /usr/$(get_libdir)/qutim
+	insinto "/usr/$(get_libdir)/qutim-${PV}"
 	doins "${S}/lib${MY_PN}.so" || die "Plugin installation failed"
 }
