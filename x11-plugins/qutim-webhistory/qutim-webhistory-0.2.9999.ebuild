@@ -9,6 +9,7 @@ inherit git eutils qt4
 EGIT_REPO_URI="http://git.gitorious.org/qutim/plugins.git"
 EGIT_BRANCH="sdk02"
 EGIT_COMMIT="${EGIT_BRANCH}"
+EGIT_PROJECT="qutim-plugins"
 DESCRIPTION="Web storage history plugin for net-im/qutim"
 HOMEPAGE="http://www.qutim.org"
 
@@ -21,9 +22,7 @@ RDEPEND="net-im/qutim:${SLOT}"
 
 DEPEND="${RDEPEND}
 	!x11-plugins/sqlhistory
-	!x11-plugins/vsqlhistory
-	!x11-plugins/${PN}:live
-	!x11-plugins/${PN}:0.2"
+	!x11-plugins/vsqlhistory"
 
 RESTRICT="debug? ( strip )"
 
@@ -39,6 +38,7 @@ src_prepare() {
 		unset CFLAGS CXXFLAGS
 		append-flags -O1 -g -ggdb
 	fi
+	sed -e "s/qutim\/plugin/qutim-${PV}\/plugin/" -i "${S}/${MY_PN}.h"
 }
 
 src_compile() {
@@ -47,6 +47,6 @@ src_compile() {
 }
 
 src_install() {
-	insinto /usr/$(get_libdir)/qutim
+	insinto "/usr/$(get_libdir)/qutim-${PV}"
 	doins "${S}/lib${MY_PN}.so" || die "Plugin installation failed"
 }
