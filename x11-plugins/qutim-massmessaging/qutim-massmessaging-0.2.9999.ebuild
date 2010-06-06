@@ -36,14 +36,14 @@ src_prepare() {
 		unset CFLAGS CXXFLAGS
 		append-flags -O1 -g -ggdb
 	fi
-	for i in $(grep -ril "<qutim/" "${S}" | grep -v "\.git"); do
+	for i in $(grep -rl "<qutim/" "${S}" | grep -v "\.git"); do
 		sed -e "s/<qutim\//<qutim-${PV}\//" -i ${i};
 	done
 	sed -e "/unix/s/qutim/qutim-${PV}/" -i "${S}/${MY_PN}.pro"
 }
 
 src_compile() {
-	eqmake4 ${MY_PN}.pro || die "Failed plugin configure"
+	eqmake4 "${MY_PN}.pro" || die "Failed plugin configure"
 	emake || die "Failed plugin build"
 }
 

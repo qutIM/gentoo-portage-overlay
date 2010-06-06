@@ -15,16 +15,13 @@ HOMEPAGE="http://www.qutim.org/"
 LICENSE="GPL-2"
 SLOT="0.2-live"
 KEYWORDS=""
-IUSE="emoticons +notification phonon spell debug"
+IUSE="emoticons notification phonon spell debug"
 
 RDEPEND="net-im/qutim:${SLOT}"
 
 DEPEND="${RDEPEND}
 	>=dev-util/cmake-2.6
 	notification? ( !x11-plugins/qutim-libnotify )"
-# 	!x11-plugins/${PN}:0.2
-# 	!x11-plugins/${PN}:0.3-live
-# 	!x11-plugins/${PN}:live"
 
 RESTRICT="mirror
 	debug? ( strip )"
@@ -43,7 +40,6 @@ src_prepare() {
 		append-flags -O1 -g -ggdb
 		CMAKE_BUILD_TYPE="debug"
 	fi
-	mycmakeargs="-DUNIX=1 -DAPPLE=0"
 	CMAKE_IN_SOURCE_BUILD=1
 	# Исправление пути установки
 
@@ -55,7 +51,7 @@ src_prepare() {
 	for i in $(grep -ril "<qutim/" "${S}" | grep -v "\.git"); do
 		sed -e "s/<qutim\//<qutim-${PV}\//" -i ${i};
 	done
-	
+
 	if ( ! use emoticons ) ; then
 		sed -i "/add_subdirectory( emoticons )/d" "${S}/CMakeLists.txt"
 	fi

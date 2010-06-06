@@ -42,7 +42,7 @@ src_prepare() {
 }
 
 src_compile() {
-	eqmake4 ${MY_PN}.pro || die "Failed plugin configure"
+	eqmake4 "${MY_PN}.pro" || die "Failed plugin configure"
 	emake || die "Failed plugin build"
 }
 

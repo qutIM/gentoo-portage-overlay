@@ -41,9 +41,10 @@ src_prepare() {
 		CMAKE_BUILD_TYPE="debug"
 	fi
 	CMAKE_IN_SOURCE_BUILD=1
-	sed -e "/FIND_PATH/s/qutim/qutim-${PV}/" -e "/INSTALL/s/qutim/qutim-${PV}/" -i "${S}/CMakeLists.txt"
-	
-	for i in $(grep -ril "<qutim/" "${S}" | grep -v "\.git"); do
+	sed -e "/FIND_PATH/s/qutim/qutim-${PV}/" \
+		-e "/INSTALL/s/qutim/qutim-${PV}/" -i "${S}/CMakeLists.txt"
+
+	for i in $(grep -rl "<qutim/" "${S}" | grep -v "\.git"); do
 		sed -e "s/<qutim\//<qutim-${PV}\//" -i ${i};
 	done
 }

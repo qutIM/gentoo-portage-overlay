@@ -38,7 +38,7 @@ src_prepare() {
 	fi
 	sed -e "s/qutim/qutim-${PV}/" -i "${S}/icq.pro"
 
-	for i in $(grep -ril "<qutim/" "${S}" | grep -v "\.git"); do
+	for i in $(grep -rl "<qutim/" "${S}" | grep -v "\.git"); do
 		sed -e "s/<qutim\//<qutim-${PV}\//" -i ${i};
 	done
 }
@@ -49,6 +49,6 @@ src_compile() {
 }
 
 src_install() {
-	insinto /usr/$(get_libdir)/qutim-${PV}
+	insinto "/usr/$(get_libdir)/qutim-${PV}"
 	doins "${S}/lib${MY_PN}.so" || die "Plugin installation failed"
 }

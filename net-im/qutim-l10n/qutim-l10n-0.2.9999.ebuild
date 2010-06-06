@@ -11,7 +11,6 @@ EGIT_BRANCH="sdk02"
 EGIT_COMMIT="${EGIT_BRANCH}"
 DESCRIPTION="Localization package for net-im/qutim"
 HOMEPAGE="http://qutim.org"
-#SRC_URI=""
 
 LICENSE="GPL-2"
 SLOT="0.2-live"

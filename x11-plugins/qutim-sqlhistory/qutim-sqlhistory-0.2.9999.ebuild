@@ -38,7 +38,7 @@ src_prepare() {
 		unset CFLAGS CXXFLAGS
 		append-flags -O1 -g -ggdb
 	fi
-	for i in $(grep -ril "<qutim/" "${S}" | grep -v "\.git"); do
+	for i in $(grep -rl "<qutim/" "${S}" | grep -v "\.git"); do
 		sed -e "s/<qutim\//<qutim-${PV}\//" -i ${i};
 	done
 }
