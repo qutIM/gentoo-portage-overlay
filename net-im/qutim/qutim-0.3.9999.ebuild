@@ -17,15 +17,16 @@ HOMEPAGE="http://qutim.org"
 LICENSE="GPL-2"
 SLOT="0.3-live"
 KEYWORDS=""
-IUSE="debug histman icq jabber kde mrim yandexnarod +massmessaging +meta-protocols"
-	#linguas_bg linguas_cs linguas_de linguas_ru linguas_uk"
 
-RDEPEND=">=x11-libs/qt-gui-4.4.0
-	>=x11-libs/qt-webkit-4.4.0
-	>=x11-libs/qt-multimedia-4.4.0"
-# 	!net-im/qutim:0.2
-# 	!net-im/qutim:0.2-live
-# 	!net-im/qutim:live"
+PROTOCOLS="+icq +jabber mrim libpurple vkontakte"
+PLUGINS="histman imagepub kde massmessaging otr plugman sqlhistory \
+	tex urlpreview vsqlhistory weather webhistory yandexnarod"
+IUSE="debug linguas_bg linguas_cs linguas_de linguas_ru linguas_uk"
+IUSE="${PROTOCOLS} ${PLUGINS} ${IUSE}"
+
+RDEPEND=">=x11-libs/qt-gui-4.6.0
+	>=x11-libs/qt-webkit-4.6.0
+	>=x11-libs/qt-multimedia-4.6.0"
 
 DEPEND="${RDEPEND}
 	>=dev-util/cmake-2.6.0"
@@ -37,27 +38,29 @@ PDEPEND="linguas_bg? ( net-im/qutim-l10n:${SLOT}[linguas_bg?] )
 	linguas_uk? ( net-im/qutim-l10n:${SLOT}[linguas_uk?] )
 	icq? ( x11-plugins/qutim-icq:${SLOT} )
 	jabber? ( x11-plugins/qutim-jabber:${SLOT} )
+	libpurple? ( x11-plugins/qutim-quetzal:${SLOT} )
 	mrim? ( x11-plugins/qutim-mrim:${SLOT} )
 	vkontakte? ( x11-plugins/qutim-vkontakte:${SLOT} )
-	kde? ( kde-misc/qutim-kdeintegration:${SLOT} )
-	yandexnarod? ( x11-plugins/qutim-yandexnarod:${SLOT} )
-	imagepub? ( x11-plugins/qutim-imagepub:${SLOT} )
-	massmessaging? ( x11-plugins/qutim-massmessaging:${SLOT} )
-	meta-protocols? ( x11-plugins/qutim-protocols
-		!x11-plugins/qutim-icq
-		!x11-plugins/qutim-jabber
-		!x11-plugins/qutim-mrim
-		!x11-plugins/qutim-quetzal
-		!x11-plugins/qutim-vkontakte )
-	plugman? ( x11-plugins/qutim-plugman:${SLOT} )
 	histman? ( x11-plugins/qutim-histman:${SLOT} )
-	urlpreview? ( x11-plugins/qutim-urlpreview:${SLOT} )
-	sqlhistory? ( x11-plugins/qutim-sqlhistory:${SLOT} )
-	vsqlhistory? ( x11-plugins/qutim-vsqlhistory:${SLOT} )
-	webhistory? ( x11-plugins/qutim-webhistory:${SLOT} )
+	imagepub? ( x11-plugins/qutim-imagepub:${SLOT} )
+	kde? ( kde-misc/qutim-kdeintegration:${SLOT} )
+	massmessaging? ( x11-plugins/qutim-massmessaging:${SLOT} )
 	otr? ( app-crypt/qutim-otr:${SLOT} )
+	plugman? ( x11-plugins/qutim-plugman:${SLOT} )
+	sqlhistory? ( x11-plugins/qutim-sqlhistory:${SLOT} )
 	tex? ( x11-plugins/qutim-tex:${SLOT} )
-	weather? ( x11-plugins/qutim-weather:${SLOT} )"
+	urlpreview? ( x11-plugins/qutim-urlpreview:${SLOT} )
+	vsqlhistory? ( x11-plugins/qutim-vsqlhistory:${SLOT} )
+	weather? ( x11-plugins/qutim-weather:${SLOT} )
+	webhistory? ( x11-plugins/qutim-webhistory:${SLOT} )
+	yandexnarod? ( x11-plugins/qutim-yandexnarod:${SLOT} )"
+
+# 	meta-protocols? ( x11-plugins/qutim-protocols
+# 		!x11-plugins/qutim-icq
+# 		!x11-plugins/qutim-jabber
+# 		!x11-plugins/qutim-mrim
+# 		!x11-plugins/qutim-quetzal
+# 		!x11-plugins/qutim-vkontakte )
 
 RESTRICT="debug? ( strip )"
 
@@ -78,7 +81,8 @@ src_prepare() {
 	fi
 	## slotting... ##
 	sed -e "s/${PN}/${P}/" -i cmake/QutimPlugin.cmake
-	sed -e "/Exec/s/qutim/${P}/" -i share/applications/qutim.desktop
+	sed -e "/Exec/s/qutim/${P}/" \
+		-e "s/qutIM/qutIM-${SLOT}/" -i share/applications/qutim.desktop
 	mv "${S}/cmake/QutimPlugin.cmake" "${S}/cmake/QutimPlugin-${PV}.cmake"
 	mv "${S}/icons/qutim_64.png" "${S}/icons/${P}_64.png"
 	mv "${S}/share/applications/qutim.desktop" "${S}/share/applications/${P}.desktop"
@@ -87,20 +91,24 @@ src_prepare() {
 	mv "${S}/share/pixmaps/qutim.xpm" "${S}/share/pixmaps/${P}.xpm"
 	mv "${S}/share/qutim" "${S}/share/${P}"
 	sed -e "/SET/s/PLUGINS_DEST \"lib\/qutim/PLUGINS_DEST \"lib\/${P}/" \
-		-e "/ADD_EXE/s/${PN}/${P}/" -e "/set_target/s/${PN}/${P}/" \
-		-e "/TARGET_LINK/s/${PN}/${P}/" -e "s/^[ \t]*lib${PN}/lib${P}/" \
-		-e "/INSTALL/s/${PN}/${P}/" -e "s/QutimPlugin/QutimPlugin-${PV}/" -i CMakeLists.txt
-	sed -e "/install/s/PREFIX}\/share/PREFIX}\/share\/doc/" -e "s/${PN}/${P}/" \
+		-e "/ADD_EXE/s/${PN}/${P}/" \
+		-e "/set_target/s/${PN}/${P}/" \
+		-e "/TARGET_LINK/s/${PN}/${P}/" \
+		-e "s/^[ \t]*lib${PN}/lib${P}/" \
+		-e "/INSTALL/s/${PN}/${P}/" \
+		-e "s/QutimPlugin/QutimPlugin-${PV}/" -i CMakeLists.txt
+	sed -e "/install/s/PREFIX}\/share/PREFIX}\/share\/doc/" \
+		-e "s/${PN}/${P}/" \
 		-e "/install/s/DIR}\/doc/DIR}\/doc\/html/" -i libqutim/CMakeLists.txt
 	sed -e "s/QutimPlugin/QutimPlugin-${PV}/" -i examples/autosettingsitem/CMakeLists.txt
 	sed -e "s/QutimPlugin/QutimPlugin-${PV}/" -i examples/simplesettingsdialog/CMakeLists.txt
 	sed -e "/plugin_path/s/\"${PN}\"/\"${P}\"/" -i libqutim/modulemanager.cpp
 
-	for i in $(grep -ril qutim_64 "${S}" | grep -v "\.git"); do
+	for i in $(grep -rl qutim_64 "${S}" | grep -v "\.git"); do
 		sed -e "s/qutim_64/${P}_64/" -i ${i};
 	done
 
-	for i in $(grep -ril qutim.png "${S}" | grep -v "\.git"); do
+	for i in $(grep -rl qutim.png "${S}" | grep -v "\.git"); do
 		sed -e "s/qutim.png/${P}.png/" -i ${i};
 	done
 	## end of slotting... ##
@@ -110,8 +118,8 @@ src_install() {
 	cmake-utils_src_install
 	mv "${D}/usr/$(get_libdir)/lib${P}.so" "${D}/usr/$(get_libdir)/lib${PN}.so.${PV}"
 	doicon "icons/${P}_64.png" || die "Failed to install icon"
-	dosym "lib${PN}.so.${PV}" "/usr/$(get_libdir)/lib${PN}.so"
-	dosym "${P}" "/usr/bin/${PN}"
+# 	dosym "lib${PN}.so.${PV}" "/usr/$(get_libdir)/lib${PN}.so"
+# 	dosym "${P}" "/usr/bin/${PN}"
 }
 
 pkg_postinst() {

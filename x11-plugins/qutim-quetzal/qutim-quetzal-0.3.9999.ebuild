@@ -42,7 +42,7 @@ src_prepare() {
 	CMAKE_IN_SOURCE_BUILD=1
 	sed -e "s/QutimPlugin/QutimPlugin-${PV}/" -i CMakeLists.txt
 
-	for i in $(grep -ril "qutim/" "${S}" | grep -v "\.git"); do
+	for i in $(grep -rl "qutim/" "${S}" | grep -v "\.git"); do
 		sed -e "/#include/s/qutim\//qutim-${PV}\//" -i ${i};
 	done
 }

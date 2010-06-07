@@ -18,7 +18,7 @@ HOMEPAGE="http://www.qutim.org"
 LICENSE="GPL-2"
 SLOT="0.2-live"
 KEYWORDS=""
-IUSE="openssl +gnutls +gloox-static +debug juick"
+IUSE="openssl +gnutls +gloox-static debug juick"
 
 RDEPEND="net-im/qutim:${SLOT}
 	!gloox-static? ( >=net-libs/gloox-0.9.9.5 )
