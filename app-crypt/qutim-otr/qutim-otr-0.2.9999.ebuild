@@ -16,9 +16,7 @@ KEYWORDS=""
 IUSE="debug"
 
 DEPEND="net-im/qutim:${SLOT}
-	net-libs/libotr
-	!x11-plugins/${PN}:0.2
-	!x11-plugins/${PN}:live"
+	net-libs/libotr"
 
 RESTRICT="debug? ( strip )"
 
@@ -33,6 +31,10 @@ src_prepare() {
 		unset CFLAGS CXXFLAGS
 		append-flags -O1 -g -ggdb
 	fi
+	for i in $(grep -rl "<qutim/" "${S}" | grep -v "\.git"); do
+		sed -e "/include/s/<qutim\//<qutim-${PV}\//" -i ${i};
+	done
+	sed -e "s/qutim\/protocol/qutim-${PV}\/protocol/" -i smpdialog.h
 }
 
 src_compile() {
@@ -41,6 +43,6 @@ src_compile() {
 }
 
 src_install() {
-	insinto /usr/$(get_libdir)/qutim
+	insinto "/usr/$(get_libdir)/qutim-${PV}"
 	doins "${S}/lib${MY_PN}.so" || die "Plugin installation failed"
 }

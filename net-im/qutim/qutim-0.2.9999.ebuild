@@ -4,6 +4,8 @@
 
 EAPI="2"
 
+EGIT_HAS_SUBMODULES="true"
+
 inherit git eutils cmake-utils confutils
 
 EGIT_REPO_URI="http://git.gitorious.org/qutim/qutim.git"
@@ -15,17 +17,15 @@ HOMEPAGE="http://qutim.org"
 LICENSE="GPL-2"
 SLOT="0.2-live"
 KEYWORDS=""
-IUSE="debug histman +icq +jabber mrim vkontakte
-	kde +yandexnarod +imagepub +massmessaging plugman +urlpreview otr
-	sqlhistory vsqlhistory webhistory
-	tex weather
-	linguas_bg linguas_cs linguas_de linguas_ru linguas_uk"
+
+PROTOCOLS="+icq +jabber mrim vkontakte"
+PLUGINS="histman +imagepub kde +massmessaging otr plugman sqlhistory \
+	tex +urlpreview vsqlhistory weather webhistory +yandexnarod"
+IUSE="debug linguas_bg linguas_cs linguas_de linguas_ru linguas_uk"
+IUSE="${PROTOCOLS} ${PLUGINS} ${IUSE}"
 
 RDEPEND=">=x11-libs/qt-gui-4.4.0
-	>=x11-libs/qt-webkit-4.4.0
-	!net-im/qutim:0.2
-	!net-im/qutim:0.3-live
-	!net-im/qutim:live"
+	>=x11-libs/qt-webkit-4.4.0"
 
 DEPEND="${RDEPEND}
 	>=dev-util/cmake-2.6.0"
@@ -39,19 +39,19 @@ PDEPEND="linguas_bg? ( net-im/qutim-l10n:${SLOT}[linguas_bg?] )
 	jabber? ( x11-plugins/qutim-jabber:${SLOT} )
 	mrim? ( x11-plugins/qutim-mrim:${SLOT} )
 	vkontakte? ( x11-plugins/qutim-vkontakte:${SLOT} )
-	kde? ( kde-misc/qutim-kdeintegration:${SLOT} )
-	yandexnarod? ( x11-plugins/qutim-yandexnarod:${SLOT} )
-	imagepub? ( x11-plugins/qutim-imagepub:${SLOT} )
-	massmessaging? ( x11-plugins/qutim-massmessaging:${SLOT} )
-	plugman? ( x11-plugins/qutim-plugman:${SLOT} )
 	histman? ( x11-plugins/qutim-histman:${SLOT} )
-	urlpreview? ( x11-plugins/qutim-urlpreview:${SLOT} )
-	sqlhistory? ( x11-plugins/qutim-sqlhistory:${SLOT} )
-	vsqlhistory? ( x11-plugins/qutim-vsqlhistory:${SLOT} )
-	webhistory? ( x11-plugins/qutim-webhistory:${SLOT} )
+	imagepub? ( x11-plugins/qutim-imagepub:${SLOT} )
+	kde? ( kde-misc/qutim-kdeintegration:${SLOT} )
+	massmessaging? ( x11-plugins/qutim-massmessaging:${SLOT} )
 	otr? ( app-crypt/qutim-otr:${SLOT} )
+	plugman? ( x11-plugins/qutim-plugman:${SLOT} )
+	sqlhistory? ( x11-plugins/qutim-sqlhistory:${SLOT} )
 	tex? ( x11-plugins/qutim-tex:${SLOT} )
-	weather? ( x11-plugins/qutim-weather:${SLOT} )"
+	urlpreview? ( x11-plugins/qutim-urlpreview:${SLOT} )
+	vsqlhistory? ( x11-plugins/qutim-vsqlhistory:${SLOT} )
+	weather? ( x11-plugins/qutim-weather:${SLOT} )
+	webhistory? ( x11-plugins/qutim-webhistory:${SLOT} )
+	yandexnarod? ( x11-plugins/qutim-yandexnarod:${SLOT} )"
 
 RESTRICT="debug? ( strip )"
 
@@ -70,13 +70,37 @@ src_prepare() {
 		append-flags -O1 -g -ggdb
 		CMAKE_BUILD_TYPE="Debug"
 	fi
-	mycmakeargs="-DUNIX=1 -DBSD=0 -DAPPLE=0 -DMINGW=0 -DWIN32=0	-DCMAKE_INSTALL_PREFIX=/usr"
+
+	sed -e "/find/s/${PN}\/protocol/${P}\/protocol/" \
+		-e "s/CURRENT_SOURCE_DIR}\/cmake\/qutimuic/ROOT}\/Modules\/qutimuic-${PV}/" \
+		-i cmake/FindQutIM.cmake
+	sed -e "s/<${PN}\//<${P}\//" -i cmake/qutimuic.cmake
+	sed -e "/SET/s/lib\/${PN}/lib\/${P}/" \
+		-e "/TARGET/s/${PN}/${P}/" \
+		-e "s/FindQutIM/FindQutIM-${PV}/" \
+		-e "s/qutimuic/qutimuic-${PV}/" \
+		-e "/ADD_EXE/s/${PN}/${P}/" \
+		-e "/INSTALL/s/include\/${PN}/include\/${P}/" \
+		-e "/INSTALL/s/applications\"/applications\" RENAME \"${P}.desktop\"/" \
+		-e "/INSTALL/s/RENAME \"qutim.png\"/RENAME \"${P}.png\"/" \
+		-e "/INSTALL/s/pixmaps\"/pixmaps\" RENAME \"${P}.xpm\"/" -i CMakeLists.txt
+	sed -e "s/path += \"qutim\";/path += \"${P}\";/" -i src/pluginsystem.cpp
+	sed -e "s/qutIM/qutIM-${SLOT}/" \
+		-e "s/qutim/${P}/" -i share/qutim.desktop
+	mv cmake/FindQutIM.cmake cmake/FindQutIM-${PV}.cmake
+	mv cmake/qutimuic.cmake cmake/qutimuic-${PV}.cmake
+	mv "include/${PN}" "include/${P}"
+
+	for i in $(grep -rl "qutim/" "${S}/" | grep -v "\.git"); do
+		sed -e "s/qutim\//qutim-${PV}\//" -i ${i};
+	done
 }
 
 src_install() {
 	cmake-utils_src_install
-	dodir /usr/share/${PN}
-	doicon icons/${PN}_64.png || die "Failed to install icon"
+	dodir /usr/share/${P}
+	mv icons/${PN}_64.png icons/${P}_64.png
+	doicon icons/${P}_64.png || die "Failed to install icon"
 }
 
 pkg_postinst() {

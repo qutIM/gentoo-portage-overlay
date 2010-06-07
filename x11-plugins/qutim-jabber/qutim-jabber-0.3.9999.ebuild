@@ -11,27 +11,26 @@ inherit git eutils cmake-utils confutils
 EGIT_REPO_URI="http://git.gitorious.org/qutim/protocols.git"
 EGIT_BRANCH="master"
 EGIT_COMMIT="${EGIT_BRANCH}"
+EGIT_PROJECT="qutim-protocols"
 DESCRIPTION="Jabber protocol plugin for net-im/qutim"
 HOMEPAGE="http://www.qutim.org"
 
 LICENSE="GPL-2"
 SLOT="0.3-live"
 KEYWORDS=""
-IUSE="+gnutls +gloox-static debug juick openssl"
+IUSE="+gnutls +gloox-static +debug juick openssl"
 
 RDEPEND="net-im/qutim:${SLOT}
-	!gloox-static? ( >=net-libs/gloox-0.9.9.5[gnutls?,idn] )
 	sys-libs/zlib
 	net-dns/libidn
 	openssl? ( dev-libs/openssl )
 	gnutls? ( net-libs/gnutls )"
+#	!gloox-static? ( >=net-libs/gloox-0.9.9.5[gnutls?,idn] )
 
 DEPEND="${RDEPEND}
 	gloox-static? ( !net-libs/gloox )
 	>=dev-util/cmake-2.6
-	!x11-plugins/${PN}:0.2
-	!x11-plugins/${PN}:0.2-live
-	!x11-plugins/${PN}:live"
+	!x11-plugins/qutim-protocols:${SLOT}"
 
 PDEPEND="juick? ( x11-plugins/qutim-juick:${SLOT} )"
 
@@ -51,11 +50,24 @@ src_prepare() {
 		append-flags -O1 -g -ggdb
 		CMAKE_BUILD_TYPE="debug"
 	fi
+<<<<<<< HEAD
 	mycmakeargs="$(cmake-utils_use openssl OpenSSL) $(cmake-utils_use gnutls GNUTLS) \
 		$(cmake-utils_use !gloox-static GLOOX_EXTERNAL) -DMRIM=off -DOSCAR=off -DQUETZAL=off \
 		-DVKONTAKTE=off"
 		# -DQUTIM_INCLUDE_DIRS=/usr/include/qutim -DQUTIM_PATH=..."
+=======
+	mycmakeargs="$(cmake-utils_use openssl OpenSSL) \
+		$(cmake-utils_use gnutls GNUTLS) \
+		$(cmake-utils_use !gloox-static GLOOX_EXTERNAL) \
+		-DMRIM=off -DOSCAR=off -DQUETZAL=off -DVKONTAKTE=off"
+>>>>>>> slots
 	CMAKE_IN_SOURCE_BUILD=1
+	sed -e "s/QutimPlugin/QutimPlugin-${PV}/" -i CMakeLists.txt
+	sed -e "s/>qutim\//>qutim-${PV}\//" -i jabber/src/protocol/account/muc/jmucjoin.ui
+
+	for i in $(grep -rl "qutim/" "${S}" | grep -v "\.git"); do
+		sed -e "/#include/s/qutim\//qutim-${PV}\//" -i ${i};
+	done
 }
 
 src_install() {

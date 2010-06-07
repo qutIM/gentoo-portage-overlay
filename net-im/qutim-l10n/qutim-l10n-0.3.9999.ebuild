@@ -7,13 +7,14 @@ EAPI="2"
 inherit git
 
 EGIT_REPO_URI="http://git.gitorious.org/qutim/translations.git"
-EGIT_BRANCH="sdk02"
+EGIT_BRANCH="master"
 EGIT_COMMIT="${EGIT_BRANCH}"
 DESCRIPTION="Localization package for net-im/qutim"
 HOMEPAGE="http://qutim.org"
+#SRC_URI=""
 
 LICENSE="GPL-2"
-SLOT="0.2-live"
+SLOT="0.3-live"
 KEYWORDS=""
 IUSE="linguas_ru linguas_bg linguas_cs linguas_de linguas_uk"
 LANGUAGES=""

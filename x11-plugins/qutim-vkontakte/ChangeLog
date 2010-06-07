@@ -2,6 +2,10 @@
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  04 Jun 2010; Viktor Lazarev <taurus101v@gmail.com>
+  qutim-vkontakte-0.2.9999.ebuild:
+  0.2.9999 is slotted
+
   18 May 2010; Viktor Lazarev <taurus101v@gmail.com>
   qutim-vkontakte-0.2.9999.ebuild, +metadata.xml:
   repoman payment, added ChangeLog and metadata.xml

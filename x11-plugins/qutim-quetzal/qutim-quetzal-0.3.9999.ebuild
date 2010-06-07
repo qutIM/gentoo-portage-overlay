@@ -4,11 +4,14 @@
 
 EAPI="2"
 
+EGIT_HAS_SUBMODULES="true"
+
 inherit git eutils qt4 cmake-utils
 
 EGIT_REPO_URI="http://git.gitorious.org/qutim/protocols.git"
 EGIT_BRANCH="master"
 EGIT_COMMIT="${EGIT_BRANCH}"
+EGIT_PROJECT="qutim-protocols"
 DESCRIPTION="Libpurple binding for net-im/qutim"
 HOMEPAGE="http://www.qutim.org"
 
@@ -35,13 +38,11 @@ src_prepare() {
 		append-flags -O1 -g -ggdb
 		CMAKE_BUILD_TYPE="debug"
 	fi
-	mycmakeargs="-DCMAKE_INSTALL_PREFIX=/usr -DQUTIM_PATH=${EGIT_STORE_DIR}/qutim \
-		-DJABBER=off -DMRIM=off -DOSCAR=off -DVKONTAKTE=off"
+	mycmakeargs="-DJABBER=off -DMRIM=off -DOSCAR=off -DVKONTAKTE=off"
 	CMAKE_IN_SOURCE_BUILD=1
-}
+	sed -e "s/QutimPlugin/QutimPlugin-${PV}/" -i CMakeLists.txt
 
-src_install() {
-	cmake-utils_src_install
-	insinto /usr/$(get_libdir)/qutim
-	doins "${S}/lib${MY_PN}.so" || die "Plugin installation failed"
+	for i in $(grep -rl "qutim/" "${S}" | grep -v "\.git"); do
+		sed -e "/#include/s/qutim\//qutim-${PV}\//" -i ${i};
+	done
 }

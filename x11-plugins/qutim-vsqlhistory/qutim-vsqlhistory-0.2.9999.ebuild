@@ -19,9 +19,7 @@ RDEPEND="net-im/qutim:${SLOT}"
 
 DEPEND="${RDEPEND}
 	!x11-plugins/qutim-sqlhistory
-	!x11-plugins/qutim-webhistory
-	!x11-plugins/${PN}:live
-	!x11-plugins/${PN}:0.2"
+	!x11-plugins/qutim-webhistory"
 
 RESTRICT="debug? ( strip )"
 
@@ -32,19 +30,22 @@ src_unpack() {
 }
 
 src_prepare() {
-	S=${S}/${MY_PN}
 	if (use debug) ; then
 		unset CFLAGS CXXFLAGS
 		append-flags -O1 -g -ggdb
 	fi
+	for i in $(grep -rl "<qutim/" "${S}" | grep -v "\.git"); do
+		sed -e "s/<qutim\//<qutim-${PV}\//" -i ${i};
+	done
 }
 
 src_compile() {
-	eqmake4 ${MY_PN}.pro || die "Failed plugin configure"
+	eqmake4 sqlhistory.pro || die "Failed plugin configure"
 	emake || die "Failed plugin build"
 }
 
 src_install() {
-	insinto /usr/$(get_libdir)/qutim
+	mv libsqlhistory.so "lib${MY_PN}.so"
+	insinto "/usr/$(get_libdir)/qutim-${PV}"
 	doins "${S}/lib${MY_PN}.so" || die "Plugin installation failed"
 }

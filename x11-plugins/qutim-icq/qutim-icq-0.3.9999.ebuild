@@ -4,11 +4,14 @@
 
 EAPI="2"
 
+EGIT_HAS_SUBMODULES="true"
+
 inherit git eutils qt4 cmake-utils
 
 EGIT_REPO_URI="http://git.gitorious.org/qutim/protocols.git"
 EGIT_BRANCH="master"
 EGIT_COMMIT="${EGIT_BRANCH}"
+EGIT_PROJECT="qutim-protocols"
 DESCRIPTION="ICQ protocol plugin for net-im/qutim"
 HOMEPAGE="http://www.qutim.org"
 
@@ -20,10 +23,7 @@ IUSE="debug"
 RDEPEND="net-im/qutim:${SLOT}"
 
 DEPEND="${RDEPEND}
-	>=dev-util/cmake-2.6
-	!x11-plugins/${PN}:0.2
-	!x11-plugins/${PN}:0.2-live
-	!x11-plugins/${PN}:live"
+	>=dev-util/cmake-2.6"
 
 RESTRICT="debug? ( strip )"
 
@@ -39,6 +39,7 @@ src_prepare() {
 		append-flags -O1 -g -ggdb
 		CMAKE_BUILD_TYPE="debug"
 	fi
+<<<<<<< HEAD
 # 	mycmakeargs="-DQUTIM_PATH=/usr/$(get_libdir)/qutim \
 # 		-DJABBER=off -DMRIM=off -DQUETZAL=off -DVKONTAKTE=off"
 	mycmakeargs="-DJABBER=off -DMRIM=off -DQUETZAL=off -DVKONTAKTE=off"
@@ -52,4 +53,13 @@ src_install() {
 	cmake-utils_src_install
 # 	insinto /usr/$(get_libdir)/qutim
 # 	doins "${S}/${MY_PN}/lib${MY_PN}.so" || die "Plugin installation failed"
+=======
+	mycmakeargs="-DJABBER=off -DMRIM=off -DQUETZAL=off -DVKONTAKTE=off"
+	CMAKE_IN_SOURCE_BUILD=1
+	sed -e "s/QutimPlugin/QutimPlugin-${PV}/" -i CMakeLists.txt
+
+	for i in $(grep -rl "qutim/" "${S}" | grep -v "\.git"); do
+		sed -e "/#include/s/qutim\//qutim-${PV}\//" -i ${i};
+	done
+>>>>>>> slots
 }
