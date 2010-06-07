@@ -55,13 +55,6 @@ PDEPEND="linguas_bg? ( net-im/qutim-l10n:${SLOT}[linguas_bg?] )
 	webhistory? ( x11-plugins/qutim-webhistory:${SLOT} )
 	yandexnarod? ( x11-plugins/qutim-yandexnarod:${SLOT} )"
 
-# 	meta-protocols? ( x11-plugins/qutim-protocols
-# 		!x11-plugins/qutim-icq
-# 		!x11-plugins/qutim-jabber
-# 		!x11-plugins/qutim-mrim
-# 		!x11-plugins/qutim-quetzal
-# 		!x11-plugins/qutim-vkontakte )
-
 RESTRICT="debug? ( strip )"
 
 pkg_setup() {
