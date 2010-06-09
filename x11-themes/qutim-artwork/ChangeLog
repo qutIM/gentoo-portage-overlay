@@ -1,0 +1,10 @@
+# ChangeLog for x11-themes/qutim-artwork
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+*qutim-artwork-0.0.6 (08 Jun 2010)
+
+  08 Jun 2010; Viktor Lazarev <taurus101v@gmail.com>
+  +qutim-artwork-0.0.6.ebuild, +metadata.xml:
+  initial ebuld. Taken from the previous overlay
+

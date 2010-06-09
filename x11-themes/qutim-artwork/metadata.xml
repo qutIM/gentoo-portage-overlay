@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>no-herd</herd>
+	<maintainer>
+		<name>Igor Syrimyatnikov</name>
+		<email>sqee@olimp.ua</email>
+		<email>sqee@matrixhome.net</email>
+	</maintainer>
+	<longdescription lang="en">
+		Artwork package for qutIM-0.2
+	</longdescription>
+	<longdescription lang="ru">
+		Артворк пакет для qutIM-0.2
+	</longdescription>
+</pkgmetadata>
