@@ -19,7 +19,7 @@ SLOT="0.3-live"
 KEYWORDS=""
 
 PROTOCOLS="+icq +jabber libpurple" #mrim vkontakte
-PLUGINS="histman kde massmessaging"
+PLUGINS="antiboss histman kde massmessaging"
 	#imagepub otr plugman sqlhistory tex urlpreview vsqlhistory weather webhistory yandexnarod
 IUSE="debug linguas_bg linguas_cs linguas_de linguas_ru linguas_uk"
 IUSE="${PROTOCOLS} ${PLUGINS} ${IUSE}"

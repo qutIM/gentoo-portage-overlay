@@ -53,7 +53,7 @@ STATUSICONS="Kolobok
 
 RESTRICT="mirror"
 
-DEPEND="net-im/qutim:0.2-live"
+DEPEND="<net-im/qutim-0.3"
 
 S=${WORKDIR}
 

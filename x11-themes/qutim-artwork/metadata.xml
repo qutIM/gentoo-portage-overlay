@@ -3,9 +3,8 @@
 <pkgmetadata>
 	<herd>no-herd</herd>
 	<maintainer>
-		<name>Igor Syrimyatnikov</name>
 		<email>sqee@olimp.ua</email>
-		<email>sqee@matrixhome.net</email>
+		<name>Igor Syrimyatnikov</name>
 	</maintainer>
 	<longdescription lang="en">
 		Artwork package for qutIM-0.2
