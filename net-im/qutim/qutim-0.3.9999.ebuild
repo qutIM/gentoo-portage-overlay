@@ -19,7 +19,7 @@ SLOT="0.3-live"
 KEYWORDS=""
 
 PROTOCOLS="+icq +jabber libpurple" #mrim vkontakte
-PLUGINS="antiboss histman kde massmessaging"
+PLUGINS="antiboss antispam aspeller awn connectionmanager histman indicator kde massmessaging"
 	#imagepub otr plugman sqlhistory tex urlpreview vsqlhistory weather webhistory yandexnarod
 IUSE="debug linguas_bg linguas_cs linguas_de linguas_ru linguas_uk"
 IUSE="${PROTOCOLS} ${PLUGINS} ${IUSE}"
@@ -39,20 +39,19 @@ PDEPEND="linguas_bg? ( net-im/qutim-l10n:${SLOT}[linguas_bg?] )
 	icq? ( x11-plugins/qutim-icq:${SLOT} )
 	jabber? ( x11-plugins/qutim-jabber:${SLOT} )
 	libpurple? ( x11-plugins/qutim-quetzal:${SLOT} )
-	histman? ( x11-plugins/qutim-histman:${SLOT} )
 	kde? ( kde-misc/qutim-kdeintegration:${SLOT} )
+	antiboss? ( x11-plugins/qutim-antiboss:${SLOT} )
+	antispam? ( x11-plugins/qutim-antispam:${SLOT} )
+	aspeller? ( x11-plugins/qutim-aspeller:${SLOT} )
+	awn? ( x11-plugins/qutim-awn:${SLOT} )
+	connectionmanager? ( x11-plugins/qutim-connectionmanager:${SLOT} )
+	histman? ( x11-plugins/qutim-histman:${SLOT} )
+	indicator? ( x11-plugins/qutim-indicator:${SLOT} )
 	massmessaging? ( x11-plugins/qutim-massmessaging:${SLOT} )"
 # 	mrim? ( x11-plugins/qutim-mrim:${SLOT} )
 # 	vkontakte? ( x11-plugins/qutim-vkontakte:${SLOT} )
-# 	imagepub? ( x11-plugins/qutim-imagepub:${SLOT} )
-# 	otr? ( app-crypt/qutim-otr:${SLOT} )
 # 	plugman? ( x11-plugins/qutim-plugman:${SLOT} )
-# 	sqlhistory? ( x11-plugins/qutim-sqlhistory:${SLOT} )
-# 	tex? ( x11-plugins/qutim-tex:${SLOT} )
 # 	urlpreview? ( x11-plugins/qutim-urlpreview:${SLOT} )
-# 	vsqlhistory? ( x11-plugins/qutim-vsqlhistory:${SLOT} )
-# 	weather? ( x11-plugins/qutim-weather:${SLOT} )
-# 	webhistory? ( x11-plugins/qutim-webhistory:${SLOT} )
 # 	yandexnarod? ( x11-plugins/qutim-yandexnarod:${SLOT} )
 
 RESTRICT="debug? ( strip )"
