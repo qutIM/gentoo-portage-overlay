@@ -18,7 +18,7 @@ HOMEPAGE="http://www.qutim.org"
 LICENSE="GPL-2"
 SLOT="0.3-live"
 KEYWORDS=""
-IUSE="+gnutls +gloox-static +debug juick openssl"
+IUSE="+gnutls +gloox-static +debug openssl"
 
 RDEPEND="net-im/qutim:${SLOT}
 	sys-libs/zlib
@@ -32,7 +32,7 @@ DEPEND="${RDEPEND}
 	>=dev-util/cmake-2.6
 	!x11-plugins/qutim-protocols:${SLOT}"
 
-PDEPEND="juick? ( x11-plugins/qutim-juick:${SLOT} )"
+#PDEPEND="juick? ( x11-plugins/qutim-juick:${SLOT} )"
 
 RESTRICT="debug? ( strip )"
 
