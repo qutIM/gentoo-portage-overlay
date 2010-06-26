@@ -18,7 +18,8 @@ SLOT="0.3-live"
 KEYWORDS=""
 IUSE="debug"
 
-RDEPEND="net-im/qutim:${SLOT}"
+RDEPEND="net-im/qutim:${SLOT}
+	>=x11-libs/qt-dbus-4.6.0:4"
 
 DEPEND="${RDEPEND}"
 
