@@ -19,7 +19,7 @@ SLOT="0.3-live"
 KEYWORDS=""
 
 PROTOCOLS="+icq +jabber libpurple" #mrim vkontakte
-PLUGINS="+aescrypto antiboss antispam aspeller awn connectionmanager histman \
+PLUGINS="+aescrypto antiboss antispam aspeller awn connectionmanager dbus histman \
 	indicator kde +massmessaging qmlpopups +urlpreview +yandexnarod"
 	#imagepub otr plugman sqlhistory tex vsqlhistory weather webhistory
 IUSE="debug linguas_bg linguas_cs linguas_de linguas_ru linguas_uk"
@@ -47,12 +47,13 @@ PDEPEND="linguas_bg? ( net-im/qutim-l10n:${SLOT}[linguas_bg?] )
 	aspeller? ( x11-plugins/qutim-aspeller:${SLOT} )
 	awn? ( x11-plugins/qutim-awn:${SLOT} )
 	connectionmanager? ( x11-plugins/qutim-connectionmanager:${SLOT} )
+	dbus? ( x11-plugins/qutim-dbusapi:${SLOT} )
 	histman? ( x11-plugins/qutim-histman:${SLOT} )
 	indicator? ( x11-plugins/qutim-indicator:${SLOT} )
 	massmessaging? ( x11-plugins/qutim-massmessaging:${SLOT} )
- 	qmlpopups? ( x11-plugins/qutim-qmlpopups:${SLOT} )
- 	urlpreview? ( x11-plugins/qutim-urlpreview:${SLOT} )
- 	yandexnarod? ( x11-plugins/qutim-yandexnarod:${SLOT} )"
+	qmlpopups? ( x11-plugins/qutim-qmlpopups:${SLOT} )
+	urlpreview? ( x11-plugins/qutim-urlpreview:${SLOT} )
+	yandexnarod? ( x11-plugins/qutim-yandexnarod:${SLOT} )"
 
 RESTRICT="debug? ( strip )"
 

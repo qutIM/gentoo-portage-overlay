@@ -7,6 +7,7 @@ x11-plugins/qutim-antispam:0.3-live			debug
 x11-plugins/qutim-aspeller:0.3-live			debug
 x11-plugins/qutim-awn:0.3-live				debug
 x11-plugins/qutim-connectionmanager:0.3-live	debug
+x11-plugins/qutim-dbusapi:0.3-live 			debug
 x11-plugins/qutim-histman:0.3-live			debug
 x11-plugins/qutim-icq:0.3-live				debug
 x11-plugins/qutim-indicator:0.3-live		debug
