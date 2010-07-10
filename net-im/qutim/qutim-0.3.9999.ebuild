@@ -18,10 +18,10 @@ LICENSE="GPL-2"
 SLOT="0.3-live"
 KEYWORDS=""
 
-PROTOCOLS="+icq +jabber libpurple" #mrim vkontakte
+PROTOCOLS="+icq irc +jabber libpurple" #mrim vkontakte
 PLUGINS="+aescrypto antiboss antispam aspeller awn connectionmanager dbus histman \
-	indicator kde +massmessaging qmlpopups +urlpreview +yandexnarod"
-	#imagepub otr plugman sqlhistory tex vsqlhistory weather webhistory
+	indicator kde +massmessaging qmlpopups +urlpreview weather +yandexnarod"
+	#imagepub otr plugman sqlhistory tex vsqlhistory webhistory
 IUSE="debug linguas_bg linguas_cs linguas_de linguas_ru linguas_uk"
 IUSE="${PROTOCOLS} ${PLUGINS} ${IUSE}"
 
@@ -38,6 +38,7 @@ PDEPEND="linguas_bg? ( net-im/qutim-l10n:${SLOT}[linguas_bg?] )
 	linguas_ru? ( net-im/qutim-l10n:${SLOT}[linguas_ru?] )
 	linguas_uk? ( net-im/qutim-l10n:${SLOT}[linguas_uk?] )
 	icq? ( x11-plugins/qutim-icq:${SLOT} )
+	irc? ( x11-plugins/qutim-icq:${SLOT} )
 	jabber? ( x11-plugins/qutim-jabber:${SLOT} )
 	libpurple? ( x11-plugins/qutim-quetzal:${SLOT} )
 	kde? ( kde-misc/qutim-kdeintegration:${SLOT} )

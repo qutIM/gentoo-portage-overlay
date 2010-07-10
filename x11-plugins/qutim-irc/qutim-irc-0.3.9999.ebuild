@@ -12,7 +12,7 @@ EGIT_REPO_URI="http://git.gitorious.org/qutim/protocols.git"
 EGIT_BRANCH="master"
 EGIT_COMMIT="${EGIT_BRANCH}"
 EGIT_PROJECT="qutim-protocols"
-DESCRIPTION="ICQ protocol plugin for net-im/qutim"
+DESCRIPTION="IRC protocol plugin for net-im/qutim"
 HOMEPAGE="http://www.qutim.org"
 
 LICENSE="GPL-2"
@@ -39,7 +39,7 @@ src_prepare() {
 		append-flags -O1 -g -ggdb
 		CMAKE_BUILD_TYPE="debug"
 	fi
-	mycmakeargs="-DIRC=off -DJABBER=off -DMRIM=off -DQUETZAL=off -DVKONTAKTE=off"
+	mycmakeargs="-DJABBER=off -DMRIM=off -DOSCAR=off -DQUETZAL=off -DVKONTAKTE=off"
 	CMAKE_IN_SOURCE_BUILD=1
 	sed -e "s/QutimPlugin/QutimPlugin-${PV}/" -i CMakeLists.txt
 

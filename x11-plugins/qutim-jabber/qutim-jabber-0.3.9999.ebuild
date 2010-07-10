@@ -53,7 +53,7 @@ src_prepare() {
 	mycmakeargs="$(cmake-utils_use openssl OpenSSL) \
 		$(cmake-utils_use gnutls GNUTLS) \
 		$(cmake-utils_use !gloox-static GLOOX_EXTERNAL) \
-		-DMRIM=off -DOSCAR=off -DQUETZAL=off -DVKONTAKTE=off"
+		-DIRC=off -DMRIM=off -DOSCAR=off -DQUETZAL=off -DVKONTAKTE=off"
 	CMAKE_IN_SOURCE_BUILD=1
 	sed -e "s/QutimPlugin/QutimPlugin-${PV}/" -i CMakeLists.txt
 	sed -e "s/>qutim\//>qutim-${PV}\//" -i jabber/src/protocol/account/muc/jmucjoin.ui

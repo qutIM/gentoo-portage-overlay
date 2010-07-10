@@ -11,9 +11,11 @@ x11-plugins/qutim-dbusapi:0.3-live 			debug
 x11-plugins/qutim-histman:0.3-live			debug
 x11-plugins/qutim-icq:0.3-live				debug
 x11-plugins/qutim-indicator:0.3-live		debug
+x11-plugins/qutim-irc:0.3-live				debug
 x11-plugins/qutim-jabber:0.3-live			debug
 x11-plugins/qutim-massmessaging:0.3-live	debug
 x11-plugins/qutim-qmlpopups:0.3-live		debug
 x11-plugins/qutim-quetzal:0.3-live			debug
 x11-plugins/qutim-urlpreview:0.3-live		debug
+x11-plugins/qutim-weather:0.3-live			debug
 x11-plugins/qutim-yandexnarod:0.3-live		debug
