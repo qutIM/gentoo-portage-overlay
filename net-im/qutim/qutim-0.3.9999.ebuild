@@ -58,10 +58,6 @@ PDEPEND="linguas_bg? ( net-im/qutim-l10n:${SLOT}[linguas_bg?] )
 
 RESTRICT="debug? ( strip )"
 
-pkg_setup() {
-	confutils_use_conflict sqlhistory webhistory vsqlhistory
-}
-
 src_unpack() {
 	git_src_unpack
 }
@@ -78,7 +74,7 @@ src_prepare() {
 	sed -e "/Exec/s/qutim/${P}/" \
 		-e "s/qutIM/qutIM-${SLOT}/" -i share/applications/qutim.desktop
 	mv "${S}/cmake/QutimPlugin.cmake" "${S}/cmake/QutimPlugin-${PV}.cmake"
-	mv "${S}/icons/qutim_64.png" "${S}/icons/${P}_64.png"
+	#mv "${S}/icons/qutim_64.png" "${S}/icons/${P}_64.png"
 	mv "${S}/share/applications/qutim.desktop" "${S}/share/applications/${P}.desktop"
 	mv "${S}/share/icons/hicolor/64x64/apps/qutim.png" "${S}/share/icons/hicolor/64x64/apps/${P}.png"
 	mv "${S}/share/icons/hicolor/scalable/apps/qutim.svg" "${S}/share/icons/hicolor/scalable/apps/${P}.svg"
@@ -111,7 +107,7 @@ src_prepare() {
 src_install() {
 	cmake-utils_src_install
 	mv "${D}/usr/$(get_libdir)/lib${P}.so" "${D}/usr/$(get_libdir)/lib${PN}.so.${PV}"
-	doicon "icons/${P}_64.png" || die "Failed to install icon"
+#	doicon "icons/${P}_64.png" || die "Failed to install icon"
 # 	dosym "lib${PN}.so.${PV}" "/usr/$(get_libdir)/lib${PN}.so"
 # 	dosym "${P}" "/usr/bin/${PN}"
 }
