@@ -18,7 +18,7 @@ LICENSE="GPL-2"
 SLOT="0.3-live"
 KEYWORDS=""
 
-PROTOCOLS="+icq irc +jabber libpurple" #mrim vkontakte
+PROTOCOLS="+icq irc +jabber libpurple vkontakte" #mrim
 PLUGINS="+aescrypto antiboss antispam aspeller awn connectionmanager dbus histman \
 	indicator kde +massmessaging phonon qmlpopups +urlpreview weather +yandexnarod"
 	#imagepub otr plugman sqlhistory tex vsqlhistory webhistory
@@ -41,6 +41,7 @@ PDEPEND="linguas_bg? ( net-im/qutim-l10n:${SLOT}[linguas_bg?] )
 	irc? ( x11-plugins/qutim-irc:${SLOT} )
 	jabber? ( x11-plugins/qutim-jabber:${SLOT} )
 	libpurple? ( x11-plugins/qutim-quetzal:${SLOT} )
+	vkontakte? ( x11-plugins/qutim-vkontakte:${SLOT} )
 	kde? ( kde-misc/qutim-kdeintegration:${SLOT} )
 	aescrypto? ( x11-plugins/qutim-aescrypto:${SLOT} )
 	antiboss? ( x11-plugins/qutim-antiboss:${SLOT} )
@@ -55,6 +56,7 @@ PDEPEND="linguas_bg? ( net-im/qutim-l10n:${SLOT}[linguas_bg?] )
 	phonon? ( x11-plugins/qutim-phonon:${SLOT} )
 	qmlpopups? ( x11-plugins/qutim-qmlpopups:${SLOT} )
 	urlpreview? ( x11-plugins/qutim-urlpreview:${SLOT} )
+	weather? ( x11-plugins/qutim-weather:${SLOT} )
 	yandexnarod? ( x11-plugins/qutim-yandexnarod:${SLOT} )"
 
 RESTRICT="debug? ( strip )"
