@@ -14,6 +14,7 @@ x11-plugins/qutim-indicator:0.3-live		debug
 x11-plugins/qutim-irc:0.3-live				debug
 x11-plugins/qutim-jabber:0.3-live			debug
 x11-plugins/qutim-massmessaging:0.3-live	debug
+x11-plugins/qutim-nowplaying:0.3-live		debug
 x11-plugins/qutim-phonon:0.3-live			debug
 x11-plugins/qutim-qmlpopups:0.3-live		debug
 x11-plugins/qutim-quetzal:0.3-live			debug
