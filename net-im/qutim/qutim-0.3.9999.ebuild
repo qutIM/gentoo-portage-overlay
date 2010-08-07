@@ -23,15 +23,17 @@ PLUGINS="+aescrypto antiboss antispam aspeller awn +clconf connectionmanager\
 	dbus histman indicator kde +massmessaging nowplaying phonon qmlpopups\
 	+urlpreview weather +yandexnarod"
 	#imagepub otr plugman sqlhistory tex vsqlhistory webhistory
-IUSE="debug linguas_bg linguas_cs linguas_de linguas_ru linguas_uk"
+IUSE="debug doc linguas_bg linguas_cs linguas_de linguas_ru linguas_uk"
 IUSE="${PROTOCOLS} ${PLUGINS} ${IUSE}"
 
 RDEPEND=">=x11-libs/qt-gui-4.6.0
 	>=x11-libs/qt-webkit-4.6.0
-	>=x11-libs/qt-multimedia-4.6.0"
+	>=x11-libs/qt-multimedia-4.6.0
+	phonon? ( kde-base/phonon-kde )"
 
 DEPEND="${RDEPEND}
-	>=dev-util/cmake-2.6.0"
+	>=dev-util/cmake-2.6.0
+	doc? ( app-doc/doxygen )"
 
 PDEPEND="linguas_bg? ( net-im/qutim-l10n:${SLOT}[linguas_bg?] )
 	linguas_cs? ( net-im/qutim-l10n:${SLOT}[linguas_cs?] )
@@ -86,6 +88,7 @@ src_prepare() {
 	mv "${S}/share/icons/hicolor/64x64/apps/qutim.png" "${S}/share/icons/hicolor/64x64/apps/${P}.png"
 	mv "${S}/share/icons/hicolor/scalable/apps/qutim.svg" "${S}/share/icons/hicolor/scalable/apps/${P}.svg"
 	mv "${S}/share/pixmaps/qutim.xpm" "${S}/share/pixmaps/${P}.xpm"
+	mv "${S}/share/qutim/icons/hicolor/16x16" "${S}/share/icons/hicolor/16x16"
 	mv "${S}/share/qutim" "${S}/share/${P}"
 	sed -e "/SET/s/PLUGINS_DEST \"lib\/qutim/PLUGINS_DEST \"lib\/${P}/" \
 		-e "/ADD_EXE/s/${PN}/${P}/" \
