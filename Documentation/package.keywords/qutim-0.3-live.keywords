@@ -6,6 +6,7 @@ x11-plugins/qutim-antiboss:0.3-live **
 x11-plugins/qutim-antispam:0.3-live **
 x11-plugins/qutim-aspeller:0.3-live **
 x11-plugins/qutim-awn:0.3-live **
+x11-plugins/qutim-clconf:0.3-live **
 x11-plugins/qutim-connectionmanager:0.3-live **
 x11-plugins/qutim-dbusapi:0.3-live **
 x11-plugins/qutim-histman:0.3-live **
@@ -14,6 +15,7 @@ x11-plugins/qutim-indicator:0.3-live **
 x11-plugins/qutim-irc:0.3-live **
 x11-plugins/qutim-jabber:0.3-live **
 x11-plugins/qutim-massmessaging:0.3-live **
+x11-plugins/qutim-mrim:0.3-live **
 x11-plugins/qutim-nowplaying:0.3-live **
 x11-plugins/qutim-phonon:0.3-live **
 x11-plugins/qutim-qmlpopups:0.3-live **

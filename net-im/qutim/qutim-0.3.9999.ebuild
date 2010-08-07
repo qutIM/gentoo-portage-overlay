@@ -18,10 +18,10 @@ LICENSE="GPL-2"
 SLOT="0.3-live"
 KEYWORDS=""
 
-PROTOCOLS="+icq irc +jabber libpurple vkontakte" #mrim
-PLUGINS="+aescrypto antiboss antispam aspeller awn connectionmanager dbus histman \
-	indicator kde +massmessaging nowplaying phonon qmlpopups +urlpreview \
-	weather +yandexnarod"
+PROTOCOLS="+icq irc +jabber libpurple mrim vkontakte"
+PLUGINS="+aescrypto antiboss antispam aspeller awn +clconf connectionmanager\
+	dbus histman indicator kde +massmessaging nowplaying phonon qmlpopups\
+	+urlpreview weather +yandexnarod"
 	#imagepub otr plugman sqlhistory tex vsqlhistory webhistory
 IUSE="debug linguas_bg linguas_cs linguas_de linguas_ru linguas_uk"
 IUSE="${PROTOCOLS} ${PLUGINS} ${IUSE}"
@@ -42,6 +42,7 @@ PDEPEND="linguas_bg? ( net-im/qutim-l10n:${SLOT}[linguas_bg?] )
 	irc? ( x11-plugins/qutim-irc:${SLOT} )
 	jabber? ( x11-plugins/qutim-jabber:${SLOT} )
 	libpurple? ( x11-plugins/qutim-quetzal:${SLOT} )
+	mrim? ( x11-plugins/qutim-mrim:${SLOT} )
 	vkontakte? ( x11-plugins/qutim-vkontakte:${SLOT} )
 	kde? ( kde-misc/qutim-kdeintegration:${SLOT} )
 	aescrypto? ( x11-plugins/qutim-aescrypto:${SLOT} )
@@ -49,6 +50,7 @@ PDEPEND="linguas_bg? ( net-im/qutim-l10n:${SLOT}[linguas_bg?] )
 	antispam? ( x11-plugins/qutim-antispam:${SLOT} )
 	aspeller? ( x11-plugins/qutim-aspeller:${SLOT} )
 	awn? ( x11-plugins/qutim-awn:${SLOT} )
+	clconf? ( x11-plugins/qutim-clconf:${SLOT} )
 	connectionmanager? ( x11-plugins/qutim-connectionmanager:${SLOT} )
 	dbus? ( x11-plugins/qutim-dbusapi:${SLOT} )
 	histman? ( x11-plugins/qutim-histman:${SLOT} )
