@@ -8,7 +8,7 @@ EGIT_HAS_SUBMODULES="true"
 
 inherit git eutils cmake-utils confutils
 
-EGIT_REPO_URI="http://git.gitorious.org/qutim/qutim.git"
+EGIT_REPO_URI="git://gitorious.org/qutim/qutim.git"
 EGIT_BRANCH="sdk02"
 EGIT_COMMIT="${EGIT_BRANCH}"
 DESCRIPTION="Multiprotocol instant messenger"

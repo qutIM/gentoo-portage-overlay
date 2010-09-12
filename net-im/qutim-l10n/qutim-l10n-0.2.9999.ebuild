@@ -6,7 +6,7 @@ EAPI="2"
 
 inherit git
 
-EGIT_REPO_URI="http://git.gitorious.org/qutim/translations.git"
+EGIT_REPO_URI="git://gitorious.org/qutim/translations.git"
 EGIT_BRANCH="sdk02"
 EGIT_COMMIT="${EGIT_BRANCH}"
 DESCRIPTION="Localization package for net-im/qutim"

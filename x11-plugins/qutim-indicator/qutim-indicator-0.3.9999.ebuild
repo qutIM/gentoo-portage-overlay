@@ -4,9 +4,9 @@
 
 EAPI="2"
 
-inherit git eutils qt4 cmake-utils
+inherit git eutils qt4-r2 cmake-utils
 
-EGIT_REPO_URI="http://git.gitorious.org/qutim/plugins.git"
+EGIT_REPO_URI="git://gitorious.org/qutim/plugins.git"
 EGIT_BRANCH="master"
 EGIT_COMMIT="${EGIT_BRANCH}"
 EGIT_PROJECT="qutim-plugins"
@@ -34,16 +34,38 @@ src_unpack() {
 }
 
 src_prepare() {
-	S=${S}/${MY_PN}
 	if (use debug) ; then
 		unset CFLAGS CXXFLAGS
 		append-flags -O1 -g -ggdb
 		CMAKE_BUILD_TYPE="debug"
 	fi
-	for i in $(grep -rl "<qutim/" "${S}" | grep -v "\.git"); do
-		sed -e "s/<qutim\//<qutim-${PV}\//" -i "${i}";
-	done
-	sed -e "s/qutim/qutim-${PV}/" \
-		-e "s/QutimPlugin/QutimPlugin-${PV}/" -i "${S}/CMakeLists.txt"
+	mycmakeargs="-DAESCRYPTO=off \
+		-DANTIBOSS=off \
+		-DANTISPAM=off \
+		-DASPELLER=off \
+		-DAWN=off \
+		-DCLCONF=off \
+		-DCONNECTIONMANAGER=off \
+		-DDBUSAPI=off \
+		-DDBUSNOTIFICATIONS=off \
+		-DFLOATIES=off \
+		-DHISTMAN=off \
+		-DIMAGEPUB=off \
+		-DLOGGER=off \
+		-DMAC-INTEGRATION=off \
+		-DMASSMESSAGING=off \
+		-DPHONONSOUND=off \
+		-DPLUGMAN=off \
+		-DSCRIPTAPI=off \
+		-DSQLHISTORY=off \
+		-DURLPREVIEW=off \
+		-DWEATHER=off \
+		-DWEBHISTORY=off \
+		-DYANDEXNAROD=off"
+# 	for i in $(grep -rl "<qutim/" "${S}" | grep -v "\.git"); do
+# 		sed -e "s/<qutim\//<qutim-${PV}\//" -i "${i}";
+# 	done
+# 	sed -e "s/qutim/qutim-${PV}/" \
+# 		-e "s/QutimPlugin/QutimPlugin-${PV}/" -i "${S}/CMakeLists.txt"
 	CMAKE_IN_SOURCE_BUILD=1
 }

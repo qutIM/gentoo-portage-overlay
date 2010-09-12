@@ -6,9 +6,9 @@ EAPI="2"
 
 EGIT_HAS_SUBMODULES="true"
 
-inherit git eutils qt4
+inherit git eutils qt4-r2
 
-EGIT_REPO_URI="http://git.gitorious.org/qutim/protocols.git"
+EGIT_REPO_URI="git://gitorious.org/qutim/protocols.git"
 EGIT_BRANCH="sdk02"
 EGIT_COMMIT="${EGIT_BRANCH}"
 EGIT_PROJECT="qutim-protocols"

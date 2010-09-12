@@ -6,9 +6,9 @@ EAPI="2"
 
 EGIT_HAS_SUBMODULES="true"
 
-inherit git eutils qt4 cmake-utils
+inherit git eutils qt4-r2 cmake-utils
 
-EGIT_REPO_URI="http://git.gitorious.org/qutim/protocols.git"
+EGIT_REPO_URI="git://gitorious.org/qutim/protocols.git"
 EGIT_BRANCH="master"
 EGIT_COMMIT="${EGIT_BRANCH}"
 EGIT_PROJECT="qutim-protocols"
@@ -41,9 +41,9 @@ src_prepare() {
 	fi
 	mycmakeargs="-DIRC=off -DJABBER=off -DMRIM=off -DQUETZAL=off -DVKONTAKTE=off"
 	CMAKE_IN_SOURCE_BUILD=1
-	sed -e "s/QutimPlugin/QutimPlugin-${PV}/" -i CMakeLists.txt
-
-	for i in $(grep -rl "qutim/" "${S}" | grep -v "\.git"); do
-		sed -e "/#include/s/qutim\//qutim-${PV}\//" -i ${i};
-	done
+# 	sed -e "s/QutimPlugin/QutimPlugin-${PV}/" -i CMakeLists.txt
+# 
+# 	for i in $(grep -rl "qutim/" "${S}" | grep -v "\.git"); do
+# 		sed -e "/#include/s/qutim\//qutim-${PV}\//" -i ${i};
+# 	done
 }

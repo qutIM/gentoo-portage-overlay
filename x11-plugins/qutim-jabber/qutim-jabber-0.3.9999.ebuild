@@ -8,7 +8,7 @@ EGIT_HAS_SUBMODULES="true"
 
 inherit git eutils cmake-utils confutils
 
-EGIT_REPO_URI="http://git.gitorious.org/qutim/protocols.git"
+EGIT_REPO_URI="git://gitorious.org/qutim/protocols.git"
 EGIT_BRANCH="master"
 EGIT_COMMIT="${EGIT_BRANCH}"
 EGIT_PROJECT="qutim-protocols"
@@ -55,12 +55,13 @@ src_prepare() {
 		$(cmake-utils_use !gloox-static GLOOX_EXTERNAL) \
 		-DIRC=off -DMRIM=off -DOSCAR=off -DQUETZAL=off -DVKONTAKTE=off"
 	CMAKE_IN_SOURCE_BUILD=1
-	sed -e "s/QutimPlugin/QutimPlugin-${PV}/" -i CMakeLists.txt
-	sed -e "s/>qutim\//>qutim-${PV}\//" -i jabber/src/protocol/account/muc/jmucjoin.ui
-
-	for i in $(grep -rl "qutim/" "${S}" | grep -v "\.git"); do
-		sed -e "/#include/s/qutim\//qutim-${PV}\//" -i ${i};
-	done
+# 	sed -e "s/QutimPlugin/QutimPlugin-${PV}/" \
+# 		-e "s/QutIM/QutIM-${PV}/" -i CMakeLists.txt
+# 	sed -e "s/>qutim\//>qutim-${PV}\//" -i jabber/src/protocol/account/muc/jmucjoin.ui
+# 
+# 	for i in $(grep -rl "qutim/" "${S}" | grep -v "\.git"); do
+# 		sed -e "/#include/s/qutim\//qutim-${PV}\//" -i ${i};
+# 	done
 }
 
 src_install() {

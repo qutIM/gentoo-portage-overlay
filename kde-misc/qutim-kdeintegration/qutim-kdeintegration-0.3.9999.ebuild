@@ -6,7 +6,7 @@ EAPI="2"
 
 inherit git eutils kde4-base
 
-EGIT_REPO_URI="http://git.gitorious.org/qutim/kde-integration.git"
+EGIT_REPO_URI="git://gitorious.org/qutim/kde-integration.git"
 EGIT_BRANCH="master"
 EGIT_COMMIT="${EGIT_BRANCH}"
 DESCRIPTION="KDEIntegration plugin for net-im/qutim"
@@ -39,8 +39,8 @@ src_prepare() {
 		CMAKE_BUILD_TYPE="debug"
 	fi
 	CMAKE_IN_SOURCE_BUILD=1
-	sed -e "s/QutimPlugin/QutimPlugin-${PV}/" -i CMakeLists.txt
-	for i in $(grep -rl "<qutim/" "${S}" | grep -v "\.git"); do
-		sed -e "s/<qutim\//<qutim-${PV}\//" -i ${i};
-	done
+# 	sed -e "s/QutimPlugin/QutimPlugin-${PV}/" -i CMakeLists.txt
+# 	for i in $(grep -rl "<qutim/" "${S}" | grep -v "\.git"); do
+# 		sed -e "s/<qutim\//<qutim-${PV}\//" -i ${i};
+# 	done
 }

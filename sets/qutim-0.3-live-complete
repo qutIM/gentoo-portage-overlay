@@ -1,0 +1,27 @@
+# This set contains all ebuilds in 0.3-live SLOT
+
+# Core
+net-im/qutim:0.3-live
+net-im/qutim-l10n:0.3-live
+
+# Protocol plugins
+x11-plugins/qutim-icq:0.3-live
+x11-plugins/qutim-jabber:0.3-live
+x11-plugins/qutim-quetzal:0.3-live
+
+# Nonprotocol plugins
+kde-misc/qutim-kdeintegration:0.3-live
+x11-plugins/qutim-aescrypto:0.3-live
+x11-plugins/qutim-antiboss:0.3-live
+x11-plugins/qutim-antispam:0.3-live
+x11-plugins/qutim-aspeller:0.3-live
+x11-plugins/qutim-awn:0.3-live
+x11-plugins/qutim-connectionmanager:0.3-live
+x11-plugins/qutim-dbusapi:0.3-live
+x11-plugins/qutim-histman:0.3-live
+x11-plugins/qutim-indicator:0.3-live
+x11-plugins/qutim-massmessaging:0.3-live
+x11-plugins/qutim-qmlpopups:0.3-live
+x11-plugins/qutim-urlpreview:0.3-live
+x11-plugins/qutim-weather:0.3-live
+x11-plugins/qutim-yandexnarod:0.3-live

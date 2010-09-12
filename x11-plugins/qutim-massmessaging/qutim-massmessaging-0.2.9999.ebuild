@@ -4,9 +4,9 @@
 
 EAPI="2"
 
-inherit git eutils qt4
+inherit git eutils qt4-r2
 
-EGIT_REPO_URI="http://git.gitorious.org/qutim/plugins.git"
+EGIT_REPO_URI="git://gitorious.org/qutim/plugins.git"
 EGIT_BRANCH="sdk02"
 EGIT_COMMIT="${EGIT_BRANCH}"
 EGIT_PROJECT="qutim-plugins"

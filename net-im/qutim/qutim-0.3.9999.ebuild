@@ -8,7 +8,7 @@ EGIT_HAS_SUBMODULES="true"
 
 inherit git eutils cmake-utils confutils
 
-EGIT_REPO_URI="http://git.gitorious.org/qutim/qutim.git"
+EGIT_REPO_URI="git://gitorious.org/qutim/qutim.git"
 EGIT_BRANCH="master"
 EGIT_COMMIT="${EGIT_BRANCH}"
 DESCRIPTION="Multiprotocol instant messenger"
@@ -19,7 +19,7 @@ SLOT="0.3-live"
 KEYWORDS=""
 
 PROTOCOLS="+icq irc +jabber libpurple" #mrim vkontakte
-PLUGINS="+aescrypto antiboss antispam aspeller awn connectionmanager dbus histman \
+PLUGINS="aescrypto antiboss antispam aspeller awn connectionmanager dbus histman \
 	indicator kde +massmessaging qmlpopups +urlpreview weather +yandexnarod"
 	#imagepub otr plugman sqlhistory tex vsqlhistory webhistory
 IUSE="debug linguas_bg linguas_cs linguas_de linguas_ru linguas_uk"
@@ -70,43 +70,60 @@ src_prepare() {
 		CMAKE_BUILD_TYPE="Debug"
 	fi
 	## slotting... ##
-	sed -e "s/${PN}/${P}/" -i cmake/QutimPlugin.cmake
-	sed -e "/Exec/s/qutim/${P}/" \
-		-e "s/qutIM/qutIM-${SLOT}/" -i share/applications/qutim.desktop
-	mv "${S}/cmake/QutimPlugin.cmake" "${S}/cmake/QutimPlugin-${PV}.cmake"
-	#mv "${S}/icons/qutim_64.png" "${S}/icons/${P}_64.png"
-	mv "${S}/share/applications/qutim.desktop" "${S}/share/applications/${P}.desktop"
-	mv "${S}/share/icons/hicolor/64x64/apps/qutim.png" "${S}/share/icons/hicolor/64x64/apps/${P}.png"
-	mv "${S}/share/icons/hicolor/scalable/apps/qutim.svg" "${S}/share/icons/hicolor/scalable/apps/${P}.svg"
-	mv "${S}/share/pixmaps/qutim.xpm" "${S}/share/pixmaps/${P}.xpm"
-	mv "${S}/share/qutim" "${S}/share/${P}"
-	sed -e "/SET/s/PLUGINS_DEST \"lib\/qutim/PLUGINS_DEST \"lib\/${P}/" \
-		-e "/ADD_EXE/s/${PN}/${P}/" \
-		-e "/set_target/s/${PN}/${P}/" \
-		-e "/TARGET_LINK/s/${PN}/${P}/" \
-		-e "s/^[ \t]*lib${PN}/lib${P}/" \
-		-e "/INSTALL/s/${PN}/${P}/" \
-		-e "s/QutimPlugin/QutimPlugin-${PV}/" -i CMakeLists.txt
-	sed -e "/install/s/PREFIX}\/share/PREFIX}\/share\/doc/" \
-		-e "s/${PN}/${P}/" \
-		-e "/install/s/DIR}\/doc/DIR}\/doc\/html/" -i libqutim/CMakeLists.txt
-	sed -e "s/QutimPlugin/QutimPlugin-${PV}/" -i examples/autosettingsitem/CMakeLists.txt
-	sed -e "s/QutimPlugin/QutimPlugin-${PV}/" -i examples/simplesettingsdialog/CMakeLists.txt
-	sed -e "/plugin_path/s/\"${PN}\"/\"${P}\"/" -i libqutim/modulemanager.cpp
+	#sed -e "s/${PN}/${P}/" -i cmake/QutimPlugin.cmake
+# 	sed -e "/Exec/s/${PN}/${P}/" \
+# 		-e "s/qutIM/qutIM-${SLOT}/" -i share/applications/qutim.desktop
+# 	sed -e "/SET/s/PLUGINS_DEST \"lib\/qutim/PLUGINS_DEST \"lib\/${P}/" \
+# 		-e "/ADD_EXE/s/${PN}/${P}/" \
+# 		-e "/set_target/s/${PN}/${P}/" \
+# 		-e "/TARGET_LINK/s/${PN}/${P}/" \
+# 		-e "/INSTALL/s/${PN}/${P}/" \
+# 		-e "s/QutIM/QutIM-${PV}/" \
+# 		-e "s/QutimPlugin/QutimPlugin-${PV}/" -i CMakeLists.txt
+		#-e "s/^[ \t]*lib${PN}/lib${P}/" \
+		#-e "/APPEND/s/lib${PN}/lib${P}/" \
+		#-e "/FindQutIM/s/CMAKE_CURRENT/qutim/" \
+	#sed	-e "s/QutIM/QutIM-${PV}/" -i src/corelayers/CMakeLists.txt
+# 	sed -e "/find_path/s/qutim\//qutim-${PV}\//" \
+# 		-e "s/<qutim/<qutim-${PV}/" \
+# 		-e "s/lib\/qutim/lib\/qutim-${PV}/" -i cmake/FindQutIM.cmake
+# 		#-e "s/QutIM/QutIM-${PV}/" 
+# 	sed -e "/install/s/PREFIX}\/share/PREFIX}\/share\/doc/" \
+# 		-e "/install/s/DIR}\/doc/DIR}\/doc\/html/" -i libqutim/CMakeLists.txt
+# 		#-e "s/${PN}/${P}/" \
+# 	sed -e "s/QutimPlugin/QutimPlugin-${PV}/" -i examples/autosettingsitem/CMakeLists.txt
+# 	sed -e "s/QutimPlugin/QutimPlugin-${PV}/" -i examples/simplesettingsdialog/CMakeLists.txt
+# 	#sed -e "/plugin_path/s/\"${PN}\"/\"${P}\"/" -i libqutim/modulemanager.cpp
+# 	#mv "${S}/cmake/FindQutIM.cmake" "${S}/cmake/FindQutIM-${PV}.cmake"
+# 	#mv "${S}/cmake/QutIMMacros.cmake" "${S}/cmake/QutIM-${PV}Macros.cmake"
+# 	#mv "${S}/icons/qutim_64.png" "${S}/icons/${P}_64.png"
+# 	mv "${S}/share/applications/qutim.desktop" "${S}/share/applications/${P}.desktop"
+# 	mv "${S}/share/icons/hicolor/64x64/apps/qutim.png" "${S}/share/icons/hicolor/64x64/apps/${P}.png"
+# 	mv "${S}/share/icons/hicolor/scalable/apps/qutim.svg" "${S}/share/icons/hicolor/scalable/apps/${P}.svg"
+# 	mv "${S}/share/pixmaps/qutim.xpm" "${S}/share/pixmaps/${P}.xpm"
+# 	mv "${S}/share/qutim" "${S}/share/${P}"
+# 
+# 	for i in $(grep -rl qutim_64 "${S}" | grep -v "\.git"); do
+# 		sed -e "s/qutim_64/${P}_64/" -i ${i};
+# 	done
+# 
+# 	for i in $(grep -rl qutim.png "${S}" | grep -v "\.git"); do
+# 		sed -e "s/qutim.png/${P}.png/" -i ${i};
+# 	done
 
-	for i in $(grep -rl qutim_64 "${S}" | grep -v "\.git"); do
-		sed -e "s/qutim_64/${P}_64/" -i ${i};
-	done
+# 	for i in $(grep -rl "<qutim/" "${S}/src/corelayers/" | grep -v "\.git"); do
+# 		sed -e "s:<qutim/:<${S}/libqutim/:" -i ${i};
+# 	done
 
-	for i in $(grep -rl qutim.png "${S}" | grep -v "\.git"); do
-		sed -e "s/qutim.png/${P}.png/" -i ${i};
-	done
+# 	for i in $(grep -rl "QutIM REQUIRED" "${S}" | grep -v "\.git"); do
+# 		sed -e "s/QutIM REQUIRED/QutIM-${PV} REQUIRED/" -i ${i};
+# 	done
 	## end of slotting... ##
 }
 
 src_install() {
 	cmake-utils_src_install
-	mv "${D}/usr/$(get_libdir)/lib${P}.so" "${D}/usr/$(get_libdir)/lib${PN}.so.${PV}"
+	#mv "${D}/usr/$(get_libdir)/lib${P}.so" "${D}/usr/$(get_libdir)/lib${PN}.so.${PV}"
 #	doicon "icons/${P}_64.png" || die "Failed to install icon"
 # 	dosym "lib${PN}.so.${PV}" "/usr/$(get_libdir)/lib${PN}.so"
 # 	dosym "${P}" "/usr/bin/${PN}"

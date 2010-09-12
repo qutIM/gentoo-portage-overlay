@@ -4,9 +4,9 @@
 
 EAPI="2"
 
-inherit git eutils qt4
+inherit git eutils qt4-r2
 
-EGIT_REPO_URI="http://git.gitorious.org/vsqlhistory/vsqlhistory.git"
+EGIT_REPO_URI="git://gitorious.org/vsqlhistory/vsqlhistory.git"
 DESCRIPTION="V-SQL storage history plugin for net-im/qutim"
 HOMEPAGE="http://www.qutim.org"
 

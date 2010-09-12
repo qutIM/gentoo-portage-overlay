@@ -6,7 +6,7 @@ EAPI="2"
 
 inherit git eutils kde4-base
 
-EGIT_REPO_URI="http://git.gitorious.org/qutim/kde-integration.git"
+EGIT_REPO_URI="git://gitorious.org/qutim/kde-integration.git"
 EGIT_BRANCH="sdk02"
 EGIT_COMMIT="${EGIT_BRANCH}"
 DESCRIPTION="KDEIntegration plugin for net-im/qutim"
