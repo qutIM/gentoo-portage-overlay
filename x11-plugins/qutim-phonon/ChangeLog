@@ -1,0 +1,10 @@
+# ChangeLog for x11-plugins/qutim-phonon
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+*qutim-phonon-0.3.9999 (04 Aug 2010)
+
+  04 Aug 2010; Viktor Lazarev <taurus101v@gmail.com>
+  +qutim-phonon-0.3.9999.ebuild, +metadata.xml:
+  Initial ebuild
+

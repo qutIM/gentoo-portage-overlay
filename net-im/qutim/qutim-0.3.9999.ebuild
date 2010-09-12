@@ -18,19 +18,22 @@ LICENSE="GPL-2"
 SLOT="0.3-live"
 KEYWORDS=""
 
-PROTOCOLS="+icq irc +jabber libpurple" #mrim vkontakte
-PLUGINS="aescrypto antiboss antispam aspeller awn connectionmanager dbus histman \
-	indicator kde +massmessaging qmlpopups +urlpreview weather +yandexnarod"
+PROTOCOLS="+icq irc +jabber libpurple mrim vkontakte"
+PLUGINS="aescrypto antiboss antispam aspeller awn clconf connectionmanager dbus \
+	histman indicator kde massmessaging phonon qmlpopups urlpreview weather \
+	yandexnarod"
 	#imagepub otr plugman sqlhistory tex vsqlhistory webhistory
-IUSE="debug linguas_bg linguas_cs linguas_de linguas_ru linguas_uk"
+IUSE="debug doc linguas_bg linguas_cs linguas_de linguas_ru linguas_uk"
 IUSE="${PROTOCOLS} ${PLUGINS} ${IUSE}"
 
 RDEPEND=">=x11-libs/qt-gui-4.6.0
 	>=x11-libs/qt-webkit-4.6.0
-	>=x11-libs/qt-multimedia-4.6.0"
+	>=x11-libs/qt-multimedia-4.6.0
+	phonon? ( kde-base/phonon-kde )"
 
 DEPEND="${RDEPEND}
-	>=dev-util/cmake-2.6.0"
+	>=dev-util/cmake-2.6.0
+	doc? ( app-doc/doxygen )"
 
 PDEPEND="linguas_bg? ( net-im/qutim-l10n:${SLOT}[linguas_bg?] )
 	linguas_cs? ( net-im/qutim-l10n:${SLOT}[linguas_cs?] )
@@ -41,19 +44,25 @@ PDEPEND="linguas_bg? ( net-im/qutim-l10n:${SLOT}[linguas_bg?] )
 	irc? ( x11-plugins/qutim-irc:${SLOT} )
 	jabber? ( x11-plugins/qutim-jabber:${SLOT} )
 	libpurple? ( x11-plugins/qutim-quetzal:${SLOT} )
+	mrim? ( x11-plugins/qutim-mrim:${SLOT} )
+	vkontakte? ( x11-plugins/qutim-vkontakte:${SLOT} )
 	kde? ( kde-misc/qutim-kdeintegration:${SLOT} )
 	aescrypto? ( x11-plugins/qutim-aescrypto:${SLOT} )
 	antiboss? ( x11-plugins/qutim-antiboss:${SLOT} )
 	antispam? ( x11-plugins/qutim-antispam:${SLOT} )
 	aspeller? ( x11-plugins/qutim-aspeller:${SLOT} )
 	awn? ( x11-plugins/qutim-awn:${SLOT} )
+	clconf? ( x11-plugins/qutim-clconf:${SLOT} )
 	connectionmanager? ( x11-plugins/qutim-connectionmanager:${SLOT} )
 	dbus? ( x11-plugins/qutim-dbusapi:${SLOT} )
 	histman? ( x11-plugins/qutim-histman:${SLOT} )
 	indicator? ( x11-plugins/qutim-indicator:${SLOT} )
 	massmessaging? ( x11-plugins/qutim-massmessaging:${SLOT} )
+	nowplaying? ( x11-plugins/qutim-nowplaying:${SLOT} )
+	phonon? ( x11-plugins/qutim-phonon:${SLOT} )
 	qmlpopups? ( x11-plugins/qutim-qmlpopups:${SLOT} )
 	urlpreview? ( x11-plugins/qutim-urlpreview:${SLOT} )
+	weather? ( x11-plugins/qutim-weather:${SLOT} )
 	yandexnarod? ( x11-plugins/qutim-yandexnarod:${SLOT} )"
 
 RESTRICT="debug? ( strip )"
