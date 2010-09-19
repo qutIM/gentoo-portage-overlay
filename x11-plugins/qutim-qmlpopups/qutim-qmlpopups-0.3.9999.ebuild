@@ -53,6 +53,7 @@ src_prepare() {
 		-DLOGGER=off \
 		-DMAC-INTEGRATION=off \
 		-DMASSMESSAGING=off \
+		-DNOWPLAYING=off \
 		-DPHONONSOUND=off \
 		-DPLUGMAN=off \
 		-DSCRIPTAPI=off \

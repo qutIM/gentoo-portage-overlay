@@ -31,7 +31,6 @@ src_unpack() {
 }
 
 src_prepare() {
-	S=${S}/${MY_PN}
 	if (use debug) ; then
 		unset CFLAGS CXXFLAGS
 		append-flags -O1 -g -ggdb
@@ -47,18 +46,15 @@ src_prepare() {
 		-DDBUSNOTIFICATIONS=off \
 		-DFLOATIES=off \
 		-DHISTMAN=off \
-		-DIMAGEPUB=off \
 		-DINDICATOR=off \
 		-DLOGGER=off \
 		-DMAC-INTEGRATION=off \
 		-DMASSMESSAGING=off \
+		-DNOWPLAYING=off \
 		-DPHONONSOUND=off \
-		-DPLUGMAN=off \
 		-DSCRIPTAPI=off \
-		-DSQLHISTORY=off \
 		-DURLPREVIEW=off \
 		-DWEATHER=off \
-		-DWEBHISTORY=off \
 		-DYANDEXNAROD=off"
 # 	for i in $(grep -rl "<qutim/" "${S}" | grep -v "\.git"); do
 # 		sed -e "s/<qutim\//<qutim-${PV}\//" -i "${i}";

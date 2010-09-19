@@ -49,18 +49,15 @@ src_prepare() {
 		-DDBUSAPI=off \
 		-DDBUSNOTIFICATIONS=off \
 		-DFLOATIES=off \
-		-DIMAGEPUB=off \
 		-DINDICATOR=off \
 		-DLOGGER=off \
 		-DMAC-INTEGRATION=off \
 		-DMASSMESSAGING=off \
+		-DNOWPLAYING=off \
 		-DPHONONSOUND=off \
-		-DPLUGMAN=off \
 		-DSCRIPTAPI=off \
-		-DSQLHISTORY=off \
 		-DURLPREVIEW=off \
 		-DWEATHER=off \
-		-DWEBHISTORY=off \
 		-DYANDEXNAROD=off"
 # 	for i in $(grep -rl "<qutim/" "${S}" | grep -v "\.git"); do
 # 		sed -e "s/<qutim\//<qutim-${PV}\//" -i "${i}";

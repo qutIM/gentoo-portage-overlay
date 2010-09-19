@@ -20,8 +20,8 @@ KEYWORDS=""
 
 PROTOCOLS="+icq irc +jabber libpurple mrim vkontakte"
 PLUGINS="aescrypto antiboss antispam aspeller awn clconf connectionmanager dbus \
-	histman indicator kde massmessaging phonon qmlpopups urlpreview weather \
-	yandexnarod"
+	histman indicator kde massmessaging nowplaying phonon qmlpopups urlpreview \
+	weather yandexnarod"
 	#imagepub otr plugman sqlhistory tex vsqlhistory webhistory
 IUSE="debug doc linguas_bg linguas_cs linguas_de linguas_ru linguas_uk"
 IUSE="${PROTOCOLS} ${PLUGINS} ${IUSE}"

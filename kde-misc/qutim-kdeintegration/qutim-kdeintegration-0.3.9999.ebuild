@@ -4,7 +4,7 @@
 
 EAPI="2"
 
-inherit git eutils kde4-base
+inherit git eutils kde4-base cmake-utils
 
 EGIT_REPO_URI="git://gitorious.org/qutim/kde-integration.git"
 EGIT_BRANCH="master"
