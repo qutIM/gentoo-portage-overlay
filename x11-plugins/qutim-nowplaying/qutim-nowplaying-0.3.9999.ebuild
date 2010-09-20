@@ -42,6 +42,7 @@ src_prepare() {
 		-DANTISPAM=off \
 		-DASPELLER=off \
 		-DAWN=off \
+		-DCLCONF=off \
 		-DCONNECTIONMANAGER=off \
 		-DDBUSAPI=off \
 		-DDBUSNOTIFICATIONS=off \
@@ -51,7 +52,6 @@ src_prepare() {
 		-DLOGGER=off \
 		-DMAC-INTEGRATION=off \
 		-DMASSMESSAGING=off \
-		-DNOWPLAYING=off \
 		-DPHONONSOUND=off \
 		-DSCRIPTAPI=off \
 		-DURLPREVIEW=off \
