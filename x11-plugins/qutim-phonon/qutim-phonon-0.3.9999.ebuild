@@ -6,7 +6,7 @@ EAPI="2"
 
 inherit git eutils qt4-r2 cmake-utils
 
-EGIT_REPO_URI="http://git.gitorious.org/qutim/plugins.git"
+EGIT_REPO_URI="git://gitorious.org/qutim/plugins.git"
 EGIT_BRANCH="master"
 EGIT_COMMIT="${EGIT_BRANCH}"
 EGIT_PROJECT="qutim-plugins"
@@ -46,6 +46,7 @@ src_prepare() {
 		-DCONNECTIONMANAGER=off \
 		-DDBUSAPI=off \
 		-DDBUSNOTIFICATIONS=off \
+		-DEMOEDIT=off \
 		-DFLOATIES=off \
 		-DHISTMAN=off \
 		-DINDICATOR=off \

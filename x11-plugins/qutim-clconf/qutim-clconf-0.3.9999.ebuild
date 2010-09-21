@@ -44,6 +44,7 @@ src_prepare() {
 		-DCONNECTIONMANAGER=off \
 		-DDBUSAPI=off \
 		-DDBUSNOTIFICATIONS=off \
+		-DEMOEDIT=off \
 		-DFLOATIES=off \
 		-DHISTMAN=off \
 		-DINDICATOR=off \

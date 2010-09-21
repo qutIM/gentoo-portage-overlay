@@ -46,6 +46,7 @@ src_prepare() {
 		-DCLCONF=off \
 		-DDBUSAPI=off \
 		-DDBUSNOTIFICATIONS=off \
+		-DEMOEDIT=off \
 		-DFLOATIES=off \
 		-DHISTMAN=off \
 		-DINDICATOR=off \
