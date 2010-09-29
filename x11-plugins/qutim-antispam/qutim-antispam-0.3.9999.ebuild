@@ -54,6 +54,7 @@ src_prepare() {
 		-DMASSMESSAGING=off \
 		-DNOWPLAYING=off \
 		-DPHONONSOUND=off \
+		-DSDLSOUND=off \
 		-DSCRIPTAPI=off \
 		-DURLPREVIEW=off \
 		-DWEATHER=off \

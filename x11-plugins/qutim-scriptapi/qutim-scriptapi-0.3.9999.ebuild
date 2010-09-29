@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI="2"
+EAPI=3
 
 inherit git eutils qt4-r2 cmake-utils
 
@@ -10,17 +10,17 @@ EGIT_REPO_URI="git://gitorious.org/qutim/plugins.git"
 EGIT_BRANCH="master"
 EGIT_COMMIT="${EGIT_BRANCH}"
 EGIT_PROJECT="qutim-plugins"
-DESCRIPTION="D-Bus API plugin for net-im/qutim"
+
+DESCRIPTION="Plugin for net-im/qutim"
 HOMEPAGE="http://www.qutim.org"
+SRC_URI=""
 
 LICENSE="GPL-2"
 SLOT="0.3-live"
 KEYWORDS=""
 IUSE="debug"
 
-RDEPEND="net-im/qutim:${SLOT}
-	>=x11-libs/qt-dbus-4.6.0:4"
-
+RDEPEND="net-im/qutim:${SLOT}"
 DEPEND="${RDEPEND}
 	>=dev-util/cmake-2.6"
 
@@ -45,6 +45,7 @@ src_prepare() {
 		-DAWN=off \
 		-DCLCONF=off \
 		-DCONNECTIONMANAGER=off \
+		-DDBUSAPI=off \
 		-DDBUSNOTIFICATIONS=off \
 		-DEMOEDIT=off \
 		-DFLOATIES=off \
@@ -55,15 +56,9 @@ src_prepare() {
 		-DMASSMESSAGING=off \
 		-DNOWPLAYING=off \
 		-DPHONONSOUND=off \
-		-DSCRIPTAPI=off \
 		-DSDLSOUND=off \
 		-DURLPREVIEW=off \
 		-DWEATHER=off \
 		-DYANDEXNAROD=off"
-# 	for i in $(grep -rl "<qutim/" "${S}" | grep -v "\.git"); do
-# 		sed -e "s/<qutim\//<qutim-${PV}\//" -i "${i}";
-# 	done
-# 	sed -e "s/qutim/qutim-${PV}/" \
-# 		-e "s/QutimPlugin/QutimPlugin-${PV}/" -i "${S}/CMakeLists.txt"
 	CMAKE_IN_SOURCE_BUILD=1
 }

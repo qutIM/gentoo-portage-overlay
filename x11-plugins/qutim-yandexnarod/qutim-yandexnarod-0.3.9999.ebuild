@@ -56,6 +56,7 @@ src_prepare() {
 		-DNOWPLAYING=off \
 		-DPHONONSOUND=off \
 		-DSCRIPTAPI=off \
+		-DSDLSOUND=off \
 		-DURLPREVIEW=off \
 		-DWEATHER=off"
 # 	for i in $(grep -rl "<qutim/" "${S}" | grep -v "\.git"); do

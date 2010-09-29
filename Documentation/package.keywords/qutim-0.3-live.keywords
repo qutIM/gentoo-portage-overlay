@@ -9,6 +9,9 @@ x11-plugins/qutim-awn:0.3-live **
 x11-plugins/qutim-clconf:0.3-live **
 x11-plugins/qutim-connectionmanager:0.3-live **
 x11-plugins/qutim-dbusapi:0.3-live **
+x11-plugins/qutim-dbusnotifications:0.3-live **
+x11-plugins/qutim-emoedit:0.3-live **
+x11-plugins/qutim-floaties:0.3-live **
 x11-plugins/qutim-histman:0.3-live **
 x11-plugins/qutim-icq:0.3-live **
 x11-plugins/qutim-indicator:0.3-live **
@@ -18,8 +21,9 @@ x11-plugins/qutim-massmessaging:0.3-live **
 x11-plugins/qutim-mrim:0.3-live **
 x11-plugins/qutim-nowplaying:0.3-live **
 x11-plugins/qutim-phonon:0.3-live **
-x11-plugins/qutim-qmlpopups:0.3-live **
 x11-plugins/qutim-quetzal:0.3-live **
+x11-plugins/qutim-scriptapi:0.3-live **
+x11-plugins/qutim-sdlsound:0.3-live **
 x11-plugins/qutim-urlpreview:0.3-live **
 x11-plugins/qutim-vkontakte:0.3-live **
 x11-plugins/qutim-weather:0.3-live **
