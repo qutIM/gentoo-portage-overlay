@@ -51,7 +51,8 @@ src_compile() {
 
 src_install() {
 	if [ "x${LANGUAGES}" != "x" ]; then
-		LANG_DIR="${D}/usr/share/qutim-${PV}/languages"
+		#LANG_DIR="${D}/usr/share/qutim-${PV}/languages"
+		LANG_DIR="${D}/usr/share/qutim/languages"
 		mkdir -p ${LANG_DIR}
 		for LANG in ${LANGUAGES}; do
 			mkdir -p ${LANG_DIR}/${LANG}
