@@ -10,7 +10,7 @@ EGIT_REPO_URI="git://gitorious.org/qutim/plugins.git"
 EGIT_BRANCH="master"
 EGIT_COMMIT="${EGIT_BRANCH}"
 EGIT_PROJECT="qutim-plugins"
-DESCRIPTION="Weather plugin for net-im/qutim"
+DESCRIPTION="Allows you to save a list of unread messages when qutIM exit"
 HOMEPAGE="http://www.qutim.org"
 
 LICENSE="GPL-2"
@@ -21,7 +21,7 @@ IUSE="debug"
 RDEPEND="net-im/qutim:${SLOT}"
 
 DEPEND="${RDEPEND}
-	dev-util/pkgconfig"
+	>=dev-util/cmake-2.6"
 
 RESTRICT="debug? ( strip )"
 
@@ -57,13 +57,8 @@ src_prepare() {
 		-DPHONONSOUND=off \
 		-DSCRIPTAPI=off \
 		-DSDLSOUND=off \
-		-DUNREADMESSAGESKEEPER=off \
 		-DURLPREVIEW=off \
+		-DWEATHER=off \
 		-DYANDEXNAROD=off"
-# 	for i in $(grep -rl "<qutim/" "${S}" | grep -v "\.git"); do
-# 		sed -e "s/<qutim\//<qutim-${PV}\//" -i "${i}";
-# 	done
-# 	sed -e "s/qutim/qutim-${PV}/" \
-# 		-e "s/QutimPlugin/QutimPlugin-${PV}/" -i "${S}/CMakeLists.txt"
 	CMAKE_IN_SOURCE_BUILD=1
 }

@@ -56,6 +56,7 @@ src_prepare() {
 		-DNOWPLAYING=off \
 		-DSCRIPTAPI=off \
 		-DSDLSOUND=off \
+		-DUNREADMESSAGESKEEPER=off \
 		-DURLPREVIEW=off \
 		-DWEATHER=off \
 		-DYANDEXNAROD=off"

@@ -58,6 +58,7 @@ src_prepare() {
 		-DPHONONSOUND=off \
 		-DSCRIPTAPI=off \
 		-DSDLSOUND=off \
+		-DUNREADMESSAGESKEEPER=off \
 		-DURLPREVIEW=off \
 		-DWEATHER=off \
 		-DYANDEXNAROD=off"
