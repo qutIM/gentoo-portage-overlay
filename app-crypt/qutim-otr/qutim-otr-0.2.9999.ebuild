@@ -6,7 +6,7 @@ EAPI="2"
 
 inherit git eutils qt4-r2
 
-EGIT_REPO_URI="git://ub.com/proDOOMman/${PN}.git"
+EGIT_REPO_URI="git://github.com/proDOOMman/${PN}.git"
 DESCRIPTION="OTR crypto plugin for net-im/qutim"
 HOMEPAGE="http://www.qutim.org"
 
