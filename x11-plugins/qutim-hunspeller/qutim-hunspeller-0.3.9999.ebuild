@@ -21,7 +21,8 @@ IUSE="debug"
 RDEPEND="net-im/qutim:${SLOT}"
 
 DEPEND="${RDEPEND}
-	>=dev-util/cmake-2.6"
+	>=dev-util/cmake-2.6
+	app-text/hunspell"
 
 RESTRICT="debug? ( strip )"
 

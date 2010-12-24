@@ -49,6 +49,7 @@ src_prepare() {
 		-DEMOEDIT=off \
 		-DFLOATIES=off \
 		-DHISTMAN=off \
+		-DHUNSPELLER=off \
 		-DINDICATOR=off \
 		-DLOGGER=off \
 		-DMAC-INTEGRATION=off \
@@ -60,7 +61,8 @@ src_prepare() {
 		-DUNREADMESSAGESKEEPER=off \
 		-DURLPREVIEW=off \
 		-DWEATHER=off \
-		-DYANDEXNAROD=off"
+		-DYANDEXNAROD=off \
+		-DWIN-INTEGRATION=off"
 # 	for i in $(grep -rl "<qutim/" "${S}" | grep -v "\.git"); do
 # 		sed -e "s/<qutim\//<qutim-${PV}\//" -i "${i}";
 # 	done
