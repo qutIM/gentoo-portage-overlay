@@ -1,0 +1,10 @@
+# ChangeLog for x11-plugins/qutim-aspeller
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+*qutim-hunspeller-0.3.9999 (24 Dec 2010)
+
+  11 Jun 2010; Vladislav Rassokhin <vlad.rassokhin@gmail.com>
+  +qutim-hunpeller-0.3.9999.ebuild, +metadata.xml:
+  initial ebuild
+
