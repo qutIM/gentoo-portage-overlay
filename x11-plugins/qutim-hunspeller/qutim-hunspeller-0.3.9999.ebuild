@@ -10,7 +10,7 @@ EGIT_REPO_URI="git://gitorious.org/qutim/plugins.git"
 EGIT_BRANCH="master"
 EGIT_COMMIT="${EGIT_BRANCH}"
 EGIT_PROJECT="qutim-plugins"
-DESCRIPTION="Aspeller plugin for net-im/qutim"
+DESCRIPTION="Hunspeller plugin for net-im/qutim"
 HOMEPAGE="http://www.qutim.org"
 
 LICENSE="GPL-2"
