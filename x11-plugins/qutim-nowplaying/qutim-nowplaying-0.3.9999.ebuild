@@ -37,31 +37,8 @@ src_prepare() {
 		CMAKE_BUILD_TYPE="debug"
 	fi
 	#epatch "${FILESDIR}/remove-mrim.patch"
-	mycmakeargs="-DAESCRYPTO=off \
-		-DANTIBOSS=off \
-		-DANTISPAM=off \
-		-DASPELLER=off \
-		-DAWN=off \
-		-DCLCONF=off \
-		-DCONNECTIONMANAGER=off \
-		-DDBUSAPI=off \
-		-DDBUSNOTIFICATIONS=off \
-		-DEMOEDIT=off \
-		-DFLOATIES=off \
-		-DHISTMAN=off \
-		-DHUNSPELLER=off \
-		-DINDICATOR=off \
-		-DLOGGER=off \
-		-DMAC-INTEGRATION=off \
-		-DMASSMESSAGING=off \
-		-DPHONONSOUND=off \
-		-DSCRIPTAPI=off \
-		-DSDLSOUND=off \
-		-DUNREADMESSAGESKEEPER=off \
-		-DURLPREVIEW=off \
-		-DWEATHER=off \
-		-DYANDEXNAROD=off \
-		-DWIN-INTEGRATION=off"
+	mycmakeargs="-DQUTIM_ENABLE_ALL_PLUGINS=off \
+		-DNOWPLAYING=on"
 # 	for i in $(grep -rl "<qutim/" "${S}" | grep -v "\.git"); do
 # 		sed -e "s/<qutim\//<qutim-${PV}\//" -i "${i}";
 # 	done

@@ -38,30 +38,7 @@ src_prepare() {
 		append-flags -O1 -g -ggdb
 		CMAKE_BUILD_TYPE="debug"
 	fi
-	mycmakeargs="-DAESCRYPTO=off \
-		-DANTIBOSS=off \
-		-DANTISPAM=off \
-		-DASPELLER=off \
-		-DAWN=off \
-		-DCLCONF=off \
-		-DCONNECTIONMANAGER=off \
-		-DDBUSAPI=off \
-		-DDBUSNOTIFICATIONS=off \
-		-DFLOATIES=off \
-		-DHISTMAN=off \
-		-DHUNSPELLER=off \
-		-DINDICATOR=off \
-		-DLOGGER=off \
-		-DMAC-INTEGRATION=off \
-		-DMASSMESSAGING=off \
-		-DNOWPLAYING=off \
-		-DPHONONSOUND=off \
-		-DSCRIPTAPI=off \
-		-DSDLSOUND=off \
-		-DUNREADMESSAGESKEEPER=off \
-		-DURLPREVIEW=off \
-		-DWEATHER=off \
-		-DYANDEXNAROD=off \
-		-DWIN-INTEGRATION=off"
+	mycmakeargs="-DQUTIM_ENABLE_ALL_PLUGINS=off \
+		-DEMOEDIT=on"
 	CMAKE_IN_SOURCE_BUILD=1
 }

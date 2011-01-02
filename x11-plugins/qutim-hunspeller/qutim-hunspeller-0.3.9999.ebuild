@@ -38,31 +38,8 @@ src_prepare() {
 		append-flags -O1 -g -ggdb
 		CMAKE_BUILD_TYPE="debug"
 	fi
-	mycmakeargs="-DASPELLER=off \
-		-DAESCRYPTO=off \
-		-DANTIBOSS=off \
-		-DANTISPAM=off \
-		-DAWN=off \
-		-DCLCONF=off \
-		-DCONNECTIONMANAGER=off \
-		-DDBUSAPI=off \
-		-DDBUSNOTIFICATIONS=off \
-		-DEMOEDIT=off \
-		-DFLOATIES=off \
-		-DHISTMAN=off \
-		-DINDICATOR=off \
-		-DLOGGER=off \
-		-DMAC-INTEGRATION=off \
-		-DMASSMESSAGING=off \
-		-DNOWPLAYING=off \
-		-DPHONONSOUND=off \
-		-DSCRIPTAPI=off \
-		-DSDLSOUND=off \
-		-DUNREADMESSAGESKEEPER=off \
-		-DURLPREVIEW=off \
-		-DWEATHER=off \
-		-DYANDEXNAROD=off \
-		-DWIN-INTEGRATION=off"
+	mycmakeargs="-DQUTIM_ENABLE_ALL_PLUGINS=off \
+		-DHUNSPELLER=on"
 # 	for i in $(grep -rl "<qutim/" "${S}" | grep -v "\.git"); do
 # 		sed -e "s/<qutim\//<qutim-${PV}\//" -i "${i}";
 # 	done
