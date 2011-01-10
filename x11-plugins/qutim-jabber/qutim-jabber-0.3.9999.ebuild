@@ -18,27 +18,19 @@ HOMEPAGE="http://www.qutim.org"
 LICENSE="GPL-2"
 SLOT="0.3-live"
 KEYWORDS=""
-IUSE="+gnutls +gloox-static +debug openssl"
+IUSE="+debug"
 
 RDEPEND="net-im/qutim:${SLOT}
 	sys-libs/zlib
 	net-dns/libidn
-	openssl? ( dev-libs/openssl )
-	gnutls? ( net-libs/gnutls )"
-#	!gloox-static? ( >=net-libs/gloox-0.9.9.5[gnutls?,idn] )
-
+	app-crypt/qca
+	app-crypt/qca-cyrus-sasl
+"
 DEPEND="${RDEPEND}
-	gloox-static? ( !net-libs/gloox )
 	>=dev-util/cmake-2.6
 	!x11-plugins/qutim-protocols:${SLOT}"
 
-#PDEPEND="juick? ( x11-plugins/qutim-juick:${SLOT} )"
-
 RESTRICT="debug? ( strip )"
-
-pkg_setup() {
-	confutils_use_conflict gnutls openssl
-}
 
 src_unpack() {
 	git_src_unpack
@@ -50,25 +42,10 @@ src_prepare() {
 		append-flags -O1 -g -ggdb
 		CMAKE_BUILD_TYPE="debug"
 	fi
-	mycmakeargs="$(cmake-utils_use openssl OpenSSL) \
-		$(cmake-utils_use gnutls GNUTLS) \
-		$(cmake-utils_use !gloox-static GLOOX_EXTERNAL) \
-		-DIRC=off -DMRIM=off -DOSCAR=off -DQUETZAL=off -DVKONTAKTE=off"
+	mycmakeargs="-DJABBER=1 -DIRC=0 -DOSCAR=0 -DVKONTAKTE=0 -DASTRAL=0 -DQUETZAL=0 -DMRIM=0"
 	CMAKE_IN_SOURCE_BUILD=1
-# 	sed -e "s/QutimPlugin/QutimPlugin-${PV}/" \
-# 		-e "s/QutIM/QutIM-${PV}/" -i CMakeLists.txt
-# 	sed -e "s/>qutim\//>qutim-${PV}\//" -i jabber/src/protocol/account/muc/jmucjoin.ui
-# 
-# 	for i in $(grep -rl "qutim/" "${S}" | grep -v "\.git"); do
-# 		sed -e "/#include/s/qutim\//qutim-${PV}\//" -i ${i};
-# 	done
 }
 
 src_install() {
 	cmake-utils_src_install
-	 if (use gloox-static); then
-		insinto /usr/$(get_libdir)
-		doins "${S}/jabber/3rdparty/gloox/src/libgloox.so.9" || die "Plugin installation failed"
-		dosym libgloox.so.9 /usr/$(get_libdir)/libgloox.so || die "Plugin installation failed"
-	fi
 }
