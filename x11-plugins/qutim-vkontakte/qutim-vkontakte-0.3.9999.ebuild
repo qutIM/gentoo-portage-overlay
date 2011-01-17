@@ -37,7 +37,7 @@ src_prepare() {
 		append-flags -O1 -g -ggdb
 		CMAKE_BUILD_TYPE="debug"
 	fi
-	mycmakeargs="-DIRC=off -DJABBER=off -DMRIM=off -DOSCAR=off -DQUETZAL=off"
+	mycmakeargs="-DQUTIM_ENABLE_ALL_PLUGINS=off -DVKONTAKTE=on "
 	CMAKE_IN_SOURCE_BUILD=1
 # 	sed -e "s/QutimPlugin/QutimPlugin-${PV}/" -i CMakeLists.txt
 # 

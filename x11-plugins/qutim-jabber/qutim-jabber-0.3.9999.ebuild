@@ -53,7 +53,7 @@ src_prepare() {
 	mycmakeargs="$(cmake-utils_use openssl OpenSSL) \
 		$(cmake-utils_use gnutls GNUTLS) \
 		$(cmake-utils_use !gloox-static GLOOX_EXTERNAL) \
-		-DIRC=off -DMRIM=off -DOSCAR=off -DQUETZAL=off -DVKONTAKTE=off"
+		-DQUTIM_ENABLE_ALL_PLUGINS=off -DJABBER=on"
 	CMAKE_IN_SOURCE_BUILD=1
 # 	sed -e "s/QutimPlugin/QutimPlugin-${PV}/" \
 # 		-e "s/QutIM/QutIM-${PV}/" -i CMakeLists.txt
