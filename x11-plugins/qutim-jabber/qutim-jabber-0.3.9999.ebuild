@@ -42,7 +42,7 @@ src_prepare() {
 		append-flags -O1 -g -ggdb
 		CMAKE_BUILD_TYPE="debug"
 	fi
-	mycmakeargs="-DJABBER=1 -DIRC=0 -DOSCAR=0 -DVKONTAKTE=0 -DASTRAL=0 -DQUETZAL=0 -DMRIM=0"
+	mycmakeargs="-DQUTIM_ENABLE_ALL_PLUGINS=off -DJABBER=on"
 	CMAKE_IN_SOURCE_BUILD=1
 }
 
