@@ -21,6 +21,7 @@ KEYWORDS=""
 IUSE="+debug"
 
 RDEPEND="net-im/qutim:${SLOT}
+        >=x11-libs/qt-core-4.6.3
 	sys-libs/zlib
 	net-dns/libidn
 	app-crypt/qca
