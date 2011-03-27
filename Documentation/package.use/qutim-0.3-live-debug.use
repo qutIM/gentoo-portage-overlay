@@ -13,6 +13,7 @@ x11-plugins/qutim-dbusnotifications:0.3-live	debug
 x11-plugins/qutim-emoedit:0.3-live			debug
 x11-plugins/qutim-floaties:0.3-live			debug
 x11-plugins/qutim-histman:0.3-live			debug
+x11-plugins/qutim-hunspeller:0.3-live			debug
 x11-plugins/qutim-icq:0.3-live				debug
 x11-plugins/qutim-indicator:0.3-live		debug
 x11-plugins/qutim-irc:0.3-live				debug

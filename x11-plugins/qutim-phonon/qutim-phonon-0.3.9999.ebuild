@@ -19,7 +19,7 @@ KEYWORDS=""
 IUSE="debug"
 
 RDEPEND="net-im/qutim:${SLOT}
-	media-sound/phonon"
+	media-libs/phonon"
 
 DEPEND="${RDEPEND}"
 
