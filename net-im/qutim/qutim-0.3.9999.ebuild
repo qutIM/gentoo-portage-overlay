@@ -80,6 +80,8 @@ src_prepare() {
 		append-flags -O1 -g -ggdb
 		CMAKE_BUILD_TYPE="Debug"
 	fi
+	mycmakeargs=" -QSOUNDBACKEND=0"
+
 	## slotting... ##
 	#sed -e "s/${PN}/${P}/" -i cmake/QutimPlugin.cmake
 # 	sed -e "/Exec/s/${PN}/${P}/" \
