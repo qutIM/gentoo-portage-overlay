@@ -18,10 +18,10 @@ LICENSE="GPL-2"
 SLOT="0.3-live"
 KEYWORDS=""
 
-PROTOCOLS="+icq irc +jabber libpurple mrim vkontakte +sdlsound"
-PLUGINS="aescrypto antiboss antispam aspeller awn clconf connectionmanager dbus \
+PROTOCOLS="+icq irc +jabber libpurple mrim vkontakte"
+PLUGINS="aescrypto antiboss antispam aspeller awn clconf connectionmanager +dbus \
 	histman hunspeller indicator kde massmessaging nowplaying phonon qmlpopups \
-	unreadmessageskeeper urlpreview weather yandexnarod sdl"
+	+unreadmessageskeeper urlpreview weather yandexnarod +sdl"
 	#imagepub otr plugman sqlhistory tex vsqlhistory webhistory
 IUSE="debug doc linguas_bg linguas_cs linguas_de linguas_ru linguas_uk"
 IUSE="${PROTOCOLS} ${PLUGINS} ${IUSE} static"
@@ -61,7 +61,6 @@ PDEPEND="linguas_bg? ( net-im/qutim-l10n:${SLOT}[linguas_bg?] )
 	massmessaging? ( x11-plugins/qutim-massmessaging:${SLOT} )
 	nowplaying? ( x11-plugins/qutim-nowplaying:${SLOT} )
 	phonon? ( x11-plugins/qutim-phonon:${SLOT} )
-	qmlpopups? ( x11-plugins/qutim-qmlpopups:${SLOT} )
 	unreadmessageskeeper? ( x11-plugins/qutim-unreadmessageskeeper:${SLOT} )
 	urlpreview? ( x11-plugins/qutim-urlpreview:${SLOT} )
 	weather? ( x11-plugins/qutim-weather:${SLOT} )
@@ -83,7 +82,7 @@ src_prepare() {
 	fi
 	mycmakeargs=" -QSOUNDBACKEND=0"
 	if (use static) ; then
-		mycmakeargs = "${mycmakeargs} -DQUTIM_BASE_LIBRARY_TYPE=STATIC"
+		mycmakeargs+=(-DQUTIM_BASE_LIBRARY_TYPE=STATIC)
 	fi
 
 	## slotting... ##
