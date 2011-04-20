@@ -18,13 +18,13 @@ LICENSE="GPL-2"
 SLOT="0.3-live"
 KEYWORDS=""
 
-PROTOCOLS="+icq irc +jabber libpurple mrim vkontakte"
+PROTOCOLS="+icq irc +jabber libpurple mrim vkontakte +sdlsound"
 PLUGINS="aescrypto antiboss antispam aspeller awn clconf connectionmanager dbus \
 	histman hunspeller indicator kde massmessaging nowplaying phonon qmlpopups \
-	unreadmessageskeeper urlpreview weather yandexnarod"
+	unreadmessageskeeper urlpreview weather yandexnarod sdl"
 	#imagepub otr plugman sqlhistory tex vsqlhistory webhistory
 IUSE="debug doc linguas_bg linguas_cs linguas_de linguas_ru linguas_uk"
-IUSE="${PROTOCOLS} ${PLUGINS} ${IUSE}"
+IUSE="${PROTOCOLS} ${PLUGINS} ${IUSE} static"
 
 RDEPEND=">=x11-libs/qt-gui-4.6.0
 	>=x11-libs/qt-webkit-4.6.0
@@ -65,7 +65,8 @@ PDEPEND="linguas_bg? ( net-im/qutim-l10n:${SLOT}[linguas_bg?] )
 	unreadmessageskeeper? ( x11-plugins/qutim-unreadmessageskeeper:${SLOT} )
 	urlpreview? ( x11-plugins/qutim-urlpreview:${SLOT} )
 	weather? ( x11-plugins/qutim-weather:${SLOT} )
-	yandexnarod? ( x11-plugins/qutim-yandexnarod:${SLOT} )"
+	yandexnarod? ( x11-plugins/qutim-yandexnarod:${SLOT} )
+	sdl? ( x11-plugins/qutim-sdlsound:${SLOT} )"
 
 RESTRICT="debug? ( strip )"
 
@@ -81,6 +82,9 @@ src_prepare() {
 		CMAKE_BUILD_TYPE="Debug"
 	fi
 	mycmakeargs=" -QSOUNDBACKEND=0"
+	if (use static) ; then
+		mycmakeargs = "${mycmakeargs} -DQUTIM_BASE_LIBRARY_TYPE=STATIC"
+	fi
 
 	## slotting... ##
 	#sed -e "s/${PN}/${P}/" -i cmake/QutimPlugin.cmake
