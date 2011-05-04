@@ -18,7 +18,7 @@ HOMEPAGE="http://www.qutim.org"
 LICENSE="GPL-2"
 SLOT="0.3-live"
 KEYWORDS=""
-IUSE="debug"
+IUSE="+xstatus +identify debug"
 
 RDEPEND="net-im/qutim:${SLOT}"
 
@@ -39,7 +39,15 @@ src_prepare() {
 		append-flags -O1 -g -ggdb
 		CMAKE_BUILD_TYPE="debug"
 	fi
-	mycmakeargs="-DQUTIM_ENABLE_ALL_PLUGINS=off -DOSCAR=on"
+
+	mycmakeargs=(-DQUTIM_ENABLE_ALL_PLUGINS=off -DOSCAR=on)
+	if use xstatus ; then
+		mycmakeargs+=(-DXSTATUS=on)
+	fi
+	if use identify ; then
+		mycmakeargs+=(-DIDENTIFY=on)
+	fi
+
 	CMAKE_IN_SOURCE_BUILD=1
 # 	sed -e "s/QutimPlugin/QutimPlugin-${PV}/" -i CMakeLists.txt
 # 
