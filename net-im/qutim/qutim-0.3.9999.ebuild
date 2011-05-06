@@ -20,7 +20,7 @@ KEYWORDS=""
 
 PROTOCOLS="+icq irc +jabber libpurple mrim vkontakte"
 PLUGINS="aescrypto antiboss antispam aspeller awn clconf connectionmanager +dbus \
-	histman hunspeller indicator kde massmessaging nowplaying phonon qmlpopups \
+	histman hunspeller indicator kde massmessaging nowplaying phonon +kineticpopups \
 	+unreadmessageskeeper urlpreview weather yandexnarod +sdl"
 	#imagepub otr plugman sqlhistory tex vsqlhistory webhistory
 IUSE="debug doc linguas_bg linguas_cs linguas_de linguas_ru linguas_uk"
@@ -65,7 +65,8 @@ PDEPEND="linguas_bg? ( net-im/qutim-l10n:${SLOT}[linguas_bg?] )
 	urlpreview? ( x11-plugins/qutim-urlpreview:${SLOT} )
 	weather? ( x11-plugins/qutim-weather:${SLOT} )
 	yandexnarod? ( x11-plugins/qutim-yandexnarod:${SLOT} )
-	sdl? ( x11-plugins/qutim-sdlsound:${SLOT} )"
+	sdl? ( x11-plugins/qutim-sdlsound:${SLOT} )
+	kineticpopups? ( x11-plugins/qutim-kineticpopups:${SLOT} )"
 
 RESTRICT="debug? ( strip )"
 
