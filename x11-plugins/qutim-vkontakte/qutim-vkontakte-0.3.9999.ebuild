@@ -18,7 +18,7 @@ HOMEPAGE="http://www.qutim.org"
 LICENSE="GPL-2"
 SLOT="0.3-live"
 KEYWORDS=""
-IUSE="debug"
+IUSE="+wall +photoalbum debug"
 
 RDEPEND="net-im/qutim:${SLOT}"
 
@@ -37,10 +37,16 @@ src_prepare() {
 		append-flags -O1 -g -ggdb
 		CMAKE_BUILD_TYPE="debug"
 	fi
-	mycmakeargs="-DQUTIM_ENABLE_ALL_PLUGINS=off -DVKONTAKTE=on "
+	mycmakeargs=(-DQUTIM_ENABLE_ALL_PLUGINS=off -DVKONTAKTE=on)
+	if use wall ; then
+		mycmakeargs+=(-DWALL=on)
+	fi
+	if use photoalbum ; then
+		mycmakeargs+=(-DPHOTOALBUM=on -DVPHOTOALBUM/DEFAULT=on)
+	fi
 	CMAKE_IN_SOURCE_BUILD=1
 # 	sed -e "s/QutimPlugin/QutimPlugin-${PV}/" -i CMakeLists.txt
-# 
+#
 # 	for i in $(grep -rl "qutim/" "${S}" | grep -v "\.git"); do
 # 		sed -e "/#include/s/qutim\//qutim-${PV}\//" -i ${i};
 # 	done
