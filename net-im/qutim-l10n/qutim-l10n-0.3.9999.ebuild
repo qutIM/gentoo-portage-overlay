@@ -60,3 +60,10 @@ src_install() {
 		done
 	fi
 }
+
+pkg_postinst() {
+        ewarn
+        ewarn "If localization doesn't appear for you, change \"shareDir\" value"
+	ewarn "in .config/qutim/profiles/profiles.json to \"/usr/share/qutim\""
+        ewarn
+}

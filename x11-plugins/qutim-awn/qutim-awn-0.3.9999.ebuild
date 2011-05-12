@@ -10,7 +10,7 @@ EGIT_REPO_URI="git://gitorious.org/qutim/plugins.git"
 EGIT_BRANCH="master"
 EGIT_COMMIT="${EGIT_BRANCH}"
 EGIT_PROJECT="qutim-plugins"
-DESCRIPTION="Antispam plugin for net-im/qutim"
+DESCRIPTION="AWN dock integration plugin for net-im/qutim"
 HOMEPAGE="http://www.qutim.org"
 
 LICENSE="GPL-2"
@@ -18,7 +18,8 @@ SLOT="0.3-live"
 KEYWORDS=""
 IUSE="debug"
 
-RDEPEND="net-im/qutim:${SLOT}"
+RDEPEND="net-im/qutim:${SLOT}
+	gnome-extra/avant-window-navigator"
 
 DEPEND="${RDEPEND}
 	>=dev-util/cmake-2.6"

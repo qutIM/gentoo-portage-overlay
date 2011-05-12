@@ -10,7 +10,8 @@ inherit git eutils qt4-r2 cmake-utils
 
 EGIT_REPO_URI="git://gitorious.org/qutim/protocols.git"
 EGIT_BRANCH="master"
-EGIT_COMMIT="${EGIT_BRANCH}"
+EGIT_COMMIT="d7cf889" # temporary freeze
+#EGIT_COMMIT="${EGIT_BRANCH}"
 EGIT_PROJECT="qutim-protocols"
 DESCRIPTION="ICQ protocol plugin for net-im/qutim"
 HOMEPAGE="http://www.qutim.org"

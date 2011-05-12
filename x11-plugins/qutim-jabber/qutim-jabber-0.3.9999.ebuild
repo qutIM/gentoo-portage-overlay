@@ -18,18 +18,19 @@ HOMEPAGE="http://www.qutim.org"
 LICENSE="GPL-2"
 SLOT="0.3-live"
 KEYWORDS=""
-IUSE="+debug"
+IUSE="debug"
 
 RDEPEND="net-im/qutim:${SLOT}
         >=x11-libs/qt-core-4.6.3
 	sys-libs/zlib
 	net-dns/libidn
 	app-crypt/qca
-	app-crypt/qca-cyrus-sasl
-"
+	app-crypt/qca-cyrus-sasl"
+
 DEPEND="${RDEPEND}
 	>=dev-util/cmake-2.6
-	!x11-plugins/qutim-protocols:${SLOT}"
+	!x11-plugins/qutim-protocols:${SLOT}
+	!app-crypt/qca-ossl"
 
 RESTRICT="debug? ( strip )"
 

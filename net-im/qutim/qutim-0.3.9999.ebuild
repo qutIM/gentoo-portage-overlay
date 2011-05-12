@@ -21,13 +21,13 @@ KEYWORDS=""
 PROTOCOLS="+icq irc +jabber libpurple mrim vkontakte"
 PLUGINS="aescrypto antiboss antispam aspeller awn clconf connectionmanager +dbus \
 	histman hunspeller indicator kde massmessaging nowplaying phonon +kineticpopups \
-	+unreadmessageskeeper urlpreview weather yandexnarod +sdl"
+	+unreadmessageskeeper urlpreview weather yandexnarod sdl +webkit"
 	#imagepub otr plugman sqlhistory tex vsqlhistory webhistory
 IUSE="debug doc linguas_bg linguas_cs linguas_de linguas_ru linguas_uk"
 IUSE="${PROTOCOLS} ${PLUGINS} ${IUSE} static mobile"
 
 RDEPEND=">=x11-libs/qt-gui-4.6.0
-	>=x11-libs/qt-webkit-4.6.0
+	webkit? ( >=x11-libs/qt-webkit-4.6.0 )
 	>=x11-libs/qt-multimedia-4.6.0
 	phonon? ( kde-base/phonon-kde )"
 
@@ -82,6 +82,9 @@ src_prepare() {
 		CMAKE_BUILD_TYPE="Debug"
 	fi
 	mycmakeargs=(-DQSOUNDBACKEND=0)
+	if !(use webkit) ; then
+		mycmakeargs+=(-DWEBKITCHAT=0)
+	fi
 	if (use static) ; then
 		mycmakeargs+=(-DQUTIM_BASE_LIBRARY_TYPE=STATIC)
 	fi

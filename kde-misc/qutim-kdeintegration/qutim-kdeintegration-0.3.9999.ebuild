@@ -15,10 +15,9 @@ HOMEPAGE="http://www.qutim.org/"
 LICENSE="GPL-2"
 SLOT="0.3-live"
 KEYWORDS=""
-IUSE="emoticons notification phonon spell debug"
+IUSE="debug"
 
-RDEPEND="net-im/qutim:${SLOT}
-	notification? ( !x11-plugins/qutim-libnotify )"
+RDEPEND="net-im/qutim:${SLOT}"
 
 DEPEND="${RDEPEND}
 	>=dev-util/cmake-2.6"

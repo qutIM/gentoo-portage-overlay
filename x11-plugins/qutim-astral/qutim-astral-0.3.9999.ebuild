@@ -28,6 +28,12 @@ DEPEND="${RDEPEND}
 
 RESTRICT="debug? ( strip )"
 
+pre_src_unpack() {
+	ewarn
+	ewarn "Note that this plugin may not work at the moment."
+	ewarn
+}
+
 src_unpack() {
 	git_src_unpack
 }
