@@ -8,7 +8,7 @@ inherit git-2
 
 EGIT_REPO_URI="git://gitorious.org/qutim/translations.git"
 EGIT_BRANCH="sdk02"
-EGIT_COMMIT="${EGIT_BRANCH}"
+
 DESCRIPTION="Localization package for net-im/qutim"
 HOMEPAGE="http://qutim.org"
 

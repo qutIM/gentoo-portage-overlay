@@ -11,7 +11,7 @@ inherit git-2 eutils cmake-utils confutils
 EGIT_REPO_URI="git://github.com/euroelessar/qutim.git"
 CMAKE_USE_DIR="${S}/protocols"
 EGIT_BRANCH="master"
-EGIT_COMMIT="${EGIT_BRANCH}"
+
 EGIT_PROJECT="qutim"
 DESCRIPTION="Jabber protocol plugin for net-im/qutim"
 HOMEPAGE="http://www.qutim.org"

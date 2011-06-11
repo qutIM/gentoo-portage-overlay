@@ -9,7 +9,8 @@ inherit git-2 eutils kde4-base cmake-utils
 EGIT_REPO_URI="git://github.com/euroelessar/qutim.git"
 CMAKE_USE_DIR="${S}/plugins"
 EGIT_BRANCH="master"
-EGIT_COMMIT="${EGIT_BRANCH}"
+
+EGIT_PROJECT="qutim"
 DESCRIPTION="KDEIntegration plugin for net-im/qutim"
 HOMEPAGE="http://www.qutim.org/"
 

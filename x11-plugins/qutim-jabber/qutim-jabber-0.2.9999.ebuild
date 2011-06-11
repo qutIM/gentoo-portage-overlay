@@ -10,7 +10,7 @@ inherit git-2 eutils cmake-utils confutils
 
 EGIT_REPO_URI="git://gitorious.org/qutim/protocols.git"
 EGIT_BRANCH="sdk02"
-EGIT_COMMIT="${EGIT_BRANCH}"
+
 EGIT_PROJECT="qutim-protocols"
 DESCRIPTION="Jabber protocol plugin for net-im/qutim"
 HOMEPAGE="http://www.qutim.org"

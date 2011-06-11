@@ -8,7 +8,7 @@ inherit git-2 eutils kde4-base
 
 EGIT_REPO_URI="git://gitorious.org/qutim/plugins.git"
 EGIT_BRANCH="sdk02"
-EGIT_COMMIT="${EGIT_BRANCH}"
+
 DESCRIPTION="KDEIntegration plugin for net-im/qutim"
 HOMEPAGE="http://www.qutim.org/"
 

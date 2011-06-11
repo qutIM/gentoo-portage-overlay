@@ -9,7 +9,7 @@ inherit git-2 eutils qt4-r2 cmake-utils
 EGIT_REPO_URI="git://github.com/euroelessar/qutim.git"
 CMAKE_USE_DIR="${S}/plugins"
 EGIT_BRANCH="master"
-EGIT_COMMIT="${EGIT_BRANCH}"
+
 EGIT_PROJECT="qutim"
 DESCRIPTION="Allows you to save a list of unread messages when qutIM exit"
 HOMEPAGE="http://www.qutim.org"

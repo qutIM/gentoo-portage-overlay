@@ -10,7 +10,7 @@ inherit git-2 eutils cmake-utils confutils
 
 EGIT_REPO_URI="git://gitorious.org/qutim/qutim.git"
 EGIT_BRANCH="sdk02"
-EGIT_COMMIT="${EGIT_BRANCH}"
+
 DESCRIPTION="Multiprotocol instant messenger"
 HOMEPAGE="http://qutim.org"
 

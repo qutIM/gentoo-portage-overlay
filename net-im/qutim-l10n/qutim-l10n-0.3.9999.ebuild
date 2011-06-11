@@ -9,7 +9,8 @@ inherit git-2
 EGIT_REPO_URI="git://github.com/euroelessar/qutim.git"
 CMAKE_USE_DIR="${S}/translations"
 EGIT_BRANCH="master"
-EGIT_COMMIT="${EGIT_BRANCH}"
+
+EGIT_PROJECT="qutim"
 DESCRIPTION="Localization package for net-im/qutim"
 HOMEPAGE="http://qutim.org"
 #SRC_URI=""
