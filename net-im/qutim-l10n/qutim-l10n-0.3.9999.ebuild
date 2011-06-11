@@ -1,12 +1,12 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
 EAPI="2"
 
-inherit git
+inherit git-2
 
-EGIT_REPO_URI="git://github.com/euroelessar/qutim.git" 
+EGIT_REPO_URI="git://github.com/euroelessar/qutim.git"
 CMAKE_USE_DIR="${S}/translations"
 EGIT_BRANCH="master"
 EGIT_COMMIT="${EGIT_BRANCH}"
@@ -25,7 +25,7 @@ RDEPEND="${DEPEND}
 	net-im/qutim:${SLOT}"
 
 src_unpack() {
-	git_src_unpack
+	git-2_src_unpack
 }
 
 src_compile() {
@@ -63,8 +63,8 @@ src_install() {
 }
 
 pkg_postinst() {
-        ewarn
-        ewarn "If localization doesn't appear for you, change \"shareDir\" value"
+	ewarn
+	ewarn "If localization doesn't appear for you, change \"shareDir\" value"
 	ewarn "in .config/qutim/profiles/profiles.json to \"/usr/share/qutim\""
-        ewarn
+	ewarn
 }

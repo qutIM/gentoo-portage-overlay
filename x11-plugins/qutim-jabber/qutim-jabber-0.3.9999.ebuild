@@ -1,4 +1,4 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
@@ -6,9 +6,9 @@ EAPI="2"
 
 EGIT_HAS_SUBMODULES="true"
 
-inherit git eutils cmake-utils confutils
+inherit git-2 eutils cmake-utils confutils
 
-EGIT_REPO_URI="git://github.com/euroelessar/qutim.git" 
+EGIT_REPO_URI="git://github.com/euroelessar/qutim.git"
 CMAKE_USE_DIR="${S}/protocols"
 EGIT_BRANCH="master"
 EGIT_COMMIT="${EGIT_BRANCH}"
@@ -22,7 +22,7 @@ KEYWORDS=""
 IUSE="debug"
 
 RDEPEND="net-im/qutim:${SLOT}
-        >=x11-libs/qt-core-4.6.3
+	>=x11-libs/qt-core-4.6.3
 	sys-libs/zlib
 	net-dns/libidn
 	app-crypt/qca
@@ -36,7 +36,7 @@ DEPEND="${RDEPEND}
 RESTRICT="debug? ( strip )"
 
 src_unpack() {
-	git_src_unpack
+	git-2_src_unpack
 }
 
 src_prepare() {

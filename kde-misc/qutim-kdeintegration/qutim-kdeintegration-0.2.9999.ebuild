@@ -4,7 +4,7 @@
 
 EAPI="3"
 
-inherit git eutils kde4-base
+inherit git-2 eutils kde4-base
 
 EGIT_REPO_URI="git://gitorious.org/qutim/plugins.git"
 EGIT_BRANCH="sdk02"
@@ -29,7 +29,7 @@ RESTRICT="mirror
 KDE_MINIMAL="4.2"
 
 src_unpack() {
-	git_src_unpack
+	git-2_src_unpack
 	# Fix
 	rm -f "${S}/notification/pics/hi64-app-qutim.png"
 }

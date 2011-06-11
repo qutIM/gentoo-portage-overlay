@@ -1,12 +1,12 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
 EAPI=3
 
-inherit git eutils qt4-r2 cmake-utils
+inherit git-2 eutils qt4-r2 cmake-utils
 
-EGIT_REPO_URI="git://github.com/euroelessar/qutim.git" 
+EGIT_REPO_URI="git://github.com/euroelessar/qutim.git"
 CMAKE_USE_DIR="${S}/plugins"
 EGIT_BRANCH="master"
 EGIT_COMMIT="${EGIT_BRANCH}"
@@ -30,7 +30,7 @@ RESTRICT="debug? ( strip )"
 MY_PN=${PN#qutim-}
 
 src_unpack() {
-	git_src_unpack
+	git-2_src_unpack
 }
 
 src_prepare() {

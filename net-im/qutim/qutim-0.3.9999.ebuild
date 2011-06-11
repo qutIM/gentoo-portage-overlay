@@ -1,4 +1,4 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
@@ -6,9 +6,9 @@ EAPI="2"
 
 EGIT_HAS_SUBMODULES="true"
 
-inherit git eutils cmake-utils confutils
+inherit git-2 eutils cmake-utils confutils
 
-EGIT_REPO_URI="git://github.com/euroelessar/qutim.git" 
+EGIT_REPO_URI="git://github.com/euroelessar/qutim.git"
 CMAKE_USE_DIR="${S}/core"
 EGIT_BRANCH="master"
 EGIT_COMMIT="${EGIT_BRANCH}"
@@ -72,7 +72,7 @@ PDEPEND="linguas_bg? ( net-im/qutim-l10n:${SLOT}[linguas_bg?] )
 RESTRICT="debug? ( strip )"
 
 src_unpack() {
-	git_src_unpack
+	git-2_src_unpack
 }
 
 src_prepare() {
@@ -92,7 +92,7 @@ src_prepare() {
 	if (use mobile) ; then
 		mycmakeargs+=(-DMOBILESETTINGSDIALOG=1)
 	else
-		mycmakeargs+=(-DSTACKEDCHATFORM=0 -DMOBILECONTACTINFO=0 
+		mycmakeargs+=(-DSTACKEDCHATFORM=0 -DMOBILECONTACTINFO=0
 					  -DMOBILEABOUT=0 -DMOBILESETTINGSDIALOG=0)
 	fi
 
@@ -114,7 +114,7 @@ src_prepare() {
 # 	sed -e "/find_path/s/qutim\//qutim-${PV}\//" \
 # 		-e "s/<qutim/<qutim-${PV}/" \
 # 		-e "s/lib\/qutim/lib\/qutim-${PV}/" -i cmake/FindQutIM.cmake
-# 		#-e "s/QutIM/QutIM-${PV}/" 
+# 		#-e "s/QutIM/QutIM-${PV}/"
 # 	sed -e "/install/s/PREFIX}\/share/PREFIX}\/share\/doc/" \
 # 		-e "/install/s/DIR}\/doc/DIR}\/doc\/html/" -i libqutim/CMakeLists.txt
 # 		#-e "s/${PN}/${P}/" \
@@ -129,11 +129,11 @@ src_prepare() {
 # 	mv "${S}/share/icons/hicolor/scalable/apps/qutim.svg" "${S}/share/icons/hicolor/scalable/apps/${P}.svg"
 # 	mv "${S}/share/pixmaps/qutim.xpm" "${S}/share/pixmaps/${P}.xpm"
 # 	mv "${S}/share/qutim" "${S}/share/${P}"
-# 
+#
 # 	for i in $(grep -rl qutim_64 "${S}" | grep -v "\.git"); do
 # 		sed -e "s/qutim_64/${P}_64/" -i ${i};
 # 	done
-# 
+#
 # 	for i in $(grep -rl qutim.png "${S}" | grep -v "\.git"); do
 # 		sed -e "s/qutim.png/${P}.png/" -i ${i};
 # 	done

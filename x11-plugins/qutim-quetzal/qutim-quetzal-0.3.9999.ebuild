@@ -1,4 +1,4 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
@@ -6,9 +6,9 @@ EAPI="2"
 
 EGIT_HAS_SUBMODULES="true"
 
-inherit git eutils qt4-r2 cmake-utils
+inherit git-2 eutils qt4-r2 cmake-utils
 
-EGIT_REPO_URI="git://github.com/euroelessar/qutim.git" 
+EGIT_REPO_URI="git://github.com/euroelessar/qutim.git"
 CMAKE_USE_DIR="${S}/protocols"
 EGIT_BRANCH="master"
 EGIT_COMMIT="${EGIT_BRANCH}"
@@ -30,7 +30,7 @@ DEPEND="${RDEPEND}
 RESTRICT="debug? ( strip )"
 
 src_unpack() {
-	git_src_unpack
+	git-2_src_unpack
 }
 
 src_prepare() {
@@ -42,7 +42,7 @@ src_prepare() {
 	mycmakeargs="-DQUTIM_ENABLE_ALL_PLUGINS=off  -DQUETZAL=on "
 	CMAKE_IN_SOURCE_BUILD=1
 # 	sed -e "s/QutimPlugin/QutimPlugin-${PV}/" -i CMakeLists.txt
-# 
+#
 # 	for i in $(grep -rl "qutim/" "${S}" | grep -v "\.git"); do
 # 		sed -e "/#include/s/qutim\//qutim-${PV}\//" -i ${i};
 # 	done

@@ -1,4 +1,4 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
@@ -6,7 +6,7 @@ EAPI="2"
 
 EGIT_HAS_SUBMODULES="true"
 
-inherit git eutils qt4-r2
+inherit git-2 eutils qt4-r2
 
 EGIT_REPO_URI="git://gitorious.org/qutim/protocols.git"
 EGIT_BRANCH="sdk02"
@@ -27,7 +27,7 @@ RESTRICT="debug? ( strip )"
 MY_PN="oscar"
 
 src_unpack() {
-	git_src_unpack
+	git-2_src_unpack
 }
 
 src_prepare() {

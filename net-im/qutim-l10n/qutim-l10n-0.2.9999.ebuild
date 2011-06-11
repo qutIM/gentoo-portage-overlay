@@ -1,10 +1,10 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
 EAPI="2"
 
-inherit git
+inherit git-2
 
 EGIT_REPO_URI="git://gitorious.org/qutim/translations.git"
 EGIT_BRANCH="sdk02"
@@ -23,7 +23,7 @@ RDEPEND="${DEPEND}
 	net-im/qutim:${SLOT}"
 
 src_unpack() {
-	git_src_unpack
+	git-2_src_unpack
 }
 
 src_compile() {

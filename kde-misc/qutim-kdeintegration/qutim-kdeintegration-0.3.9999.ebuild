@@ -4,9 +4,9 @@
 
 EAPI="3"
 
-inherit git eutils kde4-base cmake-utils
+inherit git-2 eutils kde4-base cmake-utils
 
-EGIT_REPO_URI="git://github.com/euroelessar/qutim.git" 
+EGIT_REPO_URI="git://github.com/euroelessar/qutim.git"
 CMAKE_USE_DIR="${S}/plugins"
 EGIT_BRANCH="master"
 EGIT_COMMIT="${EGIT_BRANCH}"
@@ -29,7 +29,7 @@ RESTRICT="mirror
 KDE_MINIMAL="4.2"
 
 src_unpack() {
-	git_src_unpack
+	git-2_src_unpack
 }
 
 src_prepare() {
@@ -40,8 +40,8 @@ src_prepare() {
 	fi
 	mycmakeargs="-DQUTIM_ENABLE_ALL_PLUGINS=0 -DKDEINTEGRATION=1"
 	CMAKE_IN_SOURCE_BUILD=1
-# 	sed -e "s/QutimPlugin/QutimPlugin-${PV}/" -i CMakeLists.txt
-# 	for i in $(grep -rl "<qutim/" "${S}" | grep -v "\.git"); do
-# 		sed -e "s/<qutim\//<qutim-${PV}\//" -i ${i};
-# 	done
+#	sed -e "s/QutimPlugin/QutimPlugin-${PV}/" -i CMakeLists.txt
+#	for i in $(grep -rl "<qutim/" "${S}" | grep -v "\.git"); do
+#		sed -e "s/<qutim\//<qutim-${PV}\//" -i ${i};
+#	done
 }
