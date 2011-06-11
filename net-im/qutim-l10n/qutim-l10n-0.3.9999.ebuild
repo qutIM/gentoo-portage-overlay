@@ -6,19 +6,20 @@ EAPI="2"
 
 inherit git-2
 
-EGIT_REPO_URI="git://github.com/euroelessar/qutim.git"
-CMAKE_USE_DIR="${S}/translations"
-EGIT_BRANCH="master"
-
-EGIT_PROJECT="qutim"
 DESCRIPTION="Localization package for net-im/qutim"
 HOMEPAGE="http://qutim.org"
-#SRC_URI=""
+EGIT_REPO_URI="git://github.com/euroelessar/qutim.git"
+CMAKE_USE_DIR="${S}/translations"
 
 LICENSE="GPL-2"
 SLOT="0.3-live"
 KEYWORDS=""
 IUSE="linguas_ru linguas_bg linguas_cs linguas_de linguas_uk"
+
+EGIT_BRANCH="master"
+EGIT_HAS_SUBMODULES="true"
+EGIT_PROJECT="qutim-${SLOT}"
+
 LANGUAGES=""
 
 DEPEND=""

@@ -6,20 +6,19 @@ EAPI=3
 
 inherit git-2 eutils qt4-r2 cmake-utils
 
+DESCRIPTION="SDL sound backend plugin for net-im/qutim"
+HOMEPAGE="http://www.qutim.org"
 EGIT_REPO_URI="git://github.com/euroelessar/qutim.git"
 CMAKE_USE_DIR="${S}/plugins"
-EGIT_BRANCH="master"
-
-EGIT_PROJECT="qutim"
-
-DESCRIPTION="Plugin for net-im/qutim"
-HOMEPAGE="http://www.qutim.org"
-SRC_URI=""
 
 LICENSE="GPL-2"
 SLOT="0.3-live"
 KEYWORDS=""
 IUSE="debug"
+
+EGIT_BRANCH="master"
+EGIT_HAS_SUBMODULES="true"
+EGIT_PROJECT="qutim-${SLOT}"
 
 RDEPEND="net-im/qutim:${SLOT}"
 DEPEND="${RDEPEND}

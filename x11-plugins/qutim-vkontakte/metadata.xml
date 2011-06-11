@@ -6,4 +6,8 @@
 		<email></email>
 		<name>qutim overlay team</name>
 	</maintainer>
+	<use>
+		<flag name="wall"></flag>
+		<flag name="photoalbum"></flag>
+	</use>
 </pkgmetadata>

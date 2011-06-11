@@ -22,6 +22,8 @@ IUSE="debug"
 
 DEPEND="net-im/qutim:${SLOT}"
 
+RDEPEND="${DEPEND}"
+
 RESTRICT="debug? ( strip )"
 
 MY_PN=${PN#qutim-}

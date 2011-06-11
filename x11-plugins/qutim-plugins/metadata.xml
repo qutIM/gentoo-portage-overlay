@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>no-herd</herd>
+	<maintainer>
+		<email></email>
+		<name>qutim overlay team</name>
+	</maintainer>
+	<longdescription lang="en">
+	  Plugins for net-im/qutim
+	</longdescription>
+	<longdescription lang="ru">
+	  Плагины для net-im/qutim
+	</longdescription>
+	<use>
+	  <flag name="aescrypto">Enables build of aescrypto plugin</flag>
+	  <flag name="aspeller">Enables build of Aspell-based spell checking plugin (<pkg>app-text/aspell</pkg>)</flag>
+	  <flag name="hunspeller">Enables build of Hunspell-based spell checking plugin (<pkg>app-text/hunspell</pkg>)</flag>
+	  <flag name="clconf">Enables build of clconf plugin which adds conferences to the contact list</flag>
+	  <flag name="dbus">Enables build of dbus api plugin</flag>
+	  <flag name="unreadmessageskeeper">Enables build of unreadmessageskeeper plugin which keeps unread messages on quit</flag>
+	  <flag name="kineticpopups">Enables build of kinetic popups plugin (Based on Qt Quick MacOSX (Growl) like popups)</flag>
+	  <flag name="kde">Enables build of KDE integration plugin</flag>
+	  <flag name="sdl">Enables build of SDL-based sound engine (<pkg>media-libs/sdl-mixer</pkg>)</flag>
+	  <flag name="phonon">Enables build of Phonon-based sound engine (<pkg>media-libs/phonon</pkg>)</flag>
+	  <flag name="histman">Enables build of history migration plugin</flag>
+	  <flag name="weather">Enables build of weather plugin</flag>
+	  <flag name="floaties">Enables build of floaties plugin</flag>
+	  <flag name="massmessaging">Enables build of MassMessaging plugin</flag>
+	  <flag name="emoedit">Enables build of EmoEdit plugin</flag>
+	  <flag name="dbusnotify">Enables build of dbus notifications plugin</flag>
+	  <flag name="antiboss">Enables build of antiboss plugin</flag>
+	  <flag name="antispam">Enables build of antispam plugin</flag>
+	  <flag name="yandexnarod">Enables build of Yandex.Narod plugin</flag>
+	  <flag name="indicator">Enables build of indicator integration plugin (<pkg>dev-libs/libindicate-qt</pkg>)</flag>
+	  <flag name="nowplaying">Enables build of NowPlaying plugin</flag>
+	  <flag name="connectionmanager">Enables build of ConnectionManager plugin</flag>
+	  <flag name="awn">Enables build of AWN integration plugin (<pkg>gnome-extra/avant-window-navigator</pkg>)</flag>
+	  <flag name="urlpreview">Enables build of urlpreview plugin</flag>
+	  <flag name="qmlchat">Enables build of chat implementation based on QML</flag>
+	</use>
+</pkgmetadata>

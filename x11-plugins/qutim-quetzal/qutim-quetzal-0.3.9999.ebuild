@@ -4,22 +4,21 @@
 
 EAPI="2"
 
-EGIT_HAS_SUBMODULES="true"
-
 inherit git-2 eutils qt4-r2 cmake-utils
 
-EGIT_REPO_URI="git://github.com/euroelessar/qutim.git"
-CMAKE_USE_DIR="${S}/protocols"
-EGIT_BRANCH="master"
-
-EGIT_PROJECT="qutim"
 DESCRIPTION="Libpurple binding for net-im/qutim"
 HOMEPAGE="http://www.qutim.org"
+EGIT_REPO_URI="git://github.com/euroelessar/qutim.git"
+CMAKE_USE_DIR="${S}/protocols"
 
 LICENSE="GPL-2"
 SLOT="0.3-live"
 KEYWORDS=""
 IUSE="debug"
+
+EGIT_BRANCH="master"
+EGIT_HAS_SUBMODULES="true"
+EGIT_PROJECT="qutim-${SLOT}"
 
 RDEPEND="net-im/qutim:${SLOT}
 	net-im/pidgin"

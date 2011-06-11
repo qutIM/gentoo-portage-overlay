@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>no-herd</herd>
+	<maintainer>
+		<email></email>
+		<name>qutim overlay team</name>
+	</maintainer>
+	<longdescription lang="en">
+	  Protocol plugins for net-im/qutim
+	</longdescription>
+	<longdescription lang="ru">
+	  Плагины протоколов для net-im/qutim
+	</longdescription>
+	<use>
+	  <flag name="icq">Enables build of OSCAR (ICQ) protocol plugin</flag>
+	  <flag name="jabber">Enables build of XMPP (Jabber, etc) protocol plugin</flag>
+	  <flag name="irc">Enables build of IRC protocol plugin</flag>
+	  <flag name="mrim">Enables build of @Mail.Ru protocol plugin</flag>
+	  <flag name="libpurple">Enables build of Libpurple (<pkg>net-im/pidgin</pkg>) binding plugin</flag>
+	  <flag name="astral">Enables build of Telepathy binding plugin</flag>
+	  <flag name="vkontakte">Enables build of Vkontakte social network plugin</flag>
+	</use>
+</pkgmetadata>

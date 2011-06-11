@@ -6,4 +6,8 @@
 		<email></email>
 		<name>qutim overlay team</name>
 	</maintainer>
+	<use>
+		<flag name="xstatus">Adding XStatus support</flag>
+		<flag name="identify"></flag>
+	</use>
 </pkgmetadata>

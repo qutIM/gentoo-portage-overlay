@@ -12,4 +12,7 @@
 	<longdescription lang="ru">
 		Артворк пакет для qutIM-0.2
 	</longdescription>
+	<use>
+		<flag name="sounds">Load sounds</flag>
+	</use>
 </pkgmetadata>

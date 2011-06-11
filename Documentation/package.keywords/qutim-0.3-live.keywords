@@ -1,6 +1,8 @@
 kde-misc/qutim-kdeintegration:0.3-live **
 net-im/qutim:0.3-live **
 net-im/qutim-l10n:0.3-live **
+x11-plugins/qutim-plugins:0.3-live **
+x11-plugins/qutim-protocols:0.3-live **
 x11-plugins/qutim-aescrypto:0.3-live **
 x11-plugins/qutim-antiboss:0.3-live **
 x11-plugins/qutim-antispam:0.3-live **
