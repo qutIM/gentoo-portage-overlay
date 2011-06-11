@@ -8,10 +8,11 @@ EGIT_HAS_SUBMODULES="true"
 
 inherit git eutils qt4-r2 cmake-utils
 
-EGIT_REPO_URI="git://gitorious.org/qutim/protocols.git"
+EGIT_REPO_URI="git://github.com/euroelessar/qutim.git" 
+CMAKE_USE_DIR="${S}/protocols"
 EGIT_BRANCH="master"
 EGIT_COMMIT="${EGIT_BRANCH}"
-EGIT_PROJECT="qutim-protocols"
+EGIT_PROJECT="qutim"
 DESCRIPTION="Vkontakte social network plugin for net-im/qutim"
 HOMEPAGE="http://www.qutim.org"
 

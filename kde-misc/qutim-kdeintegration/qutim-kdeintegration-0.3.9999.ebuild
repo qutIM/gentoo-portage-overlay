@@ -6,7 +6,8 @@ EAPI="3"
 
 inherit git eutils kde4-base cmake-utils
 
-EGIT_REPO_URI="git://gitorious.org/qutim/plugins.git"
+EGIT_REPO_URI="git://github.com/euroelessar/qutim.git" 
+CMAKE_USE_DIR="${S}/plugins"
 EGIT_BRANCH="master"
 EGIT_COMMIT="${EGIT_BRANCH}"
 DESCRIPTION="KDEIntegration plugin for net-im/qutim"

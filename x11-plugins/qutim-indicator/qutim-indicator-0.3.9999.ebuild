@@ -6,10 +6,11 @@ EAPI="2"
 
 inherit git eutils qt4-r2 cmake-utils
 
-EGIT_REPO_URI="git://gitorious.org/qutim/plugins.git"
+EGIT_REPO_URI="git://github.com/euroelessar/qutim.git" 
+CMAKE_USE_DIR="${S}/plugins"
 EGIT_BRANCH="master"
 EGIT_COMMIT="${EGIT_BRANCH}"
-EGIT_PROJECT="qutim-plugins"
+EGIT_PROJECT="qutim"
 DESCRIPTION="Indicator plugin for net-im/qutim"
 HOMEPAGE="http://www.qutim.org"
 
