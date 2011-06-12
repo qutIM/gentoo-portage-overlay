@@ -29,7 +29,6 @@ RDEPEND="net-im/qutim:${SLOT}
 
 DEPEND="${RDEPEND}
 	>=dev-util/cmake-2.6
-	!x11-plugins/qutim-protocols:${SLOT}
 	!app-crypt/qca-ossl"
 
 RESTRICT="debug? ( strip )"
