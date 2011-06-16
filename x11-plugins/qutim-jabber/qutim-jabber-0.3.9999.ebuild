@@ -25,11 +25,11 @@ RDEPEND="net-im/qutim:${SLOT}
 	sys-libs/zlib
 	net-dns/libidn
 	app-crypt/qca
-	app-crypt/qca-cyrus-sasl"
+	app-crypt/qca-cyrus-sasl
+	app-crypt/qca-ossl"
 
 DEPEND="${RDEPEND}
-	>=dev-util/cmake-2.6
-	!app-crypt/qca-ossl"
+	>=dev-util/cmake-2.6"
 
 RESTRICT="debug? ( strip )"
 
