@@ -20,10 +20,10 @@ EGIT_BRANCH="master"
 EGIT_HAS_SUBMODULES="true"
 EGIT_PROJECT="qutim-${SLOT}"
 
-RDEPEND="net-im/qutim:${SLOT}"
-DEPEND="${RDEPEND}
-	>=dev-util/cmake-2.6
+RDEPEND="net-im/qutim:${SLOT}
 	media-libs/sdl-mixer"
+DEPEND="${RDEPEND}
+	>=dev-util/cmake-2.6"
 
 RESTRICT="debug? ( strip )"
 
