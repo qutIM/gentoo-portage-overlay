@@ -20,11 +20,11 @@ EGIT_BRANCH="master"
 EGIT_HAS_SUBMODULES="true"
 EGIT_PROJECT="qutim-${SLOT}"
 
-RDEPEND="net-im/qutim:${SLOT}"
+RDEPEND="net-im/qutim:${SLOT}
+	app-text/aspell"
 
 DEPEND="${RDEPEND}
-	>=dev-util/cmake-2.6
-	app-text/aspell"
+	>=dev-util/cmake-2.6"
 
 RESTRICT="debug? ( strip )"
 
@@ -42,10 +42,5 @@ src_prepare() {
 	fi
 	mycmakeargs="-DQUTIM_ENABLE_ALL_PLUGINS=off \
 		-DASPELLER=on"
-# 	for i in $(grep -rl "<qutim/" "${S}" | grep -v "\.git"); do
-# 		sed -e "s/<qutim\//<qutim-${PV}\//" -i "${i}";
-# 	done
-# 	sed -e "s/qutim/qutim-${PV}/" \
-# 		-e "s/QutimPlugin/QutimPlugin-${PV}/" -i "${S}/CMakeLists.txt"
 	CMAKE_IN_SOURCE_BUILD=1
 }

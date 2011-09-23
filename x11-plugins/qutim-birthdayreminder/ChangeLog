@@ -1,0 +1,10 @@
+# ChangeLog for x11-plugins/qutim-birthdayreminder
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+*qutim-antispam-0.3.9999 (24 Sep 2011)
+
+  24 Sep 2011; Vladislav Rassokhin <vlad.rassokhin@gmail.com>
+  +qutim-birthdayreminder-0.3.9999.ebuild, +metadata.xml:
+  initial ebuild
+

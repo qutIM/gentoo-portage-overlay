@@ -6,7 +6,7 @@ EAPI="2"
 
 inherit git-2 eutils qt4-r2 cmake-utils
 
-DESCRIPTION="AWN dock integration plugin for net-im/qutim"
+DESCRIPTION="Birthday reminder plugin for net-im/qutim"
 HOMEPAGE="http://www.qutim.org"
 EGIT_REPO_URI="git://github.com/euroelessar/qutim.git"
 CMAKE_USE_DIR="${S}/plugins"
@@ -20,9 +20,7 @@ EGIT_BRANCH="master"
 EGIT_HAS_SUBMODULES="true"
 EGIT_PROJECT="qutim-${SLOT}"
 
-RDEPEND="net-im/qutim:${SLOT}
-	x11-libs/qt-dbus
-	gnome-extra/avant-window-navigator"
+RDEPEND="net-im/qutim:${SLOT}"
 
 DEPEND="${RDEPEND}
 	>=dev-util/cmake-2.6"
@@ -42,6 +40,6 @@ src_prepare() {
 		CMAKE_BUILD_TYPE="debug"
 	fi
 	mycmakeargs="-DQUTIM_ENABLE_ALL_PLUGINS=off \
-		-DAWN=on"
+		-DBIRTHDAYREMINDER=on"
 	CMAKE_IN_SOURCE_BUILD=1
 }
