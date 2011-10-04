@@ -40,10 +40,6 @@ src_prepare() {
 		append-flags -O1 -g -ggdb
 		CMAKE_BUILD_TYPE="debug"
 	fi
-	mycmakeargs="-DQUTIM_ENABLE_ALL_PLUGINS=0 -DKDEINTEGRATION=1"
+	mycmakeargs="-DQUTIM_ENABLE_ALL_PLUGINS=off -DKDEINTEGRATION=on"
 	CMAKE_IN_SOURCE_BUILD=1
-#	sed -e "s/QutimPlugin/QutimPlugin-${PV}/" -i CMakeLists.txt
-#	for i in $(grep -rl "<qutim/" "${S}" | grep -v "\.git"); do
-#		sed -e "s/<qutim\//<qutim-${PV}\//" -i ${i};
-#	done
 }

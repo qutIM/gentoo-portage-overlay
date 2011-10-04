@@ -20,7 +20,9 @@ EGIT_BRANCH="master"
 EGIT_HAS_SUBMODULES="true"
 EGIT_PROJECT="qutim-${SLOT}"
 
-RDEPEND="net-im/qutim:${SLOT}"
+RDEPEND="net-im/qutim:${SLOT}
+	>=x11-libs/qt-dbus-4.6.0"
+
 DEPEND="${RDEPEND}
 	>=dev-util/cmake-2.6"
 
