@@ -31,7 +31,7 @@ src_unpack() {
 	git-2_src_unpack
 }
 
-src_compile() {
+src_prepare() {
 	CMAKE_IN_SOURCE_BUILD=1
 	mycmakeargs=(
 		$(cmake-utils_use linguas_ru LANGUAGES/RU_RU)
