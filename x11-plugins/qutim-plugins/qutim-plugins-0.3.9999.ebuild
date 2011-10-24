@@ -16,7 +16,7 @@ KEYWORDS=""
 PLUGINS_GOOD="aescrypto aspeller clconf +dbus dbusnotify emoedit floaties \
 	histman hunspeller +kineticpopups kde massmessaging phonon sdl \
 	+unreadmessageskeeper weather"
-PLUGINS_BAD="antiboss antispam awn birthdayreminder connectionmanager indicator nowplaying \
+PLUGINS_BAD="antiboss antispam awn birthdayreminder indicator nowplaying \
 	qmlchat urlpreview yandexnarod"
 
 IUSE="${PLUGINS_GOOD} ${PLUGINS_BAD} debug"
@@ -33,7 +33,6 @@ PDEPEND="kde? ( kde-misc/qutim-kdeintegration:${SLOT}[debug?] )
 	awn? ( x11-plugins/qutim-awn:${SLOT}[debug?] )
 	birthdayreminder? ( x11-plugins/qutim-birthdayreminder:${SLOT}[debug?] )
 	clconf? ( x11-plugins/qutim-clconf:${SLOT}[debug?] )
-	connectionmanager? ( x11-plugins/qutim-connectionmanager:${SLOT}[debug?] )
 	dbus? ( x11-plugins/qutim-dbusapi:${SLOT}[debug?] )
 	histman? ( x11-plugins/qutim-histman:${SLOT}[debug?] )
 	hunspeller? ( x11-plugins/qutim-hunspeller:${SLOT}[debug?] )
