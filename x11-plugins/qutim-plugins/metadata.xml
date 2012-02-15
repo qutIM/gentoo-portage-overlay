@@ -34,7 +34,6 @@
 	  <flag name="yandexnarod">Enables build of Yandex.Narod plugin</flag>
 	  <flag name="indicator">Enables build of indicator integration plugin (<pkg>dev-libs/libindicate-qt</pkg>)</flag>
 	  <flag name="nowplaying">Enables build of NowPlaying plugin</flag>
-	  <flag name="connectionmanager">Enables build of ConnectionManager plugin</flag>
 	  <flag name="awn">Enables build of AWN integration plugin (<pkg>gnome-extra/avant-window-navigator</pkg>)</flag>
 	  <flag name="urlpreview">Enables build of urlpreview plugin</flag>
 	  <flag name="qmlchat">Enables build of chat implementation based on QML</flag>
