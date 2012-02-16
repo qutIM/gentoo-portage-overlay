@@ -5,9 +5,4 @@
 		<email>gentoo@qutim.org</email>
 		<name>qutIM overlay team</name>
 	</maintainer>
-	<use>
-		<flag name="emoticons"></flag>
-		<flag name="notification"></flag>
-		<flag name="phonon"></flag>
-	</use>
 </pkgmetadata>

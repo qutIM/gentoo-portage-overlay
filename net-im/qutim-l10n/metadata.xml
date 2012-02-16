@@ -5,4 +5,10 @@
 		<email>gentoo@qutim.org</email>
 		<name>qutIM overlay team</name>
 	</maintainer>
+	<longdescription lang="en">
+		Localization package for net-im/qutim
+	</longdescription>
+	<longdescription lang="ru">
+		Пакет языков интерфейса для qutIM
+	</longdescription>
 </pkgmetadata>
