@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>no-herd</herd>
 	<maintainer>
-		<email></email>
-		<name>qutim overlay team</name>
+		<email>gentoo@qutim.org</email>
+		<name>qutIM overlay team</name>
 	</maintainer>
 	<longdescription lang="en">
 	  Plugins for net-im/qutim
@@ -37,5 +36,7 @@
 	  <flag name="awn">Enables build of AWN integration plugin (<pkg>gnome-extra/avant-window-navigator</pkg>)</flag>
 	  <flag name="urlpreview">Enables build of urlpreview plugin</flag>
 	  <flag name="qmlchat">Enables build of chat implementation based on QML</flag>
+	  <flag name="scriptapi">Enables build of JavaScript API for plugins</flag>
+	  <flag name="birthdayreminder">Enables build of birtday reminder plugin</flag>
 	</use>
 </pkgmetadata>
