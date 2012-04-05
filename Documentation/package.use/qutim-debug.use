@@ -1,0 +1,5 @@
+kde-misc/qutim-kdeintegration		debug
+net-im/qutim:0		debug
+net-im/qutim-l10n:0		debug
+x11-plugins/qutim-plugins:0		debug
+x11-plugins/qutim-protocols:0		debug
