@@ -23,7 +23,7 @@ IUSE="${PROTOCOLS_STABLE} ${PROTOCOLS_UNSTABLE} debug"
 
 RDEPEND="net-im/qutim:${SLOT}
 	astral? ( net-libs/telepathy-qt )
-	jabber? ( x11-libs/libjreen )
+	jabber? ( net-libs/jreen )
 	libpurple? ( net-im/pidgin )
 	"
 
