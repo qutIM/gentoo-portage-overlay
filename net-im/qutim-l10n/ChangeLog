@@ -1,6 +1,13 @@
 # ChangeLog for net-im/qutim-l10n
-# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
+
+*qutim-l10n-9999 (05 Apr 2012)
+
+  05 Apr 2012; Vladislav Rassokhin <vladrassokhin@gmail.com>
+  qutim-l10n-0.3.0.ebuild, -qutim-l10n-0.3.9999.ebuild,
+  +qutim-l10n-9999.ebuild, metadata.xml:
+  Added new 0.3.0 ebuild, renamed 9999 (live) ebuild.
 
 *qutim-l10n-0.3.9999 (01 Jun 2010)
 

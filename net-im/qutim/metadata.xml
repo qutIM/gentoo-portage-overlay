@@ -3,26 +3,12 @@
 <pkgmetadata>
 	<herd>no-herd</herd>
 	<maintainer>
-		<email></email>
-		<name>qutim overlay team</name>
+		<email>gentoo@qutim.org</email>
+		<name>qutIM overlay team</name>
 	</maintainer>
-	<use>
-		<flag name="jabber">Jabber protocol</flag>
-		<flag name="histman">History migration plugin</flag>
-		<flag name="imagepub"></flag>
-		<flag name="irc">IRC protocol</flag>
-		<flag name="kde">KDE Integration pugin</flag>
-		<flag name="massmessaging">MassMessaging pugin</flag>
-		<flag name="mrim">Mrim (mail.ru) protocol</flag>
-		<flag name="otr">Enable OTR encrypted conversations</flag>
-		<flag name="plugman">Plugin manager</flag>
-		<flag name="sqlhistory"></flag>
-		<flag name="tex"></flag>
-		<flag name="urlpreview">Urlpreview plugin</flag>
-		<flag name="vkontakte">Vkontakte protocol</flag>
-		<flag name="vsqlhistory"></flag>
-		<flag name="weather">Weather plugin</flag>
-		<flag name="webhistory"></flag>
-		<flag name="yandexnarod">Yanderx.Narod plugin</flag>
+	<use lang="en">
+		<flag name="kineticscroller">Support for kinetic scrolling</flag>
+		<flag name="mobile">UI for mobile devices</flag>
+		<flag name="webkit">Webkit-based chat</flag>
 	</use>
 </pkgmetadata>
