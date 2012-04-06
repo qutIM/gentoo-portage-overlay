@@ -27,7 +27,9 @@ SLOT="0"
 IUSE=""
 
 LANGS="ru bg cs de uk"
-inherit qt4-r2
+for x in ${LANGS}; do
+	IUSE+=" linguas_${x}"
+done
 
 DEPEND="net-im/qutim:${SLOT}"
 
