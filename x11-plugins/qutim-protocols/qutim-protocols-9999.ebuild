@@ -17,7 +17,7 @@ else
 	KEYWORDS="~amd64 ~x86"
 fi
 
-inherit eutils flag-o-matic cmake-utils qt4-r2 ${_live_inherits}
+inherit eutils flag-o-matic cmake-utils ${_live_inherits}
 
 DESCRIPTION="Protocols for net-im/qutim"
 HOMEPAGE="http://www.qutim.org"
