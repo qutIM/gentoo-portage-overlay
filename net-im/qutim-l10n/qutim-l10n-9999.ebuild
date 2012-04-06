@@ -4,20 +4,12 @@
 
 EAPI="4"
 
-unset _live_inherits
+EGIT_BRANCH="master"
+EGIT_HAS_SUBMODULES="true"
+EGIT_PROJECT="qutim"
+EGIT_REPO_URI="git://github.com/euroelessar/qutim.git"
 
-if [[ ${PV} == *9999* ]]; then
-	EGIT_BRANCH="master"
-	EGIT_HAS_SUBMODULES="true"
-	EGIT_PROJECT="qutim"
-	EGIT_REPO_URI="git://github.com/euroelessar/qutim.git"
-	_live_inherits=git-2
-else
-	SRC_URI="http://qut.im/dwnl/34/qutim-${PV}.tar.bz2"
-	KEYWORDS="~amd64 ~x86"
-fi
-
-inherit flag-o-matic cmake-utils ${_live_inherits}
+inherit flag-o-matic cmake-utils git-2
 
 DESCRIPTION="Localization package for net-im/qutim"
 HOMEPAGE="http://www.qutim.org"
