@@ -23,7 +23,8 @@ IUSE="${PROTOCOLS_STABLE} ${PROTOCOLS_UNSTABLE} debug"
 
 RDEPEND="net-im/qutim:${SLOT}
 	astral? ( net-libs/telepathy-qt )
-	jabber? ( net-libs/jreen )
+	jabber? ( net-libs/jreen
+			  >=app-crypt/qca-gnupg-2.0 )
 	libpurple? ( net-im/pidgin )
 	"
 
@@ -54,6 +55,7 @@ src_configure() {
 		$(cmake-utils_use icq IDENTIFY)
 		$(cmake-utils_use irc IRC)
 		$(cmake-utils_use jabber JABBER)
+		$(cmake-utils_use jabber SYSTEM_JREEN)
 		$(cmake-utils_use libpurple QUETZAL)
 		$(cmake-utils_use mrim MRIM)
 		$(cmake-utils_use vkontakte VKONTAKTE)
