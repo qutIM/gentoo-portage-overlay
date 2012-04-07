@@ -1,0 +1,18 @@
+commit 23d77383408f5c7ae69872a4a0f547247901c548
+Author: Ruslan Nigmatullin <euroelessar@yandex.ru>
+Date:   Sat Apr 7 18:11:04 2012 +0600
+
+    [Jabber] Fixed linkage issue
+
+diff --git a/protocols/jabber/CMakeLists.txt b/protocols/jabber/CMakeLists.txt
+index 7a39cc3..9612138 100644
+--- a/protocols/jabber/CMakeLists.txt
++++ b/protocols/jabber/CMakeLists.txt
+@@ -6,6 +6,7 @@ if( JABBER )
+ 	if( SYSTEM_JREEN )
+ 		find_package( PkgConfig )
+ 		pkg_check_modules( JREEN REQUIRED libjreen )
++		link_directories( ${JREEN_LIBRARY_DIRS} )
+ 	else()
+ 		ADD_SUBDIRECTORY(jreen)
+ 		LIST(APPEND INCLUDE_DIRS "${JREEN_INCLUDE_DIRS}")

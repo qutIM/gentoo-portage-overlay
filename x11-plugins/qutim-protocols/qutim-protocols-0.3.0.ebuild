@@ -42,6 +42,10 @@ pkg_pretend() {
 	done
 }
 
+src_prepare() {
+	epatch "${FILESDIR}/${PV}-fix-jabber-linking.patch"
+}
+
 src_configure() {
 	if use debug ; then
 		filter-flags -O* -f*
