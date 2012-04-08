@@ -67,9 +67,8 @@ src_configure() {
 		$(cmake-utils_use aspell ASPELLER)
 		$(cmake-utils_use adiumwebview ADIUMWEBVIEW)
 		$(cmake-utils_use awn AWN)
-		$(cmake-utils_use birthdayreminder BIRTHDAYREMINDER)
 		$(cmake-utils_use bearermanager BEARERMANAGER)
-		$(cmake-utils_use bearermanager MOBILITY)
+		$(cmake-utils_use birthdayreminder BIRTHDAYREMINDER)
 		$(cmake-utils_use blogimprover BLOGIMPROVER)
 		$(cmake-utils_use clconf CLCONF)
 		$(cmake-utils_use dbus DBUSAPI)
@@ -85,7 +84,6 @@ src_configure() {
 		$(cmake-utils_use kineticpopups QUICKPOPUP/GLASS)
 		$(cmake-utils_use massmessaging MASSMESSAGING)
 		$(cmake-utils_use multimediabackend MULTIMEDIABACKEND)
-		$(cmake-utils_use multimediabackend MOBILITY)
 		$(cmake-utils_use nowplaying NOWPLAYING)
 		$(cmake-utils_use phonon PHONONSOUND)
 		$(cmake-utils_use qmlchat QMLCHAT)
@@ -97,5 +95,12 @@ src_configure() {
 		$(cmake-utils_use weather WEATHER)
 		$(cmake-utils_use yandexnarod YANDEXNAROD)
 	)
+	if use bearermanager ; then
+		mycmakeargs+=( -DMOBILITY=ON )
+	fi
+	if use multimediabackend ; then
+		mycmakeargs+=( -DMOBILITY=ON )
+	fi
+
 	cmake-utils_src_configure
 }

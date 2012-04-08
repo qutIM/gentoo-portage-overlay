@@ -18,9 +18,9 @@ LICENSE="GPL-2"
 SLOT="0"
 
 PLUGINS="-adiumwebview aescrypto -antiboss antispam aspeller -awn \
-	-birthdayreminder blogimprover clconf +dbus dbusnotify emoedit \
+	bearermanager -birthdayreminder blogimprover clconf +dbus dbusnotify emoedit \
 	floaties highlighter histman hunspeller -indicator \
-	kde +kineticpopups massmessaging nowplaying phonon \
+	kde +kineticpopups massmessaging multimediabackend nowplaying phonon \
 	-qmlchat scriptapi sdl +unreadmessageskeeper urlpreview \
 	weather -yandexnarod"
 
@@ -29,6 +29,7 @@ IUSE="${PLUGINS} debug"
 RDEPEND="net-im/qutim:${SLOT}
 	aescrypto? ( app-crypt/qca )
 	aspeller? ( app-text/aspell )
+	adiumwebview? ( x11-libs/webkit )
 	awn? ( x11-libs/qt-dbus
 		   gnome-extra/avant-window-navigator )
 	dbus? ( >=x11-libs/qt-dbus-4.6.0 )
@@ -37,6 +38,7 @@ RDEPEND="net-im/qutim:${SLOT}
 	hunspeller? ( app-text/hunspell )
 	indicator? ( dev-libs/libindicate-qt )
 	kineticpopups? ( >=x11-libs/qt-declarative-4.7.2 )
+	multimediabackend? ( >=x11-libs/qt-multimedia-4.7.2 )
 	qmlchat? ( >=x11-libs/qt-declarative-4.7.2 )
 	sdl? ( media-libs/sdl-mixer )
 	phonon? ( media-libs/phonon )"
@@ -66,6 +68,7 @@ src_configure() {
 		$(cmake-utils_use aspell ASPELLER)
 		$(cmake-utils_use adiumwebview ADIUMWEBVIEW)
 		$(cmake-utils_use awn AWN)
+		$(cmake-utils_use bearermanager BEARERMANAGER)
 		$(cmake-utils_use birthdayreminder BIRTHDAYREMINDER)
 		$(cmake-utils_use blogimprover BLOGIMPROVER)
 		$(cmake-utils_use clconf CLCONF)
@@ -81,6 +84,7 @@ src_configure() {
 		$(cmake-utils_use kineticpopups QUICKPOPUP/DEFAULT)
 		$(cmake-utils_use kineticpopups QUICKPOPUP/GLASS)
 		$(cmake-utils_use massmessaging MASSMESSAGING)
+		$(cmake-utils_use multimediabackend MULTIMEDIABACKEND)
 		$(cmake-utils_use nowplaying NOWPLAYING)
 		$(cmake-utils_use phonon PHONONSOUND)
 		$(cmake-utils_use qmlchat QMLCHAT)
@@ -92,5 +96,12 @@ src_configure() {
 		$(cmake-utils_use weather WEATHER)
 		$(cmake-utils_use yandexnarod YANDEXNAROD)
 	)
+	if use bearerbackend ; then
+		mycmakeargs+=( -DMOBILITY=ON )
+	fi
+	if use multimediabackend ; then
+		mycmakeargs+=( -DMOBILITY=ON )
+	fi
+
 	cmake-utils_src_configure
 }
