@@ -4,15 +4,14 @@
 
 EAPI="4"
 
-EGIT_BRANCH="master"
-EGIT_HAS_SUBMODULES="true"
-EGIT_PROJECT="qutim"
-EGIT_REPO_URI="git://github.com/euroelessar/qutim.git"
-
-inherit eutils flag-o-matic cmake-utils git-2
+inherit eutils flag-o-matic cmake-utils
 
 DESCRIPTION="Protocols for net-im/qutim"
 HOMEPAGE="http://www.qutim.org"
+
+SRC_URI="http://www.qutim.org/dwnl/34/qutim-${PV}.tar.bz2"
+S="${WORKDIR}/qutim-${PV}"
+KEYWORDS="~amd64 ~x86"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -35,6 +34,10 @@ RESTRICT="debug? ( strip )"
 
 CMAKE_USE_DIR="${S}/protocols"
 CMAKE_IN_SOURCE_BUILD=1
+
+src_prepare() {
+	epatch "${FILESDIR}/${PV}-fix-jabber-linking.patch"
+}
 
 src_configure() {
 	if use debug ; then
