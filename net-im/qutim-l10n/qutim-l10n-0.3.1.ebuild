@@ -9,7 +9,7 @@ inherit flag-o-matic cmake-utils
 DESCRIPTION="Localization package for net-im/qutim"
 HOMEPAGE="http://www.qutim.org"
 
-SRC_URI="http://www.qutim.org/dwnl/TODO/qutim-${PV}.tar.bz2"
+SRC_URI="http://www.qutim.org/dwnl/40/qutim-${PV}.tar.bz2"
 S="${WORKDIR}/qutim-${PV}"
 KEYWORDS="~amd64 ~x86"
 

@@ -16,10 +16,9 @@ KEYWORDS="~amd64 ~x86"
 LICENSE="GPL-2"
 SLOT="0"
 
-PROTOCOLS_STABLE="+icq +jabber irc vkontakte mrim"
-PROTOCOLS_UNSTABLE="-astral -libpurple"
+PROTOCOLS="-astral +icq irc +jabber -libpurple mrim vkontakte"
 
-IUSE="${PROTOCOLS_STABLE} ${PROTOCOLS_UNSTABLE} debug"
+IUSE="${PROTOCOLS} debug"
 
 RDEPEND="net-im/qutim:${SLOT}
 	astral? ( net-libs/telepathy-qt )

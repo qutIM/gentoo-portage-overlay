@@ -9,17 +9,16 @@ inherit eutils flag-o-matic cmake-utils
 DESCRIPTION="Protocols for net-im/qutim"
 HOMEPAGE="http://www.qutim.org"
 
-SRC_URI="http://www.qutim.org/dwnl/TODO/qutim-${PV}.tar.bz2"
+SRC_URI="http://www.qutim.org/dwnl/40/qutim-${PV}.tar.bz2"
 S="${WORKDIR}/qutim-${PV}"
 KEYWORDS="~amd64 ~x86"
 
 LICENSE="GPL-2"
 SLOT="0"
 
-PROTOCOLS_STABLE="+icq +jabber irc vkontakte mrim"
-PROTOCOLS_UNSTABLE="astral libpurple"
+PROTOCOLS="-astral +icq irc +jabber -libpurple mrim vkontakte"
 
-IUSE="${PROTOCOLS_STABLE} ${PROTOCOLS_UNSTABLE} debug"
+IUSE="${PROTOCOLS} debug"
 
 RDEPEND="net-im/qutim:${SLOT}
 	astral? ( net-libs/telepathy-qt )
@@ -34,13 +33,6 @@ RESTRICT="debug? ( strip )"
 
 CMAKE_USE_DIR="${S}/protocols"
 CMAKE_IN_SOURCE_BUILD=1
-
-pkg_pretend() {
-	local unstable
-	for unstable in ${PROTOCOLS_UNSTABLE} ; do
-		use "${unstable}" && ewarn "WARNING: You have enabled the build of the ${unstable} protocol which is known to be not working for now"
-	done
-}
 
 src_configure() {
 	if use debug ; then
