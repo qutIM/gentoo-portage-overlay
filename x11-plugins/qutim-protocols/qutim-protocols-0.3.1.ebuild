@@ -9,7 +9,7 @@ inherit eutils flag-o-matic cmake-utils
 DESCRIPTION="Protocols for net-im/qutim"
 HOMEPAGE="http://www.qutim.org"
 
-SRC_URI="http://www.qutim.org/dwnl/34/qutim-${PV}.tar.bz2"
+SRC_URI="http://www.qutim.org/dwnl/40/qutim-${PV}.tar.bz2"
 S="${WORKDIR}/qutim-${PV}"
 KEYWORDS="~amd64 ~x86"
 
@@ -22,7 +22,7 @@ IUSE="${PROTOCOLS} debug"
 
 RDEPEND="net-im/qutim:${SLOT}
 	astral? ( net-libs/telepathy-qt )
-	jabber? ( net-libs/jreen
+	jabber? ( >=net-libs/jreen-1.1.0
 			  >=app-crypt/qca-gnupg-2.0 )
 	libpurple? ( net-im/pidgin )
 	"
@@ -33,10 +33,6 @@ RESTRICT="debug? ( strip )"
 
 CMAKE_USE_DIR="${S}/protocols"
 CMAKE_IN_SOURCE_BUILD=1
-
-src_prepare() {
-	epatch "${FILESDIR}/${PV}-fix-jabber-linking.patch"
-}
 
 src_configure() {
 	if use debug ; then
