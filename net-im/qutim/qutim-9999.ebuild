@@ -16,7 +16,7 @@ HOMEPAGE="http://www.qutim.org"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="debug doc kineticscroller mobile static +webkit"
+IUSE="debug doc kineticscroller mobile +sound static +webkit"
 
 RDEPEND=">=x11-libs/qt-gui-4.6.0
 	webkit? ( >=x11-libs/qt-webkit-4.6.0 )
@@ -42,6 +42,8 @@ src_configure() {
 	fi
 	mycmakeargs=(
 		-DQSOUNDBACKEND=0
+		-DQUTIM_INSTALL_ICONS=1
+		$(cmake-utils_use sound QUTIM_INSTALL_SOUND_THEME)
 		$(cmake-utils_use webkit WEBKITCHAT)
 		$(cmake-utils_use kineticscroller)
 	)
