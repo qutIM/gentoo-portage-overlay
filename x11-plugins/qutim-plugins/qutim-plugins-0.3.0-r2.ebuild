@@ -29,16 +29,16 @@ RDEPEND="net-im/qutim:${SLOT}
 	aescrypto? ( app-crypt/qca )
 	aspeller? ( app-text/aspell )
 	adiumwebview? ( x11-libs/webkit )
-	awn? ( x11-libs/qt-dbus
+	awn? ( dev-qt/qtdbus
 		   gnome-extra/avant-window-navigator )
-	dbus? ( >=x11-libs/qt-dbus-4.6.0 )
-	dbusnotify? ( >=x11-libs/qt-dbus-4.6.0 )
-	histman? ( x11-libs/qt-sql )
+	dbus? ( >=dev-qt/qtdbus-4.6.0 )
+	dbusnotify? ( >=dev-qt/qtdbus-4.6.0 )
+	histman? ( dev-qt/qtsql )
 	hunspeller? ( app-text/hunspell )
 	indicator? ( dev-libs/libindicate-qt )
-	kineticpopups? ( >=x11-libs/qt-declarative-4.7.2 )
-	multimediabackend? ( >=x11-libs/qt-multimedia-4.7.2 )
-	qmlchat? ( >=x11-libs/qt-declarative-4.7.2 )
+	kineticpopups? ( >=dev-qt/qtdeclarative-4.7.2 )
+	multimediabackend? ( >=dev-qt/qtmultimedia-4.7.2 )
+	qmlchat? ( >=dev-qt/qtdeclarative-4.7.2 )
 	sdl? ( media-libs/sdl-mixer )
 	phonon? ( media-libs/phonon )"
 
