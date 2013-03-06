@@ -17,9 +17,9 @@ LICENSE="GPL-2"
 SLOT="0"
 IUSE="debug doc kineticscroller mobile static +webkit"
 
-RDEPEND=">=x11-libs/qt-gui-4.6.0
-	webkit? ( >=x11-libs/qt-webkit-4.6.0 )
-	>=x11-libs/qt-multimedia-4.6.0"
+RDEPEND=">=dev-qt/qtgui-4.6.0
+	webkit? ( >=dev-qt/qtwebkit-4.6.0 )
+	>=dev-qt/qtmultimedia-4.6.0"
 
 DEPEND="${RDEPEND}
 	>=dev-util/cmake-2.6.0

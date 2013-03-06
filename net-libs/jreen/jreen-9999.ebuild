@@ -29,8 +29,8 @@ DEPEND="
 	>=app-crypt/qca-ossl-2.0
 	>=app-crypt/qca-cyrus-sasl-2.0
 	>=net-dns/libidn-1.20
-	>=x11-libs/qt-core-4.6.0:4
-	>=x11-libs/qt-gui-4.6.0:4
+	>=dev-qt/qtcore-4.6.0:4
+	>=dev-qt/qtgui-4.6.0:4
 "
 RDEPEND="${DEPEND}"
 
