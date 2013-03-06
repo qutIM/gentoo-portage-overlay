@@ -31,6 +31,7 @@ DEPEND="
 	>=net-dns/libidn-1.20
 	>=dev-qt/qtcore-4.6.0:4
 	>=dev-qt/qtgui-4.6.0:4
+	net-libs/libgsasl
 "
 RDEPEND="${DEPEND}"
 
