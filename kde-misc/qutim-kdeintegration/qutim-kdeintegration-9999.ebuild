@@ -11,6 +11,10 @@ EGIT_REPO_URI="git://github.com/euroelessar/qutim.git"
 
 inherit kde4-base flag-o-matic cmake-utils git-2
 
+#Fix EGIT_REPO_URI after kde4-base
+EGIT_REPO_URI="git://github.com/euroelessar/qutim.git"
+
+
 DESCRIPTION="KDEIntegration plugin for net-im/qutim"
 HOMEPAGE="http://www.qutim.org/"
 
