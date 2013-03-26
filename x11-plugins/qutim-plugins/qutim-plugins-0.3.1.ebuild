@@ -28,7 +28,7 @@ IUSE="${PLUGINS} debug"
 RDEPEND="net-im/qutim:${SLOT}
 	aescrypto? ( app-crypt/qca )
 	aspeller? ( app-text/aspell )
-	adiumwebview? ( x11-libs/webkit )
+	adiumwebview? ( dev-qt/qtwebkit )
 	awn? ( dev-qt/qtdbus
 		   gnome-extra/avant-window-navigator )
 	dbus? ( >=dev-qt/qtdbus-4.6.0 )
