@@ -9,7 +9,7 @@ inherit flag-o-matic cmake-utils
 DESCRIPTION="Plugins for net-im/qutim"
 HOMEPAGE="http://www.qutim.org"
 
-SRC_URI="http://www.qutim.org/dwnl/34/qutim-${PV}.tar.bz2"
+SRC_URI="http://www.qutim.org/dwnl/40/qutim-${PV}.tar.bz2"
 S="${WORKDIR}/qutim-${PV}"
 KEYWORDS="~amd64 ~x86"
 
@@ -100,6 +100,9 @@ src_configure() {
 	fi
 	if use multimediabackend ; then
 		mycmakeargs+=( -DMOBILITY=ON )
+	fi
+	if use adiumwebview ; then
+		mycmakeargs+=( -DDATA/WEBVIEW=ON -DWEBKITSTYLE/MELWA=ON )
 	fi
 
 	cmake-utils_src_configure

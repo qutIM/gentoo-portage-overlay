@@ -101,6 +101,9 @@ src_configure() {
 	if use multimediabackend ; then
 		mycmakeargs+=( -DMOBILITY=ON )
 	fi
+	if use adiumwebview ; then
+		mycmakeargs+=( -DDATA/WEBVIEW=ON -DWEBKITSTYLE/MELWA=ON )
+	fi
 
 	cmake-utils_src_configure
 }
