@@ -4,15 +4,14 @@
 
 EAPI="4"
 
-EGIT_BRANCH="master"
-EGIT_HAS_SUBMODULES="true"
-EGIT_PROJECT="qutim"
-EGIT_REPO_URI="git://github.com/euroelessar/qutim.git"
-
-inherit flag-o-matic cmake-utils git-2
+inherit flag-o-matic cmake-utils
 
 DESCRIPTION="Plugins for net-im/qutim"
 HOMEPAGE="http://www.qutim.org"
+
+SRC_URI="http://www.qutim.org/dwnl/40/qutim-${PV}.tar.bz2"
+S="${WORKDIR}/qutim-${PV}"
+KEYWORDS="~amd64 ~x86"
 
 LICENSE="GPL-2"
 SLOT="0"
