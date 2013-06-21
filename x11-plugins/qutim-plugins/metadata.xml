@@ -41,5 +41,6 @@
 	  <flag name="birthdayreminder">Enables build of birtday reminder plugin</flag>
 	  <flag name="formula">Enables build of formula plugin (replaces equations surrounded by $$ by tex images)</flag>
 	  <flag name="logger">Enables build of logger plugin (simple file based logger for debug)</flag>
+	  <flag name="autopaster">Enables build of autopaster plugin (autopaste your code to hosting)</flag>
 	</use>
 </pkgmetadata>
