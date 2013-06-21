@@ -20,7 +20,7 @@ SLOT="0"
 PLUGINS="-adiumwebview aescrypto -antiboss antispam aspeller -awn \
 	bearermanager -birthdayreminder blogimprover clconf +dbus dbusnotify emoedit \
 	formula floaties highlighter histman hunspeller -indicator \
-	kde +kineticpopups massmessaging multimediabackend nowplaying phonon \
+	kde +kineticpopups logger massmessaging multimediabackend nowplaying phonon \
 	-qmlchat scriptapi sdl +unreadmessageskeeper urlpreview \
 	weather -yandexnarod"
 
@@ -38,6 +38,7 @@ RDEPEND="net-im/qutim:${SLOT}
 	hunspeller? ( app-text/hunspell )
 	indicator? ( dev-libs/libindicate-qt )
 	kineticpopups? ( >=dev-qt/qtdeclarative-4.7.2 )
+	logger? ( >=dev-qt/qtdeclarative-4.7.2 )
 	multimediabackend? ( >=dev-qt/qtmultimedia-4.7.2 )
 	qmlchat? ( >=dev-qt/qtdeclarative-4.7.2 )
 	sdl? ( media-libs/sdl-mixer )
@@ -84,6 +85,7 @@ src_configure() {
 		$(cmake-utils_use kineticpopups KINETICPOPUPS)
 		$(cmake-utils_use kineticpopups QUICKPOPUP/DEFAULT)
 		$(cmake-utils_use kineticpopups QUICKPOPUP/GLASS)
+		$(cmake-utils_use logger LOGGER)
 		$(cmake-utils_use massmessaging MASSMESSAGING)
 		$(cmake-utils_use multimediabackend MULTIMEDIABACKEND)
 		$(cmake-utils_use nowplaying NOWPLAYING)

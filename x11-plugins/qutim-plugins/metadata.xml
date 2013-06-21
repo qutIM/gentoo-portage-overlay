@@ -40,5 +40,6 @@
 	  <flag name="scriptapi">Enables build of JavaScript API for plugins</flag>
 	  <flag name="birthdayreminder">Enables build of birtday reminder plugin</flag>
 	  <flag name="formula">Enables build of formula plugin (replaces equations surrounded by $$ by tex images)</flag>
+	  <flag name="logger">Enables build of logger plugin (simple file based logger for debug)</flag>
 	</use>
 </pkgmetadata>
