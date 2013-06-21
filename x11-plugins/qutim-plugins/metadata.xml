@@ -39,5 +39,6 @@
 	  <flag name="qmlchat">Enables build of chat implementation based on QML</flag>
 	  <flag name="scriptapi">Enables build of JavaScript API for plugins</flag>
 	  <flag name="birthdayreminder">Enables build of birtday reminder plugin</flag>
+	  <flag name="formula">Enables build of formula plugin (replaces equations surrounded by $$ by tex images)</flag>
 	</use>
 </pkgmetadata>

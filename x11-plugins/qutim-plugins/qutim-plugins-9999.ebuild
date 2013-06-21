@@ -19,7 +19,7 @@ SLOT="0"
 
 PLUGINS="-adiumwebview aescrypto -antiboss antispam aspeller -awn \
 	bearermanager -birthdayreminder blogimprover clconf +dbus dbusnotify emoedit \
-	floaties highlighter histman hunspeller -indicator \
+	formula floaties highlighter histman hunspeller -indicator \
 	kde +kineticpopups massmessaging multimediabackend nowplaying phonon \
 	-qmlchat scriptapi sdl +unreadmessageskeeper urlpreview \
 	weather -yandexnarod"
@@ -75,6 +75,7 @@ src_configure() {
 		$(cmake-utils_use dbus DBUSAPI)
 		$(cmake-utils_use dbusnotify DBUSNOTIFICATIONS)
 		$(cmake-utils_use emoedit EMOEDIT)
+		$(cmake-utils_use formula FORMULA)
 		$(cmake-utils_use floaties FLOATIES)
 		$(cmake-utils_use histman HISTMAN)
 		$(cmake-utils_use highlighter HIGHLIGHTER)
