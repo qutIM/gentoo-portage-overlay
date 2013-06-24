@@ -7,7 +7,7 @@ EAPI=4
 MY_P=lib${PN}\-${PV}
 
 if [[ ${PV} != *9999* ]]; then
-	SRC_URI="http://qutim.org/dwnl/39/libjreen-1.1.0.tar.bz2 -> ${P}.tar.bz2"
+	SRC_URI="http://qutim.org/dwnl/44/libjreen-1.1.1.tar.bz2 -> ${P}.tar.bz2"
 	KEYWORDS="~amd64 ~x86"
 else
 	GIT_ECLASS="git-2"
