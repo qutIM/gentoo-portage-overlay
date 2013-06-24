@@ -17,7 +17,7 @@ HOMEPAGE="http://www.qutim.org"
 LICENSE="GPL-2"
 SLOT="0"
 
-PLUGINS="-adiumwebview aescrypto -antiboss antispam aspeller autopaster -awn \
+PLUGINS="-adiumwebview aescrypto -antiboss antispam aspeller autopaster autoreply -awn \
 	bearermanager -birthdayreminder blogimprover clconf +dbus dbusnotify emoedit \
 	formula floaties highlighter histman hunspeller -indicator \
 	kde +kineticpopups logger massmessaging multimediabackend nowplaying phonon \
@@ -69,6 +69,7 @@ src_configure() {
 		$(cmake-utils_use aspell ASPELLER)
 		$(cmake-utils_use adiumwebview ADIUMWEBVIEW)
 		$(cmake-utils_use autopaster AUTOPASTER)
+		$(cmake-utils_use autoreply AUTOREPLY)
 		$(cmake-utils_use awn AWN)
 		$(cmake-utils_use bearermanager BEARERMANAGER)
 		$(cmake-utils_use birthdayreminder BIRTHDAYREMINDER)
