@@ -4,7 +4,7 @@
 
 EAPI="4"
 
-EGIT_BRANCH="master"
+EGIT_BRANCH="qt4"
 EGIT_HAS_SUBMODULES="true"
 EGIT_PROJECT="qutim"
 EGIT_REPO_URI="git://github.com/euroelessar/qutim.git"
