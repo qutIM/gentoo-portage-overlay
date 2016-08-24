@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>no-herd</herd>
-	<maintainer>
+	<maintainer type="project">
 		<email>gentoo@qutim.org</email>
 		<name>qutIM overlay team</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">euroelessar/qutim</remote-id>
+	</upstream>
 	<longdescription lang="en">
 	  Protocol plugins for net-im/qutim
 	</longdescription>
